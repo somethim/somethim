@@ -1,0 +1,103 @@
+@source "./components";
+@source "./extensions";
+
+.editor {
+  blockquote {
+    @apply bg-background-dimmed rounded-xl p-4 mb-2;
+
+    p:first-child {
+      @apply mt-0;
+    }
+
+    p:last-child {
+      @apply mb-0;
+    }
+  }
+
+  h1 {
+    @apply text-4xl font-semibold font-header mt-4;
+  }
+
+  h2 {
+    @apply text-2xl font-semibold;
+  }
+
+  h3 {
+    @apply text-xl;
+  }
+
+  p {
+    @apply text-base text-foreground-dimmed;
+  }
+
+  ul,
+  ol {
+    @apply my-2 pl-6 text-foreground-dimmed;
+  }
+
+  ul {
+    list-style-type: disc;
+  }
+
+  ol {
+    list-style-type: decimal;
+  }
+
+  li {
+    @apply py-0.5;
+  }
+
+  li p {
+    @apply my-0;
+  }
+
+  img {
+    @apply rounded-lg max-w-full;
+  }
+
+  .editor-column-row {
+    @apply flex min-w-0 gap-2;
+  }
+
+  .editor-column {
+    @apply min-w-0 flex-1 overflow-hidden;
+
+    blockquote {
+      @apply h-full;
+    }
+  }
+  [data-resize-handle] {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background: var(--color-primary);
+    border: 2px solid var(--color-background-rich);
+    border-radius: 2px;
+    z-index: 10;
+    cursor: nwse-resize;
+  }
+
+  [data-resize-handle][data-direction*="top"] {
+    top: -6px;
+  }
+
+  [data-resize-handle][data-direction*="bottom"] {
+    bottom: -6px;
+  }
+
+  [data-resize-handle][data-direction*="left"] {
+    left: -6px;
+  }
+
+  [data-resize-handle][data-direction*="right"] {
+    right: -6px;
+  }
+
+  [data-resize-state="resizing"] {
+    user-select: none;
+
+    img {
+      pointer-events: none;
+    }
+  }
+}

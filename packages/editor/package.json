@@ -1,0 +1,44 @@
+{
+  "name": "@zenncore/editor",
+  "version": "0.0.0",
+  "private": true,
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "type": "module",
+  "scripts": {
+    "build": "tsdown",
+    "dev": "tsdown --watch",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf .turbo dist node_modules",
+    "lint": "biome lint --write --unsafe"
+  },
+  "dependencies": {
+    "@zenncore/icons": "workspace:*",
+    "@zenncore/utils": "workspace:*",
+    "@zenncore/web": "workspace:*"
+  },
+  "peerDependencies": {
+    "@tiptap/core": "^3.19.0",
+    "@tiptap/extension-image": "^3.19.0",
+    "@tiptap/pm": "^3.19.0",
+    "@tiptap/react": "^3.19.0",
+    "@tiptap/starter-kit": "^3.19.0",
+    "react": "catalog:"
+  },
+  "devDependencies": {
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:",
+    "@zenncore/config": "workspace:*",
+    "tailwindcss": "catalog:",
+    "tsdown": "catalog:",
+    "typescript": "catalog:"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./style": "./src/style.css"
+  }
+}
