@@ -14,7 +14,7 @@ declare module "@tiptap/core" {
 }
 
 const EditorIconNodeView = ({ node }: NodeViewProps) => {
-  const svg = node.attrs.svg as string | null | undefined;
+  const svg = (node.attrs as { svg?: string | null }).svg;
   if (svg) {
     return (
       <NodeViewWrapper
@@ -23,6 +23,7 @@ const EditorIconNodeView = ({ node }: NodeViewProps) => {
         contentEditable={false}
         data-editor-icon
         data-icon-type="svg"
+        // biome-ignore lint/security/noDangerouslySetInnerHtml: SVG comes from trusted internal icon definitions
         dangerouslySetInnerHTML={{ __html: svg }}
       />
     );
@@ -84,8 +85,7 @@ export const EditorIconExtension: Extension = Node.create({
   },
 
   renderHTML({ node, HTMLAttributes }) {
-    const name = node.attrs.name as string | null;
-    const svg = node.attrs.svg as string | null;
+    const { name, svg } = node.attrs as { name?: string | null; svg?: string | null };
     const attrs: Record<string, string> = {
       "data-editor-icon": "",
       class: "editor-inline-icon",

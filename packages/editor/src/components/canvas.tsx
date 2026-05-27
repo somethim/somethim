@@ -31,7 +31,7 @@ export const EditorCanvas = ({
       <Summary
         editor={editor}
         className={cn(
-          "fixed top-[50vh] -translate-y-1/2 right-0 z-10 w-56 shrink-0 pr-4",
+          "fixed top-[50vh] right-0 z-10 w-56 shrink-0 -translate-y-1/2 pr-4",
           classList?.summary,
         )}
       />

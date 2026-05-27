@@ -8,17 +8,15 @@ import {
 } from "motion/react";
 import { useRef } from "react";
 
-namespace Letter {
-  export type Props = {
-    char: string;
-    progress: MotionValue<number>;
-    exitX: string;
-    exitY: string;
-    exitRotate: number;
-  };
-}
-
-const Letter = ({ char, progress, exitX, exitY, exitRotate }: Letter.Props) => {
+// biome-ignore lint/correctness/noUnusedVariables: false positive — used in JSX
+const AnimatedSpan = ({
+  children,
+  progress,
+  exitX,
+  exitY,
+  exitRotate,
+  className,
+}: AnimatedSpan.Props) => {
   const x = useTransform(progress, [0, 0.6], ["0%", exitX]);
   const y = useTransform(progress, [0, 0.6], ["0%", exitY]);
   const rotate = useTransform(progress, [0, 0.6], [0, exitRotate]);
@@ -28,73 +26,52 @@ const Letter = ({ char, progress, exitX, exitY, exitRotate }: Letter.Props) => {
 
   return (
     <motion.span
-      className="inline-block font-header"
+      className={className}
       style={{ x, y, rotate, opacity, filter }}
     >
-      {char}
+      {children}
     </motion.span>
   );
 };
-namespace ScatterWord {
+namespace AnimatedSpan {
   export type Props = {
-    word: string;
+    children: string;
     progress: MotionValue<number>;
     exitX: string;
     exitY: string;
     exitRotate: number;
+    className: string;
   };
 }
-const ScatterWord = ({
-  word,
-  progress,
-  exitX,
-  exitY,
-  exitRotate,
-}: ScatterWord.Props) => {
-  const x = useTransform(progress, [0, 0.6], ["0%", exitX]);
-  const y = useTransform(progress, [0, 0.6], ["0%", exitY]);
-  const rotate = useTransform(progress, [0, 0.6], [0, exitRotate]);
-  const opacity = useTransform(progress, [0, 0.35], [1, 0]);
-  const blur = useTransform(progress, [0, 0.6], [0, 20]);
-  const filter = useTransform(blur, (v) => `blur(${v}px)`);
-
-  return (
-    <motion.span
-      className="mr-[0.28em] inline-block"
-      style={{ x, y, rotate, opacity, filter }}
-    >
-      {word}
-    </motion.span>
-  );
-};
 
 const name = [
-  { char: "M", exitX: "-8vw", exitY: "-130vh", exitRotate: -12 },
-  { char: "A", exitX: "-3vw", exitY: "-150vh", exitRotate: 8 },
-  { char: "R", exitX: "2vw", exitY: "-140vh", exitRotate: -6 },
-  { char: "I", exitX: "5vw", exitY: "-155vh", exitRotate: 10 },
-  { char: "O", exitX: "10vw", exitY: "-125vh", exitRotate: -9 },
+  { children: "A", exitX: "-8vw", exitY: "-130vh", exitRotate: -12 },
+  { children: "R", exitX: "-3vw", exitY: "-150vh", exitRotate: 8 },
+  { children: "B", exitX: "2vw", exitY: "-140vh", exitRotate: -6 },
+  { children: "I", exitX: "5vw", exitY: "-155vh", exitRotate: 10 },
 ] as const;
 
 const surname = [
-  { char: "V", exitX: "-10vw", exitY: "-120vh", exitRotate: 8 },
-  { char: "U", exitX: "-5vw", exitY: "-145vh", exitRotate: -10 },
-  { char: "K", exitX: "0vw", exitY: "-130vh", exitRotate: 6 },
-  { char: "Z", exitX: "4vw", exitY: "-150vh", exitRotate: -7 },
-  { char: "A", exitX: "8vw", exitY: "-135vh", exitRotate: 9 },
-  { char: "J", exitX: "12vw", exitY: "-120vh", exitRotate: -8 },
+  { children: "K", exitX: "-14vw", exitY: "-115vh", exitRotate: 6 },
+  { children: "U", exitX: "-10vw", exitY: "-130vh", exitRotate: -8 },
+  { children: "L", exitX: "-6vw", exitY: "-145vh", exitRotate: 5 },
+  { children: "L", exitX: "-2vw", exitY: "-125vh", exitRotate: -7 },
+  { children: "A", exitX: "2vw", exitY: "-140vh", exitRotate: 9 },
+  { children: "K", exitX: "5vw", exitY: "-150vh", exitRotate: -6 },
+  { children: "S", exitX: "9vw", exitY: "-120vh", exitRotate: 8 },
+  { children: "H", exitX: "12vw", exitY: "-135vh", exitRotate: -9 },
+  { children: "I", exitX: "15vw", exitY: "-115vh", exitRotate: 7 },
 ] as const;
 
 const punchlines = [
-  { word: "Designing", exitX: "-6vw", exitY: "-90vh", exitRotate: -8 },
-  { word: "and", exitX: "-2vw", exitY: "-110vh", exitRotate: 5 },
-  { word: "building", exitX: "2vw", exitY: "-95vh", exitRotate: -4 },
-  { word: "brands", exitX: "-4vw", exitY: "-115vh", exitRotate: 7 },
-  { word: "and", exitX: "3vw", exitY: "-100vh", exitRotate: -6 },
-  { word: "products", exitX: "6vw", exitY: "-105vh", exitRotate: 4 },
-  { word: "people", exitX: "-3vw", exitY: "-90vh", exitRotate: -5 },
-  { word: "can't", exitX: "5vw", exitY: "-108vh", exitRotate: 6 },
-  { word: "ignore.", exitX: "8vw", exitY: "-95vh", exitRotate: -4 },
+  { children: "Architecting", exitX: "-6vw", exitY: "-90vh", exitRotate: -8 },
+  { children: "and", exitX: "-2vw", exitY: "-110vh", exitRotate: 5 },
+  { children: "shipping", exitX: "2vw", exitY: "-95vh", exitRotate: -4 },
+  { children: "systems", exitX: "-4vw", exitY: "-115vh", exitRotate: 7 },
+  { children: "people", exitX: "3vw", exitY: "-100vh", exitRotate: -6 },
+  { children: "actually", exitX: "6vw", exitY: "-105vh", exitRotate: 4 },
+  { children: "rely", exitX: "-3vw", exitY: "-90vh", exitRotate: -5 },
+  { children: "on.", exitX: "5vw", exitY: "-108vh", exitRotate: 6 },
 ] as const;
 
 export const Hero = () => {
@@ -104,7 +81,11 @@ export const Hero = () => {
     offset: ["start start", "end start"],
   });
 
-  const scrollIndicatorOpacity = useTransform(scrollYProgress, [0, 0.12], [1, 0]);
+  const scrollIndicatorOpacity = useTransform(
+    scrollYProgress,
+    [0, 0.12],
+    [1, 0],
+  );
 
   const punchlineY = useTransform(scrollYProgress, [0, 0.75], ["0%", "-60vh"]);
   const punchlineX = useTransform(scrollYProgress, [0, 0.75], ["0%", "15vw"]);
@@ -115,31 +96,38 @@ export const Hero = () => {
 
   return (
     <section ref={ref} className="relative h-[160vh] w-full md:h-[220vh]">
-      <div className="sticky top-0 relative flex h-screen w-full flex-col items-start justify-center px-5 md:px-0">
+      <div className="relative top-0 flex h-screen w-full flex-col items-start justify-center px-5 md:px-0">
         <div className="relative z-10 w-full leading-none">
           {/* Mobile layout */}
           <div className="md:hidden">
-            <h1 className="font-bold font-header text-[clamp(48px,15vw,64px)] text-white uppercase leading-[0.85] tracking-[-0.03em]">
+            <h1 className="font-bold font-header text-[clamp(52px,16vw,72px)] text-white uppercase leading-[0.85] tracking-[-0.03em]">
               {name.map((letter) => (
-                <Letter
-                  key={letter.char}
+                <AnimatedSpan
+                  key={`${letter.children}name`}
+                  className="inline-block font-header"
                   progress={scrollYProgress}
                   {...letter}
                 />
               ))}
             </h1>
-            <h1 className="font-bold font-header text-[clamp(48px,15vw,64px)] text-white uppercase leading-[0.85] tracking-[-0.03em]">
+            <h1 className="font-bold font-header text-[clamp(29px,9vw,44px)] text-white uppercase leading-[0.9] tracking-[-0.03em]">
               {surname.map((letter) => (
-                <Letter
-                  key={letter.char}
+                <AnimatedSpan
+                  key={letter.exitX}
+                  className="inline-block font-header"
                   progress={scrollYProgress}
                   {...letter}
                 />
               ))}
             </h1>
-            <p className="mt-[18px] flex flex-wrap text-[clamp(13px,3.5vw,17px)] text-white leading-[1.5]">
+            <p className="mt-4.5 flex flex-wrap text-[clamp(13px,3.5vw,17px)] text-white leading-normal">
               {punchlines.map((w) => (
-                <ScatterWord key={w.word} progress={scrollYProgress} {...w} />
+                <AnimatedSpan
+                  key={w.children}
+                  className="mr-[0.28em] inline-block"
+                  progress={scrollYProgress}
+                  {...w}
+                />
               ))}
             </p>
           </div>
@@ -149,15 +137,16 @@ export const Hero = () => {
             <div className="flex items-end">
               <h1 className="shrink-0 font-bold font-header text-[16vw] text-white uppercase leading-[0.85] tracking-[-0.03em]">
                 {name.map((letter) => (
-                  <Letter
-                    key={letter.char}
+                  <AnimatedSpan
+                    key={`${letter.children}name`}
+                    className="inline-block font-header"
                     progress={scrollYProgress}
                     {...letter}
                   />
                 ))}
               </h1>
               <motion.p
-                className="ml-6 max-w-[520px] text-[clamp(18px,1.8vw,28px)] text-white leading-snug"
+                className="ml-6 max-w-130 text-[clamp(18px,1.8vw,28px)] text-white leading-snug"
                 style={{
                   y: punchlineY,
                   x: punchlineX,
@@ -166,15 +155,16 @@ export const Hero = () => {
                   filter: punchlineFilter,
                 }}
               >
-                Designing and building brands
+                Architecting and shipping
                 <br />
-                and products people can't ignore.
+                systems people actually rely on.
               </motion.p>
             </div>
-            <h1 className="ml-[14vw] font-bold font-header text-[16vw] text-white uppercase leading-[0.85] tracking-[-0.03em]">
+            <h1 className="ml-[10vw] font-bold font-header text-[9vw] text-white uppercase leading-[0.85] tracking-[-0.03em]">
               {surname.map((letter) => (
-                <Letter
-                  key={letter.char}
+                <AnimatedSpan
+                  key={letter.exitX}
+                  className="inline-block font-header"
                   progress={scrollYProgress}
                   {...letter}
                 />
@@ -200,7 +190,6 @@ export const Hero = () => {
                 background: "rgba(255,255,255,0.08)",
               }}
             >
-              {/* Comet glow bloom */}
               <motion.div
                 className="absolute left-1/2 -translate-x-1/2"
                 animate={{ y: ["-100%", "180%"] }}
@@ -218,7 +207,6 @@ export const Hero = () => {
                   filter: "blur(4px)",
                 }}
               />
-              {/* Main comet */}
               <motion.div
                 className="absolute left-0 w-full"
                 animate={{ y: ["-100%", "180%"] }}

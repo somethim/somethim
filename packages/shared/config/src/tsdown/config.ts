@@ -47,10 +47,8 @@ export const createTsdownConfig = (
       {
         dts: true,
         fixedExtension: false,
-        deps: {
-          skipNodeModulesBundle: true,
-          neverBundle: ["react"],
-        },
+        skipNodeModulesBundle: true,
+        external: ["react"],
         inputOptions: {
           checks: { circularDependency: true },
           // experimental: {

@@ -36,7 +36,7 @@ export const reduceValidator = <T extends GenericValidator>(
 };
 
 export type InferredValueValidator<T> = T extends string
-  ? z.ZodString
+  ? z.ZodString | z.ZodEmail
   : T extends number
     ? z.ZodNumber
     : T extends boolean

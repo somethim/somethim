@@ -22,7 +22,7 @@ const collectHeaders = (editor: Editor | null): HeadingEntry[] => {
 
   editor.state.doc.descendants((node, pos) => {
     if (node.type.name !== "heading") return;
-    const level = node.attrs["level"] as number | undefined;
+    const level = (node.attrs as { level?: number }).level;
     if (level == null || level < 1 || level > 6) return;
     entries.push({
       text: node.textContent.trim() || "(Untitled)",
@@ -58,12 +58,12 @@ export const Summary = ({
         Contents
       </p>
       <nav className="mt-3 flex flex-col gap-1" aria-label="Document outline">
-        {headings?.map((entry, index) => (
+        {headings?.map((entry) => (
           <button
-            key={`${entry.pos}-${index}`}
+            key={entry.pos}
             type="button"
             className={cn(
-              "text-left text-sm transition-colors hover:text-foreground cursor-pointer",
+              "cursor-pointer text-left text-sm transition-colors hover:text-foreground",
               classList[entry.level],
             )}
             onClick={() => {

@@ -1,7 +1,9 @@
 "use client";
 
+import { cn, type ClassList } from "@zenncore/utils";
 import { processEditorHtml } from "../utils/render-html";
-import { cn, type ClassList, type StyleList } from "@zenncore/utils";
+
+type StyleList<Keys extends string> = Partial<Record<Keys, React.CSSProperties>>;
 
 export namespace SummaryForContent {
   export type ClassListKey = "root" | "heading" | `${HeadingLevel}`;
@@ -23,9 +25,11 @@ const extractHeadings = (html: string): HeadingEntry[] => {
   const entries: HeadingEntry[] = [];
   let match = regex.exec(processed);
   while (match !== null) {
-    const [, level, attrs, inner] = match;
+    const level = match[1] ?? "";
+    const attrs = match[2] ?? "";
+    const inner = match[3] ?? "";
     const idMatch = attrs.match(/\bid="([^"]*)"/);
-    const id = idMatch ? idMatch[1] : `heading-${entries.length}`;
+    const id = idMatch?.[1] ?? `heading-${entries.length}`;
     const text = inner.replace(/<[^>]+>/g, "").trim() || "(Untitled)";
     entries.push({
       id,

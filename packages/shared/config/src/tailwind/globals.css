@@ -82,6 +82,7 @@
     }
     @variant dark {
       /* background shades - more distinct neutral */
+      /* biome-ignore lint/suspicious/noDuplicateCustomProperties: intentionally different values per color scheme variant */
       --color-background-dimmed: #1c1c1e; /* Much darker */
       --color-background: #000000; /* Light but not white */
       --color-background-rich: oklch(100% 0 0); /* Clear mid-tone */

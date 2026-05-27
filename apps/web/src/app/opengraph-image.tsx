@@ -1,9 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt = "Mario Vukzaj — Brand & Product Designer";
 export const size = { width: 1200, height: 630 };
-export const contentType = "image/png";
 
 export default function OGImage() {
   return new ImageResponse(
@@ -74,19 +72,19 @@ export default function OGImage() {
             lineHeight: 0.85,
           }}
         >
-          MARIO
+          ARBI
         </span>
         <span
           style={{
-            fontSize: "120px",
+            fontSize: "68px",
             fontWeight: 900,
             color: "white",
-            letterSpacing: "-4px",
+            letterSpacing: "-2px",
             lineHeight: 0.85,
             paddingLeft: "80px",
           }}
         >
-          VUKZAJ
+          KULLAKSHI
         </span>
       </div>
 
@@ -109,7 +107,7 @@ export default function OGImage() {
             letterSpacing: "0.02em",
           }}
         >
-          Brand &amp; Product Designer
+          Full Stack Engineer
         </span>
         <span
           style={{
@@ -119,7 +117,7 @@ export default function OGImage() {
             letterSpacing: "0.01em",
           }}
         >
-          mariovukzaj.com
+          arbikullakshi.com
         </span>
       </div>
     </div>,

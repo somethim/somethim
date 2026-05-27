@@ -99,6 +99,7 @@ type MergeArrays<T extends Array, S extends Array> = number extends T["length"] 
       : S;
 
 // Helper to merge arrays when source is a union containing arrays (distributive)
+// biome-ignore lint/suspicious/noExplicitAny: intentional distributive conditional type pattern
 type MergeWithUnion<T extends Array, S extends Array> = S extends any
   ? S extends Array
     ? MergeArrays<T, S> // Merge each array/tuple in the union with T
@@ -106,6 +107,7 @@ type MergeWithUnion<T extends Array, S extends Array> = S extends any
   : never;
 
 // Helper to detect if a type is a union
+// biome-ignore lint/suspicious/noExplicitAny: intentional distributive conditional type pattern
 type IsUnion<T, U = T> = T extends any
   ? [U] extends [T]
     ? false
@@ -131,6 +133,7 @@ type MergeArrayWithTuple<TElement, S extends Array> = S extends readonly [
   : [...TElement[]];
 
 // Helper to merge when target is a union containing arrays (distributive)
+// biome-ignore lint/suspicious/noExplicitAny: intentional distributive conditional type pattern
 type MergeWithTargetUnion<T extends Array, S extends Array> = T extends any
   ? T extends Array
     ? MergeArrays<T, S> // Merge array parts with source
@@ -138,6 +141,7 @@ type MergeWithTargetUnion<T extends Array, S extends Array> = T extends any
   : never;
 
 // Helper to handle unions that contain undefined
+// biome-ignore lint/suspicious/noExplicitAny: intentional distributive conditional type pattern
 type MergeWithUndefinedUnion<T extends Array, S extends Array> = S extends any
   ? S extends undefined
     ? T // Keep target when source is undefined

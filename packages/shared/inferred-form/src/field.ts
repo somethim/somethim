@@ -1,6 +1,7 @@
 import type { ClassList } from "@zenncore/utils";
 import type { EmptyObject, Prettify } from "@zenncore/utils/types";
 import type { ComponentType } from "react";
+import type { core } from "zod";
 import type * as z from "zod";
 import type { GenericInterface } from "./interface";
 import type { GenericProps, InferredProps, RefinedProps } from "./props";
@@ -70,8 +71,10 @@ export type CreateCustomField<
 // biome-ignore lint/suspicious/noExplicitAny: no better way to describe it
 type GenericValue = any;
 
-export type CustomField = CreateCustomField<
-  GenericValue,
-  RefinedProps<GenericValue>,
-  ComponentType<RefinedProps<GenericValue>>
->;
+export type CustomField = {
+  Shape: "custom";
+  Validator: core.$ZodType;
+  Props: RefinedProps<GenericValue> & {
+    Component: ComponentType<RefinedProps<GenericValue>>;
+  };
+};

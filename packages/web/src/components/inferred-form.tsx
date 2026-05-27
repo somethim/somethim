@@ -71,6 +71,7 @@ type Interface = {
         } & SelectTrigger.Props
       >
     | InterfaceValue<
+        // biome-ignore lint/suspicious/noExplicitAny: ZodEnum generic varies between Zod versions
         z.ZodEnum<any>,
         {
           placeholder?: string;
@@ -78,6 +79,7 @@ type Interface = {
         } & SelectTrigger.Props
       >
     | InterfaceValue<
+        // biome-ignore lint/suspicious/noExplicitAny: ZodEnum generic varies between Zod versions
         z.ZodArray<z.ZodEnum<any>>,
         {
           multiple: true;
@@ -363,9 +365,10 @@ export const InferredForm = <
       onSubmit={form.handleSubmit(() => onSubmit?.(form.getValues()))}
       form={form}
     >
-      {Object.entries(config).map(([key, field]) => (
-        <InferredFormField key={key} name={key} {...(field as SomeField)} />
-      ))}
+      {Object.entries(config).map(([key, field]) => {
+        // @ts-expect-error: union spread on generic JSX component — valid at runtime
+        return <InferredFormField key={key} name={key} {...(field as unknown as SomeField)} />;
+      })}
       {children}
     </Form>
   );

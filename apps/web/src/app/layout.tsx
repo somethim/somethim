@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import Script from "next/script";
-import { Suspense, type PropsWithChildren } from "react";
+import { type PropsWithChildren, Suspense } from "react";
 import { Background } from "./(main)/_components/background";
 import { SmoothScroll } from "./(main)/_components/smooth-scroll";
 
@@ -62,47 +62,48 @@ const rfDewiExpanded = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Mario Vukzaj — Brand × Product × Code",
+  title: "Arbi Kullakshi — Full Stack Engineer",
   description:
-    "Designer and developer who builds brands, products, and the code behind them. Available for brand identity, product design, and web development.",
+    "Full stack engineer architecting and shipping production-ready systems end-to-end — React and Next.js web apps, scalable backend infrastructure, and automated CI/CD pipelines.",
   keywords: [
-    "Mario Vukzaj",
-    "brand designer",
-    "product designer",
+    "Arbi Kullakshi",
+    "full stack engineer",
+    "backend developer",
     "web developer",
-    "UI UX designer",
-    "design engineer",
-    "motion designer",
-    "freelance designer",
-    "remote designer",
+    "React",
+    "Next.js",
+    "Laravel",
+    "Django",
+    "TypeScript",
+    "PHP",
     "portfolio",
   ],
-  authors: [{ name: "Mario Vukzaj", url: "https://mariovukzaj.com" }],
-  creator: "Mario Vukzaj",
-  metadataBase: new URL("https://mariovukzaj.com"),
+  authors: [{ name: "Arbi Kullakshi", url: "https://arbikullakshi.com" }],
+  creator: "Arbi Kullakshi",
+  metadataBase: new URL("https://arbikullakshi.com"),
   openGraph: {
     type: "website",
-    url: "https://mariovukzaj.com",
-    title: "Mario Vukzaj — Brand × Product × Code",
+    url: "https://arbikullakshi.com",
+    title: "Arbi Kullakshi — Full Stack Engineer",
     description:
-      "Designer and developer who builds brands, products, and the code behind them.",
-    siteName: "Mario Vukzaj",
+      "Architecting and shipping production-ready systems end-to-end.",
+    siteName: "Arbi Kullakshi",
     images: [
       {
         url: "/og.png",
         width: 1200,
         height: 630,
-        alt: "Mario Vukzaj — Brand × Product × Code",
+        alt: "Arbi Kullakshi — Full Stack Engineer",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Mario Vukzaj — Brand × Product × Code",
+    title: "Arbi Kullakshi — Full Stack Engineer",
     description:
-      "Designer and developer who builds brands, products, and the code behind them.",
+      "Architecting and shipping production-ready systems end-to-end.",
     images: ["/og.png"],
-    creator: "@mariovukzaj",
+    creator: "@arbikullakshi",
   },
   robots: {
     index: true,
@@ -115,57 +116,56 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "Person",
-      "@id": "https://mariovukzaj.com/#mario",
-      name: "Mario Vukzaj",
-      url: "https://mariovukzaj.com",
-      image: "https://mariovukzaj.com/og.png",
-      jobTitle: "Brand × Product × Code",
+      "@id": "https://arbikullakshi.com/#arbi",
+      name: "Arbi Kullakshi",
+      url: "https://arbikullakshi.com",
+      image: "https://arbikullakshi.com/og.png",
+      jobTitle: "Full Stack Engineer",
       description:
-        "Designer and developer specialising in brand identity, product design, and web development. Co-founder of zennit, Creative Lead at LookUp and Zerapy.ai.",
+        "Full stack engineer architecting and shipping production-ready systems end-to-end — React and Next.js web apps, scalable backend infrastructure, and automated CI/CD pipelines.",
       knowsAbout: [
-        "Brand Identity",
-        "Product Design",
-        "UI/UX Design",
-        "Motion Design",
-        "Web Development",
-        "Next.js",
+        "Full Stack Engineering",
+        "Backend Architecture",
         "React",
+        "Next.js",
+        "React Native",
         "TypeScript",
-        "Figma",
-        "Design Systems",
+        "PHP",
+        "Laravel",
+        "Django",
+        "PostgreSQL",
+        "Docker",
+        "CI/CD",
       ],
-      sameAs: [
-        "https://x.com/mariovukzaj",
-        "https://www.linkedin.com/in/mariovukzaj/",
-        "https://www.instagram.com/vukzajmario/",
-      ],
-      email: "hello@mariovukzaj.com",
+      sameAs: ["https://github.com/somethim"],
+      email: "contact@arbikullakshi.com",
     },
     {
       "@type": "WebSite",
-      "@id": "https://mariovukzaj.com/#website",
-      url: "https://mariovukzaj.com",
-      name: "Mario Vukzaj",
-      description: "Portfolio of Mario Vukzaj — Brand × Product × Code",
-      author: { "@id": "https://mariovukzaj.com/#mario" },
+      "@id": "https://arbikullakshi.com/#website",
+      url: "https://arbikullakshi.com",
+      name: "Arbi Kullakshi",
+      description: "Portfolio of Arbi Kullakshi — Full Stack Engineer",
+      author: { "@id": "https://arbikullakshi.com/#arbi" },
     },
     {
       "@type": "ProfessionalService",
-      "@id": "https://mariovukzaj.com/#service",
-      name: "Mario Vukzaj — Brand × Product × Code",
-      url: "https://mariovukzaj.com",
+      "@id": "https://arbikullakshi.com/#service",
+      name: "Arbi Kullakshi — Full Stack Engineer",
+      url: "https://arbikullakshi.com",
       description:
-        "Design and development services: brand identity, product design, motion, and web development.",
-      provider: { "@id": "https://mariovukzaj.com/#mario" },
+        "Full stack engineering services: backend architecture, web applications, mobile apps, and infrastructure.",
+      provider: { "@id": "https://arbikullakshi.com/#arbi" },
       serviceType: [
-        "Brand Identity",
-        "Product Design",
-        "Motion Design",
-        "Web Design",
+        "Full Stack Engineering",
+        "Backend Architecture",
+        "Web Development",
+        "Mobile Development",
+        "Infrastructure & DevOps",
       ],
       availableChannel: {
         "@type": "ServiceChannel",
-        serviceUrl: "https://mariovukzaj.com",
+        serviceUrl: "https://arbikullakshi.com",
         contactOption: "TollFree",
       },
     },
@@ -184,7 +184,7 @@ export default ({ children }: PropsWithChildren) => (
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
     </head>
-    <body className="root isolate min-h-full overflow-x-hidden bg-background text-foreground font-body">
+    <body className="root isolate min-h-full overflow-x-hidden bg-background font-body text-foreground">
       <Background />
       <SmoothScroll>
         <Suspense>{children}</Suspense>

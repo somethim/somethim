@@ -2,203 +2,127 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Docs-First Rule (Read Before Coding)
+## Repo overview
 
-Treat `docs/` as the canonical source of truth for product intent, implementation conventions, and package usage.
+This is a monorepo with two independent ecosystems — a JS/TS side and a PHP side — that share no build pipeline.
 
-Read in this order before substantial work:
+- **`apps/web/`** — Next.js 16 + React 19 product
+- **`apps/provider/`** — Laravel 13 backend (PHP 8.5)
+- **`apps/mobile/`** — Expo/React Native (paused, do not touch unless asked)
+- **`apps/arbi/`** — Arbi Kullakshi's portfolio (Next.js, see `ARBI.md`) *(in progress)*
+- **`packages/web/`** — `@synis-ai/web` — 39 Base UI component library
+- **`packages/shared/`** — `@synis-ai/utils`, `@synis-ai/icons`, `@synis-ai/inferred-form`, `@synis-ai/data-table`, `@synis-ai/config`, `@synis-ai/phone`
+- **`packages/docs/`** — Component API docs for `@synis-ai/web`
 
-1. `docs/index.md` - docs navigation hub.
-2. `docs/context/idea.md` - product scope, flows, architecture, roadmap.
-3. `docs/context/strategy.md` - market, measurement, retention, enterprise strategy.
-4. `docs/context/shopify.md` - Shopify-facing claims/copy/scopes/testing constraints.
-5. `docs/agents/AGENTS-*.md` - coding rules (`style`, `components`, `nextjs`, `packages`, `checklist`).
-6. `docs/web/index.md` and `docs/shared/index.md` - component/package API references.
-
-If code and docs disagree, follow documented intent unless the user explicitly asks otherwise.
-
-## What This Is
-
-**Écentic** is an e-commerce optimization platform for the AI agent economy. It simulates how AI shopping agents (GPT-4, Claude, Gemini) compare products vs. competitors, diagnoses why products win or lose, and auto-optimizes listings. See `docs/context/idea.md` for full product spec and feature roadmap.
+Before working in either ecosystem, read its detailed guide:
+- **JS/TS**: `agents/web/WEB.md` + sub-guides in `agents/web/`
+- **PHP**: `agents/provider/PROVIDER.md` + sub-guides in `agents/provider/`
 
 ---
 
-## Commands
+## JS/TS commands
 
-All commands use **Bun** as the package manager. Run from the monorepo root unless noted.
+| Task | Command |
+|------|---------|
+| Dev (all) | `bun dev` |
+| Dev (web only) | `bun --filter web dev` |
+| Build | `bun build` |
+| Lint | `bun lint` (Biome) |
+| Format | `bun format` (Biome check --write) |
+| Typecheck | `bun typecheck` (tsc --noEmit) |
+| Build a package | `cd packages/<name> && bun build` |
 
-```bash
-# Development
-bun run dev           # Start all apps (Turborepo)
-bun run dev:web       # Start only the Next.js web app
+**Verification order**: `biome check --write .` → `tsc --noEmit`. No JS tests exist.
 
-# Build & type checking
-bun run build         # Build all packages
-bun run build:web     # Build only web app
-bun run typecheck     # tsc --noEmit across all packages
-
-# Linting (Biome)
-bun run lint          # biome check --write (root)
-cd apps/web && bun run lint  # biome check --write --unsafe (web only)
-
-# Database (run from apps/web/)
-bun run db:generate   # Generate Drizzle migration files
-bun run db:migrate    # Apply pending migrations
-bun run db:push       # Push schema directly (dev only)
-bun run db:studio     # Open Drizzle Studio UI
-bun run db:reset      # Reset database (scripts/reset.ts)
-```
-
-There are no automated tests in this codebase currently.
+Tooling: **Bun** (not npm/pnpm/yarn), **Biome** (not ESLint/Prettier), **tsdown** (not tsup/vite), **Tailwind v4** (config in CSS, no `tailwind.config.*`).
 
 ---
 
-## Monorepo Structure
+## PHP (provider) commands
 
-```
-/
-├── apps/web/                 # Main Next.js 16 application
-│   ├── src/
-│   │   ├── app/              # Next.js App Router pages
-│   │   ├── components/       # Shared app-level components
-│   │   ├── server/           # All server-side code (actions, DB, utils)
-│   │   └── lib/              # Client-side utilities (auth client, mocks, animations)
-│   └── drizzle/              # Generated migration files
-└── packages/
-    ├── web/                  # @zenncore/web — UI component library + Tailwind config
-    ├── shared/
-    │   ├── utils/            # @zenncore/utils — cn, resultify, Result type, hooks
-    │   ├── inferred-form/    # @zenncore/inferred-form — schema-driven form builder
-    │   ├── data-table/       # @zenncore/data-table — TanStack Table wrapper
-    │   ├── icons/            # @zenncore/icons
-    │   ├── phone/            # @zenncore/phone — phone input utilities
-    │   └── config/           # @zenncore/config — shared TS/Tailwind/tsdown configs
-    └── mobile/               # @zenncore/mobile (placeholder)
-```
+All commands run inside Sail (`vendor/bin/sail <cmd>`). Run from `apps/provider/`.
+
+| Task | Command |
+|------|---------|
+| Start Sail | `vendor/bin/sail up -d` |
+| Dev (full stack) | `composer run dev` |
+| Lint | `vendor/bin/sail pint` |
+| Test | `vendor/bin/sail test` |
+| Single test | `vendor/bin/sail artisan test --compact --filter=testName` |
+| Lint + test | `composer run verify` |
+| Create module | `vendor/bin/sail artisan make:module {Name}` |
+| Refresh migrations | `vendor/bin/sail artisan modules:refresh-migrations && vendor/bin/sail artisan migrate` |
 
 ---
 
-## Server Architecture (`apps/web/src/server/`)
+## JS/TS architecture
 
-### Three-layer structure:
+### Package-first component model
 
-**1. Database** (`server/database/`)
-- Drizzle ORM + PostgreSQL via `postgres.js`
-- Schema in `schema.ts`: `user`, `session`, `account`, `verification`, `store`, `product`, `competitor`, `scan`, `simulation`, `ucpProfile`, `agentVisit`, `agentTrafficDaily`
-- Relations defined alongside schema for typed joins
-- Config in `apps/web/drizzle.config.ts`
+App code consumes `@synis-ai/web/components` — never `@base-ui/react` directly. Check `packages/docs/web/` for component API before implementing. If a component is missing, create it in `packages/web/src/components/`.
 
-**2. Utilities** (`server/utils/`)
-- **Context system**: `withContext()` → base wrapper (auth API, Sentry, storage); `withAuthentication()` → adds `session`; `withAuthorization()` → adds role checks
-- **Repository pattern**: `repository(schema.table)` returns typed `get`, `create`, `update`, `destroy`, `find`, `paginate`, `exists`, `count`
-- **Error classes**: `DatabaseError`, `NotFoundError`, `RequestError`, `TimeoutError`, `ParseError`, `UnauthenticatedError`, `UnauthorizedError`, `InvalidCredentialsError`
-- **HTTP**: `request(url, options, { timeout })` → `Result<Response, Error>`; `parse<T>(response)` → `Result<T, Error>`
+Key utilities:
+- `cn(...)` from `@synis-ai/utils` for class merging
+- `resultify` from `@synis-ai/utils` instead of `try/catch`
+- `createContext` from `@synis-ai/utils/hooks` for React context
+- `useAsyncAction` from `@synis-ai/utils/hooks` for async state
+- `InferredForm` + `field()` for all forms (never raw react-hook-form)
+- `DataTableProvider` + `DataTable` for all tables
+- `es-toolkit` for lodash-style utilities
 
-**3. Server actions** (`server/app/`)
-- `authentication.ts` — signIn, signUp, signOut, verifyEmail, resetPassword, getCurrentUser
-- `store.ts`, `product.ts`, `competitor.ts`, `scan.ts`, `simulation.ts` — CRUD via repository
-- `storage.ts` — UploadThing storage integration
-- `tracking.ts` — AI agent visit tracking
-- `user.ts`, `session.ts` — user/session management
-- `integration/shopify.ts` — OAuth token exchange + product sync via Shopify Admin API
-- `integration/woocommerce.ts` — credential validation + paginated product fetch
-- `integration/feed.ts` — XML/JSON auto-detection + Google Shopping format parsing
-- `intelligence/simulate.ts` — AI simulation engine (GPT-4, Claude, Gemini perspectives)
+### Component file placement
 
----
+| Component type | Location |
+|---------------|----------|
+| Only used by one page | `app/**/_components/` |
+| Used by multiple pages | `components/` |
+| Shared across apps | `packages/web/src/components/` |
 
-## App Router Structure (`apps/web/src/app/`)
+Pages (`app/**/page.tsx`) own their logic directly — no thin wrapper pages that just re-export a component.
 
-```
-app/
-├── (auth)/                       # Route group — sign-in, sign-up, onboarding
-│   ├── sign-in/
-│   ├── sign-up/
-│   └── onboarding/               # connect → products → competitors → scan
-├── (main)/                       # Route group — landing page + protected pages
-│   ├── page.tsx                  # Landing page
-│   ├── _components/              # Landing page components
-│   ├── privacy-policy/
-│   └── dashboard/                # Protected pages (PPR + streaming)
-│       ├── products/             # Product list + detail views
-│       ├── competitors/
-│       ├── reports/
-│       ├── optimize/
-│       ├── ucp/                  # Universal Commerce Protocol
-│       └── settings/
-├── (provider)/                   # Route group — API routes
-│   └── api/
-│       ├── auth/[...all]/        # Better Auth route handler
-│       ├── integrations/         # Shopify OAuth install + callback
-│       ├── cron/                 # Scheduled job endpoints
-│       └── tracking/             # Agent visit tracking endpoints
-├── layout.tsx
-├── globals.css
-├── manifest.ts
-├── robots.ts
-└── sitemap.ts
-```
+### Key code rules (see `agents/web/AGENTS-style.md` for full details)
 
-Client components live in `_components/` subdirectories next to their page.
+- No `useMemo`, `useCallback`, `useEffect` — React compiler handles memoization
+- `const` only, arrow functions everywhere, no abbreviated names
+- `resultify` over `try/catch`; `switch (true)` for multi-branch conditionals
+- `"use client"` at leaf boundaries only
+- `satisfies` over `as Type` assertions; `unknown` over `any`
+- No `types/` folder at root — declare in `types/[domain].ts` or co-locate
 
-### PPR and Streaming (dashboard and app screens)
+### Auth proxy
 
-Every `page.tsx` must be a **server component** that exports real HTML — not a thin wrapper around a single client component. Use **Partial Prerendering (PPR)** and streaming:
+API calls go through Next.js middleware that forwards to `NEXT_PUBLIC_API_URL`, attaching the Sanctum session cookie and `Authorization` header.
 
-- **Static shell** — Render in `page.tsx`: layout, page title, description, headings. This is the initial HTML.
-- **Data** — Fetch in **async server components** (same file or `_components/`). Wrap each in `<Suspense fallback={<Skeleton />}>` with a skeleton that matches the content shape.
-- **Streaming** — The server sends the shell first, then streams in resolved async components so users see content as it loads.
+### CSS
 
-Onboarding/auth screens may be client-heavy by design; all other screens (dashboard, settings, lists, details) follow this pattern. See AGENTS.md §21b and §23f.
+Tailwind v4 with **semantic design tokens** (`bg-background`, `text-foreground`, `bg-primary`) — these adapt to dark mode automatically, no `dark:` prefix needed for colors. `globals.css` contains only `@import "tailwindcss"`, `@variant dark`, `@theme`, `@layer base`, font-face, and minimal resets. Dark mode via `next-themes` (`ThemeProvider` in `app/providers.tsx`).
 
 ---
 
-## Key Patterns
+## PHP (provider) architecture
 
-### Error handling — use `resultify`, never `try/catch`
-```ts
-import { resultify } from "@zenncore/utils";
+### Modular monolith
 
-const result = await resultify(() => fetch(url));
-if (!result.success) return { success: false, error: result.error };
-return { success: true, data: result.data };
-```
+Domain code lives in `Modules/`, not `app/`. 9 modules registered in `config/modules.php`:
 
-### Forms — use `InferredForm` + `field()`
-All forms are defined via Zod schema + `field()` descriptors. No inline `<input>` or manual react-hook-form registration.
+`Common` → `Auth` → `Organization` → `LeaveManagement` → `ProjectManagement` → `TimeTracking` → `Event` → `OfflineSync` → `AI`
 
-### Styling — semantic Tailwind tokens only
-Use `text-primary`, `bg-background`, `border-accent-foreground`, etc. Never raw colors like `text-gray-500` or `bg-white`.
+`ModuleServiceProvider` auto-loads routes, migrations, channels, and providers from each module directory. Never change module dependencies or create new top-level `Modules/` folders without approval.
 
-### Components — Namespace pattern
-```tsx
-const Feature = {
-  Root: ({ children }) => <div>{children}</div>,
-  Title: ({ children }) => <h2>{children}</h2>,
-};
-```
+### Module structure
 
-### Conditionals — `switch (true)` over long `if/else if` chains
-### Derived values — IIFE for scoped intermediate logic
-### Variables — `const` only, no `let`; no abbreviated names (`context` not `ctx`, `error` not `err`)
+Each module is self-sustainable — models, controllers, services, routes, migrations, DTOs, enums, policies, jobs, notifications all live inside the module. The `Common` module provides shared base classes only.
 
----
+### Database conventions
 
-## Tech Stack
+Primary keys: `_id` (uuid). Timestamps: `_createdAt`, `_updatedAt`, `_deletedAt` (via `Blueprint::_id()` and `Blueprint::_timestamps()` macros). Foreign keys use the `_<table>` naming pattern.
 
-| Layer | Technology |
-|-------|-----------|
-| Framework | Next.js 16, React 19, React Compiler |
-| Database | PostgreSQL, Drizzle ORM 1.0 beta |
-| Auth | Better Auth 1.5 (email/password + Drizzle adapter) |
-| AI | Vercel AI SDK 6.0 + Azure AI |
-| Email | Resend + React Email |
-| Storage | UploadThing |
-| Styling | Tailwind CSS 4 |
-| Animations | Motion (Framer Motion fork) |
-| Charts | Recharts |
-| URL State | nuqs |
-| Monitoring | Sentry + PostHog |
-| Linting | Biome (no ESLint/Prettier) |
-| Build | Turborepo + Bun |
-x
+### Route conventions
+
+Protected routes use `['auth', 'account.verified', 'profile.session', 'abac']` middleware. Public routes are placed outside middleware groups. Each module's entrypoint: `Modules/<Module>/Routes/api.php`.
+
+### Migration workflow
+
+1. Add file to `Modules/<Module>/Database/Migrations/` with next numeric prefix (`0_`, `1_`, etc.)
+2. Run `vendor/bin/sail artisan modules:refresh-migrations`
+3. Run `vendor/bin/sail artisan migrate`

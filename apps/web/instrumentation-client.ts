@@ -1,7 +1,10 @@
 import posthog from "posthog-js";
 
-posthog.init("phc_v8W7L3JeQ7eANxNqVHnfyxZC8Wd7ZWSJ2yZeFKihJQWX", {
-  api_host: "/ingest",
-  ui_host: "https://eu.posthog.com",
-  defaults: "2026-01-30",
-});
+if (process.env.NODE_ENV === "production") {
+  posthog.init(process.env.NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN, {
+    api_host: "/ingest",
+    ui_host: "https://eu.posthog.com",
+    defaults: "2026-01-30",
+    capture_exceptions: true,
+  });
+}

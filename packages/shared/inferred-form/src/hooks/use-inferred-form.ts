@@ -38,7 +38,7 @@ export const useInferredForm = <
   defaultValues: passedDefaultValues = {},
   extend = (schema: InferredSchema<Config>) => schema as Schema,
 }: UseInferredFormParams<Config, Schema, Return>): ReturnType<
-  typeof useForm<z.infer<Schema>>
+  typeof useForm<z.input<Schema>, unknown, z.output<Schema>>
 > => {
   const schema = extend(inferSchema<Config>(config)) as Schema;
 
@@ -46,9 +46,9 @@ export const useInferredForm = <
     ...inferSchemaDefaultValues(schema),
     ...inferFormDefaultValues<Config>(config),
     ...passedDefaultValues,
-  } as DefaultValues<z.infer<Schema>>;
+  } as DefaultValues<z.input<Schema>>;
 
-  const form = useForm<z.infer<Schema>>({
+  const form = useForm<z.input<Schema>, unknown, z.output<Schema>>({
     resolver: zodResolver(schema),
     defaultValues,
   });

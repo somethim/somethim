@@ -1,3 +1,4 @@
+import { About } from "./_components/about";
 import { Contact } from "./_components/contact";
 import { Hero } from "./_components/hero";
 import { Intro } from "./_components/intro";
@@ -9,9 +10,12 @@ export default () => {
     <>
       <Intro />
       <main className="relative bg-transparent">
-        <div className="hidden"><Navbar /></div>
+        <div className="hidden">
+          <Navbar />
+        </div>
         <Hero />
         <Works />
+        <About />
         <Contact />
       </main>
     </>

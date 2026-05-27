@@ -25,12 +25,11 @@ import {
 } from "@zenncore/web/components/toolbar";
 
 import {
-  startTransition,
   useTransition,
   type ComponentType,
   type ReactNode,
 } from "react";
-import { useId, useState } from "react";
+import { useId, } from "react";
 import { useEditorContext } from "../context/editor-context";
 
 type SlotComponent = ComponentType<{ children?: ReactNode }>;
