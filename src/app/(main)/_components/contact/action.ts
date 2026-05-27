@@ -22,35 +22,12 @@ export const sendMessage = async (data: {
   );
 
   const posthog = getPostHogClient();
-
-  if (!result.success) {
-    posthog.capture({
-      distinctId: data.email,
-      event: "contact_message_sent",
-      properties: {
-        success: false,
-        sender_name: data.name,
-        sender_email: data.email,
-      },
-    });
-    return { success: false, error: result.error };
-  }
+  const anonymousId = crypto.randomUUID();
 
   posthog.capture({
-    distinctId: data.email,
+    distinctId: anonymousId,
     event: "contact_message_sent",
-    properties: {
-      success: true,
-      sender_name: data.name,
-      sender_email: data.email,
-    },
-  });
-  posthog.identify({
-    distinctId: data.email,
-    properties: {
-      name: data.name,
-      email: data.email,
-    },
+    properties: { success: result.success },
   });
 
   return { success: true, data: "Message sent successfully" };

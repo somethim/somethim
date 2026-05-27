@@ -98,7 +98,7 @@ export const About = () => {
   };
 
   return (
-    <div ref={ref} className="relative h-[400vh]">
+    <div ref={ref} data-snap className="relative h-[400vh]">
       <div className="sticky top-0 flex h-screen w-full items-center">
         <motion.h1
           className="absolute top-1/2 left-1/2 whitespace-nowrap font-bold font-header text-[clamp(36px,11vw,60px)] text-white leading-[0.85] tracking-[-0.03em] md:text-[13vw]"

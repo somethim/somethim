@@ -83,7 +83,6 @@ export const Contact = () => {
     setSending(false);
     posthog.capture("contact_form_submitted", { success: result.success });
     if (!result.success) return;
-    posthog.identify(data.email, { name: data.name, email: data.email });
     setSent(true);
     setTimeout(() => {
       setOpen(false);

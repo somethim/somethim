@@ -19,12 +19,12 @@ export const SmoothScroll = ({ children }: PropsWithChildren) => {
 
     requestAnimationFrame(tick);
 
-    // ── Snap to section titles ────────────────────────────────────────────
+    // ── Snap to section boundaries ───────────────────────────────────────
     let snapTimer: ReturnType<typeof setTimeout>;
 
     lenis.on("scroll", ({ velocity }: { velocity: number }) => {
       clearTimeout(snapTimer);
-      if (Math.abs(velocity) > 0.3) return;
+      if (Math.abs(velocity) > 0.5) return;
 
       snapTimer = setTimeout(() => {
         const targets = [
@@ -32,16 +32,22 @@ export const SmoothScroll = ({ children }: PropsWithChildren) => {
         ].map((el) => el.offsetTop);
 
         const scroll = lenis.scroll;
+        const threshold = window.innerHeight * 0.35;
 
+        let nearest = -1;
+        let minDist = Infinity;
         for (const target of targets) {
-          const dist = target - scroll;
-          // Snap if we're within 0–350px before the target (just past the dead zone)
-          if (dist > -60 && dist < 350) {
-            if (Math.abs(dist) > 8) lenis.scrollTo(target, { duration: 1.4 });
-            break;
+          const dist = Math.abs(target - scroll);
+          if (dist < minDist) {
+            minDist = dist;
+            nearest = target;
           }
         }
-      }, 120);
+
+        if (nearest >= 0 && minDist < threshold && minDist > 8) {
+          lenis.scrollTo(nearest, { duration: 1.2 });
+        }
+      }, 150);
     });
 
     return () => lenis.destroy();

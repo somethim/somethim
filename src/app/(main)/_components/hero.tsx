@@ -93,7 +93,7 @@ export const Hero = () => {
   const punchlineFilter = useTransform(punchlineBlur, (v) => `blur(${v}px)`);
 
   return (
-    <section ref={ref} className="relative h-[160vh] w-full md:h-[220vh]">
+    <section ref={ref} data-snap className="relative h-[160vh] w-full md:h-[220vh]">
       <div className="relative top-0 flex h-screen w-full flex-col items-start justify-center px-5 md:px-0">
         <div className="relative z-10 w-full leading-none">
           {/* Mobile layout */}

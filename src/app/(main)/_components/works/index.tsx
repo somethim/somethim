@@ -103,7 +103,7 @@ export const Works = () => {
   ) : null;
 
   return (
-    <div ref={ref} className="relative h-[400vh] md:h-[500vh]">
+    <div ref={ref} data-snap className="relative h-[400vh] md:h-[500vh]">
       <div className="sticky top-0 flex h-screen w-full items-center">
         {/* WORKS heading */}
         <motion.h1
