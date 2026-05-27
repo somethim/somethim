@@ -2,7 +2,6 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { motion, useMotionValue, useScroll, useTransform } from "motion/react";
-import posthog from "posthog-js";
 import { type ReactNode, useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Dialog, DialogClose, DialogPopup } from "@/ui/components/dialog";
@@ -81,7 +80,6 @@ export const Contact = () => {
       message: data.message,
     });
     setSending(false);
-    posthog.capture("contact_form_submitted", { success: result.success });
     if (!result.success) return;
     setSent(true);
     setTimeout(() => {
@@ -194,7 +192,7 @@ export const Contact = () => {
   );
 
   return (
-    <div ref={reference} data-snap className="relative h-[150vh] md:h-[170vh]">
+    <div ref={reference} data-snap className="relative h-[120vh] md:h-[140vh]">
       <div className="sticky top-0 flex h-screen w-full flex-col items-center justify-center overflow-hidden">
         <Particles visible={particlesVisible} canvasRef={canvasRef} />
 
@@ -233,7 +231,6 @@ export const Contact = () => {
           <MagneticButton
             onClickAction={() => {
               setOpen(true);
-              posthog.capture("contact_form_opened");
             }}
           />
 
@@ -242,7 +239,6 @@ export const Contact = () => {
             target="_blank"
             rel="noopener noreferrer"
             className="text-[clamp(11px,0.9vw,14px)] text-white underline underline-offset-4 transition-colors duration-200 hover:text-white/80"
-            onClick={() => posthog.capture("book_a_call_clicked")}
           >
             or book a call
           </a>
@@ -253,9 +249,6 @@ export const Contact = () => {
               target="_blank"
               rel="noopener noreferrer"
               className="text-white transition-opacity duration-200 hover:opacity-60"
-              onClick={() =>
-                posthog.capture("social_link_clicked", { platform: "github" })
-              }
             >
               <span className="sr-only">GitHub</span>
               <svg
@@ -274,9 +267,6 @@ export const Contact = () => {
               target="_blank"
               rel="noopener noreferrer"
               className="text-white transition-opacity duration-200 hover:opacity-60"
-              onClick={() =>
-                posthog.capture("social_link_clicked", { platform: "linkedin" })
-              }
             >
               <span className="sr-only">LinkedIn</span>
               <svg

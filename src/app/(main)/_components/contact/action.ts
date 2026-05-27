@@ -1,7 +1,6 @@
 "use server";
 
 import { Resend } from "resend";
-import { getPostHogClient } from "@/lib/posthog-server";
 import { type Result, resultify } from "@/lib/utils/helpers";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
@@ -21,14 +20,7 @@ export const sendMessage = async (data: {
     }),
   );
 
-  const posthog = getPostHogClient();
-  const anonymousId = crypto.randomUUID();
-
-  posthog.capture({
-    distinctId: anonymousId,
-    event: "contact_message_sent",
-    properties: { success: result.success },
-  });
+  if (!result.success) return result;
 
   return { success: true, data: "Message sent successfully" };
 };

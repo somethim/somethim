@@ -1,7 +1,6 @@
 "use client";
 
 import { motion, useMotionValue, useScroll, useTransform } from "motion/react";
-import posthog from "posthog-js";
 import { useEffect, useRef, useState } from "react";
 import { PROJECTS } from "@/constants/projects";
 import { PROJECT_MAP, ProjectContent } from "./project-content";
@@ -103,7 +102,7 @@ export const Works = () => {
   ) : null;
 
   return (
-    <div ref={ref} data-snap className="relative h-[400vh] md:h-[500vh]">
+    <div ref={ref} data-snap className="relative h-[300vh] md:h-[380vh]">
       <div className="sticky top-0 flex h-screen w-full items-center">
         {/* WORKS heading */}
         <motion.h1
@@ -134,10 +133,6 @@ export const Works = () => {
               onOpen={() => {
                 if (!project.drawerId) return;
                 setOpenDrawer(project.drawerId);
-                posthog.capture("project_viewed", {
-                  project: project.title,
-                  service: project.service,
-                });
               }}
             />
           ))}

@@ -1,13 +1,12 @@
+import { Toast } from "@base-ui/react/toast";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { Toast } from "@base-ui/react/toast";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { type PropsWithChildren, Suspense } from "react";
-import { Background } from "./(main)/_components/background";
-import { SmoothScroll } from "./(main)/_components/smooth-scroll";
 import { Toaster } from "@/ui/components/toast";
+import { Background } from "./(main)/_components/background";
 
 const rfDewi = localFont({
   src: [
@@ -62,56 +61,6 @@ const rfDewiExpanded = localFont({
   variable: "--font-rfdewi-expanded",
   display: "swap",
 });
-
-export const metadata: Metadata = {
-  title: "Arbi Kullakshi — Full Stack Engineer",
-  description:
-    "Full stack engineer architecting and shipping production-ready systems end-to-end — React and Next.js web apps, scalable backend infrastructure, and automated CI/CD pipelines.",
-  keywords: [
-    "Arbi Kullakshi",
-    "full stack engineer",
-    "backend developer",
-    "web developer",
-    "React",
-    "Next.js",
-    "Laravel",
-    "Django",
-    "TypeScript",
-    "PHP",
-    "portfolio",
-  ],
-  authors: [{ name: "Arbi Kullakshi", url: "https://arbikullakshi.com" }],
-  creator: "Arbi Kullakshi",
-  metadataBase: new URL("https://arbikullakshi.com"),
-  openGraph: {
-    type: "website",
-    url: "https://arbikullakshi.com",
-    title: "Arbi Kullakshi — Full Stack Engineer",
-    description:
-      "Architecting and shipping production-ready systems end-to-end.",
-    siteName: "Arbi Kullakshi",
-    images: [
-      {
-        url: "/og.png",
-        width: 1200,
-        height: 630,
-        alt: "Arbi Kullakshi — Full Stack Engineer",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Arbi Kullakshi — Full Stack Engineer",
-    description:
-      "Architecting and shipping production-ready systems end-to-end.",
-    images: ["/og.png"],
-    creator: "@arbikullakshi",
-  },
-  robots: {
-    index: true,
-    follow: true,
-  },
-};
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -174,23 +123,68 @@ const jsonLd = {
   ],
 };
 
+export const metadata: Metadata = {
+  title: "Arbi Kullakshi — Full Stack Engineer",
+  description:
+    "Full stack engineer architecting and shipping production-ready systems end-to-end — React and Next.js web apps, scalable backend infrastructure, and automated CI/CD pipelines.",
+  keywords: [
+    "Arbi Kullakshi",
+    "full stack engineer",
+    "backend developer",
+    "web developer",
+    "React",
+    "Next.js",
+    "Laravel",
+    "Django",
+    "TypeScript",
+    "PHP",
+    "portfolio",
+  ],
+  authors: [{ name: "Arbi Kullakshi", url: "https://arbikullakshi.com" }],
+  creator: "Arbi Kullakshi",
+  metadataBase: new URL("https://arbikullakshi.com"),
+  openGraph: {
+    type: "website",
+    url: "https://arbikullakshi.com",
+    title: "Arbi Kullakshi — Full Stack Engineer",
+    description:
+      "Architecting and shipping production-ready systems end-to-end.",
+    siteName: "Arbi Kullakshi",
+    images: [
+      {
+        url: "/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "Arbi Kullakshi — Full Stack Engineer",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Arbi Kullakshi — Full Stack Engineer",
+    description:
+      "Architecting and shipping production-ready systems end-to-end.",
+    images: ["/opengraph-image"],
+    creator: "@arbikullakshi",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  other: {
+    "application/ld+json": JSON.stringify(jsonLd),
+  },
+};
+
 export default ({ children }: PropsWithChildren) => (
   <html
     lang="en"
     className={`h-full antialiased ${rfDewi.variable} ${rfDewiExpanded.variable}`}
   >
-    <head>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-    </head>
     <body className="root isolate min-h-full overflow-x-hidden bg-background font-body text-foreground">
       <Toast.Provider>
         <Background />
-        <SmoothScroll>
-          <Suspense>{children}</Suspense>
-        </SmoothScroll>
+        <Suspense>{children}</Suspense>
         <Toaster />
         <Analytics />
         <SpeedInsights />

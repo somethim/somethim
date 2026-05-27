@@ -112,9 +112,9 @@
 @source "../ui/components";
 
 @theme {
-  --font-body: "rfDewi", "rfDewi Fallback";
-  --font-subheader: "rfDewi", "rfDewi Fallback";
-  --font-header: "rfDewiExpanded", "rfDewiExpanded Fallback";
+  --font-body: var(--font-rfdewi), system-ui, sans-serif;
+  --font-subheader: var(--font-rfdewi), system-ui, sans-serif;
+  --font-header: var(--font-rfdewi-expanded), system-ui, sans-serif;
 }
 
 :root {
@@ -163,7 +163,6 @@ html {
 }
 
 body {
-  font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   overflow-x: clip;
   overscroll-behavior-x: none;
@@ -285,5 +284,14 @@ button {
     box-shadow:
       0 8px 32px rgba(255, 45, 85, 0.1),
       0 1px 0 rgba(255, 255, 255, 0.6) inset;
+  }
+}
+
+@keyframes fill-reveal {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0% 0 0);
   }
 }

@@ -38,57 +38,61 @@ const orbs = [
 
 export const Background = () => {
   const [isMobile, setIsMobile] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setIsMobile(window.innerWidth < 768);
+    setMounted(true);
   }, []);
 
   return (
     <div className="fixed inset-0 -z-10 bg-[#0d0d14]">
-      {orbs.map((orb) => (
-        <motion.div
-          key={orb.key}
-          aria-hidden
-          className="pointer-events-none absolute"
-          style={{
-            top: orb.initial.top,
-            left: orb.initial.left,
-            willChange: "transform",
-          }}
-          animate={{ x: [orb.x.from, orb.x.to, orb.x.from] }}
-          transition={{
-            duration: orb.x.duration,
-            ease: "easeInOut",
-            repeat: Number.POSITIVE_INFINITY,
-          }}
-        >
-          <motion.div
-            style={{ willChange: "transform" }}
-            animate={{ y: [orb.y.from, orb.y.to, orb.y.from] }}
-            transition={{
-              duration: orb.y.duration,
-              ease: "easeInOut",
-              repeat: Number.POSITIVE_INFINITY,
-            }}
-          >
-            <div
+      {mounted
+        ? orbs.map((orb) => (
+            <motion.div
+              key={orb.key}
+              aria-hidden
+              className="pointer-events-none absolute"
               style={{
-                width: isMobile ? orb.size.mobile : orb.size.desktop,
-                height: isMobile ? orb.size.mobile : orb.size.desktop,
-                borderRadius: "50%",
-                // Mobile: radial-gradient on the div — no filter:blur, GPU-friendly
-                // Desktop: solid color + filter:blur for the soft glow effect
-                background: isMobile
-                  ? `radial-gradient(circle, ${orb.color} 0%, transparent 70%)`
-                  : orb.color,
-                filter: isMobile ? "none" : `blur(${orb.blur}px)`,
-                opacity: isMobile ? orb.opacity.mobile : orb.opacity.desktop,
-                transform: "translate(-50%, -50%)",
+                top: orb.initial.top,
+                left: orb.initial.left,
+                willChange: "transform",
               }}
-            />
-          </motion.div>
-        </motion.div>
-      ))}
+              animate={{ x: [orb.x.from, orb.x.to, orb.x.from] }}
+              transition={{
+                duration: orb.x.duration,
+                ease: "easeInOut",
+                repeat: Number.POSITIVE_INFINITY,
+              }}
+            >
+              <motion.div
+                style={{ willChange: "transform" }}
+                animate={{ y: [orb.y.from, orb.y.to, orb.y.from] }}
+                transition={{
+                  duration: orb.y.duration,
+                  ease: "easeInOut",
+                  repeat: Number.POSITIVE_INFINITY,
+                }}
+              >
+                <div
+                  style={{
+                    width: isMobile ? orb.size.mobile : orb.size.desktop,
+                    height: isMobile ? orb.size.mobile : orb.size.desktop,
+                    borderRadius: "50%",
+                    background: isMobile
+                      ? `radial-gradient(circle, ${orb.color} 0%, transparent 70%)`
+                      : orb.color,
+                    filter: isMobile ? "none" : `blur(${orb.blur}px)`,
+                    opacity: isMobile
+                      ? orb.opacity.mobile
+                      : orb.opacity.desktop,
+                    transform: "translate(-50%, -50%)",
+                  }}
+                />
+              </motion.div>
+            </motion.div>
+          ))
+        : null}
     </div>
   );
 };

@@ -12,7 +12,7 @@ export const EXPERIENCE: ExperienceItem[] = [
     impact: "SaaS infrastructure, auth, CI/CD, mobile",
     period: "Jan 2024 – Present",
     initials: "Z",
-    logo: "/zennit.png",
+    logo: "/zennit.webp",
   },
   {
     role: "Backend Developer at Hire A Loo",
@@ -26,13 +26,13 @@ export const EXPERIENCE: ExperienceItem[] = [
     impact: "Django backend, React frontend, workforce platform",
     period: "Jan 2023 – Jan 2024",
     initials: "CS",
-    logo: "/clickservice.png",
+    logo: "/clickservice.webp",
   },
   {
     role: "Mobile Developer at Vodafone Albania",
     impact: "React Native iOS & Android, real-time features",
     period: "Jan 2022 – Dec 2022",
     initials: "V",
-    logo: "/vodafone.png",
+    logo: "/vodafone.webp",
   },
 ];

@@ -74,10 +74,10 @@ export const PROJECTS: ProjectData[] = [
     accentColor: "#A855F7",
     nextDrawerId: "mektrin",
     card: {
-      video: "/zennit.mp4",
+      video: "/zennit.webm",
       videoSpeed: 1.5,
       videoLoopEndTime: 9,
-      thumbnail: "/zennit.png",
+      thumbnail: "/zennit.webp",
     },
     quickLinks: [
       { label: "Overview", id: "overview" },
@@ -364,8 +364,8 @@ export const PROJECTS: ProjectData[] = [
     accentColor: "#9CA3AF",
     nextDrawerId: "lookup",
     card: {
-      video: "/mektrin.mp4",
-      thumbnail: "/mektrin-thumb.png",
+      video: "/mektrin.webm",
+      thumbnail: "/mektrin-thumb.webp",
     },
     quickLinks: [
       { label: "Overview", id: "overview" },
@@ -587,8 +587,8 @@ export const PROJECTS: ProjectData[] = [
     accentColor: "#39B54A",
     nextDrawerId: "abac",
     card: {
-      video: "/lookup.mp4",
-      thumbnail: "/lookup.png",
+      video: "/lookup.webm",
+      thumbnail: "/lookup.webp",
     },
     quickLinks: [
       { label: "Overview", id: "overview" },
@@ -660,7 +660,7 @@ export const PROJECTS: ProjectData[] = [
     nextDrawerId: "notifyre",
     card: {
       background: "radial-gradient(ellipse at top left, #DC143C 0%, #111 70%)",
-      thumbnail: "/abac-card.png",
+      thumbnail: "/abac-card.webp",
     },
     quickLinks: [
       { label: "Overview", id: "overview" },
@@ -820,7 +820,7 @@ export const PROJECTS: ProjectData[] = [
     nextDrawerId: "zennstream",
     card: {
       background: "radial-gradient(ellipse at top left, #f9a8d4 0%, #111 70%)",
-      thumbnail: "/notifyre-card.png",
+      thumbnail: "/notifyre-card.webp",
     },
     quickLinks: [
       { label: "Overview", id: "overview" },
