@@ -7,11 +7,11 @@ import { type ReactNode, useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Dialog, DialogClose, DialogPopup } from "@/ui/components/dialog";
 import { Sheet, SheetClose, SheetPopup } from "@/ui/components/sheet";
-import { sendMessage } from "./contact.action";
-import { type ContactFormData, contactSchema } from "./contact-fields";
-import { IncomingLetter, letsLetters, workLetters } from "./contact-letter";
-import { MagneticButton, MagneticSubmitButton } from "./contact-magnetic";
-import { Particles } from "./contact-particles";
+import { sendMessage } from "./action";
+import { type ContactFormData, contactSchema } from "./fields";
+import { IncomingLetter, letsLetters, workLetters } from "./letter";
+import { MagneticButton, MagneticSubmitButton } from "./magnetic";
+import { Particles } from "./particles";
 
 const inputClass =
   "w-full border border-white/10 bg-white/5 px-4.5 py-3.5 text-[15px] text-white outline-none transition-colors duration-200 placeholder:text-white/25 focus:border-white/30 focus:bg-white/[0.07]";

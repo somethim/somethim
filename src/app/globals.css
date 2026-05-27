@@ -192,6 +192,14 @@ button {
   border-radius: 0;
 }
 @layer utilities {
+  .bg-drawer-glow {
+    background: radial-gradient(
+      ellipse 80% 60% at 0% 0%,
+      color-mix(in srgb, var(--accent) 33%, transparent) 0%,
+      transparent 55%
+    );
+  }
+
   .glass {
     background: var(--glass-background);
     backdrop-filter: blur(var(--glass-blur)) saturate(1.8);

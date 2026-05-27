@@ -1,7 +1,7 @@
 "use client";
 import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useState } from "react";
-import { SIGNATURE_PATH } from "./signature";
+import { SIGNATURE_PATH } from "@/constants/signature";
 
 export const Intro = () => {
   const [phase, setPhase] = useState<"signing" | "filling" | "exit">("signing");

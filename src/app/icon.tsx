@@ -1,5 +1,5 @@
 import { ImageResponse } from "next/og";
-import { SIGNATURE_PATH } from "./(main)/_components/signature";
+import { SIGNATURE_PATH } from "@/constants/signature";
 
 export default function Icon() {
   return new ImageResponse(

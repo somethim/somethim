@@ -1,8 +1,8 @@
 "use client";
 
 import { AnimatePresence, motion } from "motion/react";
-import { type PropsWithChildren, useEffect } from "react";
-import { GlassIconButton } from "./glass-icon-button";
+import { type CSSProperties, type PropsWithChildren, useEffect } from "react";
+import { GlassIconButton } from "../glass-icon-button";
 
 type Props = PropsWithChildren<{
   open: boolean;
@@ -15,7 +15,7 @@ export const ProjectDrawer = ({
   open,
   onClose,
   title,
-  accentColor = "#FF1901",
+  accentColor = "#f472b6",
   children,
 }: Props) => {
   useEffect(() => {
@@ -30,18 +30,14 @@ export const ProjectDrawer = ({
       {open && (
         <motion.div
           className="fixed inset-0 z-200 flex flex-col bg-[#0A0A0A]"
+          style={{ "--accent": accentColor } as CSSProperties}
           initial={{ y: "100%" }}
           animate={{ y: 0 }}
           exit={{ y: "100%" }}
           transition={{ duration: 0.55, ease: [0.32, 0.72, 0, 1] }}
         >
           {/* Accent gradient — covers the whole drawer, non-scrolling */}
-          <div
-            className="pointer-events-none absolute inset-0"
-            style={{
-              background: `radial-gradient(ellipse 80% 60% at 0% 0%, ${accentColor}55 0%, transparent 55%)`,
-            }}
-          />
+          <div className="pointer-events-none absolute inset-0 bg-drawer-glow" />
 
           {/* Scrollable content */}
           <div

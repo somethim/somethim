@@ -3,7 +3,7 @@
 import { motion, useMotionValue, useScroll, useTransform } from "motion/react";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-import { EXPERIENCE } from "./project-data";
+import { EXPERIENCE } from "@/constants/expiriences";
 
 const CONTENT_COUNT = 8;
 const CONTENT_START = 0.14;

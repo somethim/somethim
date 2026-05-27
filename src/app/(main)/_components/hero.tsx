@@ -8,7 +8,15 @@ import {
 } from "motion/react";
 import { useRef } from "react";
 
-// biome-ignore lint/correctness/noUnusedVariables: false positive — used in JSX
+type Props = {
+  children: string;
+  progress: MotionValue<number>;
+  exitX: string;
+  exitY: string;
+  exitRotate: number;
+  className: string;
+};
+
 const AnimatedSpan = ({
   children,
   progress,
@@ -16,7 +24,7 @@ const AnimatedSpan = ({
   exitY,
   exitRotate,
   className,
-}: AnimatedSpan.Props) => {
+}: Props) => {
   const x = useTransform(progress, [0, 0.6], ["0%", exitX]);
   const y = useTransform(progress, [0, 0.6], ["0%", exitY]);
   const rotate = useTransform(progress, [0, 0.6], [0, exitRotate]);
@@ -33,16 +41,6 @@ const AnimatedSpan = ({
     </motion.span>
   );
 };
-namespace AnimatedSpan {
-  export type Props = {
-    children: string;
-    progress: MotionValue<number>;
-    exitX: string;
-    exitY: string;
-    exitRotate: number;
-    className: string;
-  };
-}
 
 const name = [
   { children: "A", exitX: "-8vw", exitY: "-130vh", exitRotate: -12 },
