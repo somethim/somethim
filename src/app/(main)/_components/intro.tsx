@@ -6,7 +6,6 @@ import { setCookie } from "@/lib/utils/cookie";
 
 export const Intro = () => {
   const [phase, setPhase] = useState<"signing" | "filling" | "exit">("signing");
-  const [showFill, setShowFill] = useState(false);
 
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
@@ -16,17 +15,6 @@ export const Intro = () => {
 
     setCookie("intro_seen", "1", 7);
   }, []);
-
-  const handleSigningComplete = () => {
-    if (phase === "signing") {
-      setPhase("filling");
-      setShowFill(true);
-    }
-  };
-
-  const handleFillingComplete = () => {
-    if (phase === "filling") setPhase("exit");
-  };
 
   return (
     <AnimatePresence>
@@ -72,6 +60,19 @@ export const Intro = () => {
                   </feMerge>
                 </filter>
               </defs>
+
+              <motion.path
+                d={SIGNATURE_PATH}
+                fill="white"
+                stroke="none"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: phase === "filling" ? 1 : 0 }}
+                transition={{ duration: 0.15 }}
+                onAnimationComplete={() => {
+                  if (phase === "filling") setPhase("exit");
+                }}
+              />
+
               <motion.path
                 d={SIGNATURE_PATH}
                 stroke="white"
@@ -83,32 +84,13 @@ export const Intro = () => {
                 initial={{ pathLength: 0 }}
                 animate={{ pathLength: 1 }}
                 transition={{
-                  pathLength: { duration: 1.4, ease: [0.25, 0.1, 0.25, 1] },
+                  pathLength: { duration: 1, ease: [0.25, 0.1, 0.25, 1] },
                 }}
-                onAnimationComplete={handleSigningComplete}
+                onAnimationComplete={() => {
+                  if (phase === "signing") setPhase("filling");
+                }}
               />
             </svg>
-
-            {showFill && (
-              <motion.div
-                style={{
-                  position: "absolute",
-                  inset: 0,
-                  clipPath: "inset(0 100% 0 0)",
-                }}
-                initial={{ clipPath: "inset(0 100% 0 0)" }}
-                animate={{ clipPath: "inset(0 0% 0 0)" }}
-                transition={{ duration: 0.15, ease: "easeOut" }}
-                onAnimationComplete={handleFillingComplete}
-              >
-                <svg
-                  viewBox="0 0 1973 1203"
-                  style={{ width: "100%", display: "block" }}
-                >
-                  <path d={SIGNATURE_PATH} fill="white" />
-                </svg>
-              </motion.div>
-            )}
           </div>
         </motion.div>
       )}
