@@ -2,18 +2,14 @@
 import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useState } from "react";
 import { SIGNATURE_PATH } from "@/constants/signature";
-import { setCookie } from "@/lib/utils/cookie";
 
 export const Intro = () => {
-  const [phase, setPhase] = useState<"signing" | "filling" | "exit">("signing");
+  const [phase, setPhase] = useState<"signing" | "exit">("signing");
 
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       setPhase("exit");
-      return;
     }
-
-    setCookie("intro_seen", "1", 7);
   }, []);
 
   return (
@@ -45,6 +41,25 @@ export const Intro = () => {
                 "drop-shadow(0 0 40px rgba(255,255,255,0.35)) drop-shadow(0 0 80px rgba(255,255,255,0.15))",
             }}
           >
+            <motion.div
+              style={{
+                position: "absolute",
+                inset: 0,
+                clipPath: "inset(0 100% 0 0)",
+              }}
+              initial={{ clipPath: "inset(0 100% 0 0)" }}
+              animate={{ clipPath: "inset(0 0% 0 0)" }}
+              transition={{ duration: 0.3, ease: "easeOut", delay: 0.3 }}
+              onAnimationComplete={() => setPhase("exit")}
+            >
+              <svg
+                viewBox="0 0 1973 1203"
+                style={{ width: "100%", display: "block" }}
+              >
+                <path d={SIGNATURE_PATH} fill="white" />
+              </svg>
+            </motion.div>
+
             <svg
               viewBox="0 0 1973 1203"
               aria-label="Arbi Kullakshi"
@@ -63,18 +78,6 @@ export const Intro = () => {
 
               <motion.path
                 d={SIGNATURE_PATH}
-                fill="white"
-                stroke="none"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: phase === "filling" ? 1 : 0 }}
-                transition={{ duration: 0.15 }}
-                onAnimationComplete={() => {
-                  if (phase === "filling") setPhase("exit");
-                }}
-              />
-
-              <motion.path
-                d={SIGNATURE_PATH}
                 stroke="white"
                 strokeWidth={10}
                 strokeLinecap="round"
@@ -85,9 +88,6 @@ export const Intro = () => {
                 animate={{ pathLength: 1 }}
                 transition={{
                   pathLength: { duration: 1, ease: [0.25, 0.1, 0.25, 1] },
-                }}
-                onAnimationComplete={() => {
-                  if (phase === "signing") setPhase("filling");
                 }}
               />
             </svg>

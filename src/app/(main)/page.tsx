@@ -1,4 +1,3 @@
-import { cookies } from "next/headers";
 import { About } from "./_components/about";
 import { Contact } from "./_components/contact";
 import { Hero } from "./_components/hero";
@@ -7,11 +6,9 @@ import { Navbar } from "./_components/navbar";
 import { Works } from "./_components/works";
 
 export default async () => {
-  const introSeen = !!(await cookies()).get("intro_seen");
-
   return (
     <>
-      {!introSeen && <Intro />}
+      <Intro />
       <main className="relative bg-transparent">
         <div className="hidden">
           <Navbar />
