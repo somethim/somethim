@@ -1,0 +1,281 @@
+@import "tailwindcss";
+
+@custom-variant light (&:where(.light, .light *));
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  /* background shades - more distinct neutral */
+  --color-background-dimmed: unset; /* Much darker */
+  --color-background: unset; /* Light but not white */
+  --color-background-rich: unset; /* Clear mid-tone */
+  /* foreground shades - pure neutral grays with more contrast */
+  --color-foreground-dimmed: unset;
+  --color-foreground: unset;
+  --color-foreground-rich: unset;
+  /* emphasis shades - warmer browns with more distinction */
+  --color-emphasis-dimmed: unset;
+  --color-emphasis: unset;
+  --color-emphasis-rich: unset;
+  --color-emphasis-foreground: unset;
+  /* accent shades - distinct cool grays */
+  --color-accent-dimmed: unset; /* Notably darker */
+  --color-accent: unset; /* Clean white */
+  --color-accent-rich: unset; /* Mid-tone */
+  --color-accent-foreground: unset; /* Darker for contrast */
+
+  /* primary shades - orange */
+  --color-primary-dimmed: #007aff33;
+  --color-primary: #007aff;
+  --color-primary-rich: #ff8c38;
+  /* secondary shades - teal green */
+  --color-secondary-dimmed: oklch(27.1% 0.105 12.094);
+  --color-secondary: oklch(45.5% 0.188 13.697);
+  --color-secondary-rich: oklch(71.2% 0.194 13.428);
+  /* destructive shades */
+  --color-error-dimmed: oklch(25.8% 0.092 26.042);
+  --color-error: #ff3b30;
+  --color-error-rich: oklch(57.7% 0.245 27.325);
+  --color-error-foreground: oklch(80.8% 0.114 19.571);
+  /* success shades */
+  --color-success-dimmed: hsl(142 72% 29%);
+  --color-success: hsl(142 76% 36%);
+  --color-success-rich: hsl(142 69% 58%);
+  --color-success-foreground: hsl(144 61% 20%);
+  /* info shades */
+  --color-info-dimmed: oklch(54.6% 0.245 262.881);
+  --color-info: oklch(62.3% 0.214 259.815);
+  --color-info-rich: oklch(74.6% 0.16 232.661);
+  --color-info-foreground: oklch(82.8% 0.111 230.318);
+  /* warning shades */
+  --color-warning-dimmed: hsl(35 92% 33%);
+  --color-warning: hsl(41 96% 40%);
+  --color-warning-rich: hsl(48 96% 53%);
+  --color-warning-foreground: hsl(28 73% 26%);
+  /* neutral shades - more contrast */
+  --color-neutral-dimmed: oklch(37.1% 0 0);
+  --color-neutral: oklch(55.4% 0.046 257.417);
+  --color-neutral-rich: oklch(55.1% 0.027 264.364);
+  --color-neutral-foreground: oklch(21% 0.034 264.665);
+}
+
+@layer theme {
+  :root {
+    @variant light {
+      /* background shades - more distinct neutral */
+      --color-background-dimmed: #e5e5ea; /* Much darker */
+      --color-background: #f2f2f7; /* Light but not white */
+      --color-background-rich: oklch(100% 0 0); /* Clear mid-tone */
+      /* foreground shades - pure neutral grays with more contrast */
+      --color-foreground-dimmed: #8e8e93;
+      --color-foreground: #1c1c1e;
+      --color-foreground-rich: hsl(0 0% 25%);
+      /* emphasis shades - warmer browns with more distinction */
+      --color-emphasis-dimmed: oklch(14.5% 0 0);
+      --color-emphasis: oklch(20.5% 0 0);
+      --color-emphasis-rich: oklch(26.9% 0 0);
+      --color-emphasis-foreground: oklch(55.6% 0 0);
+      /* accent shades - distinct cool grays */
+      --color-accent-dimmed: oklch(55.3% 0.013 58.071); /* Notably darker */
+      --color-accent: oklch(55.6% 0 0); /* Clean white */
+      --color-accent-rich: oklch(67% 0 0); /* Mid-tone */
+      --color-accent-foreground: rgba(0, 0, 0, 0.12); /* Darker for contrast */
+    }
+    @variant dark {
+      /* background shades - more distinct neutral */
+      /* biome-ignore lint/suspicious/noDuplicateCustomProperties: intentionally different values per color scheme variant */
+      --color-background-dimmed: #1c1c1e; /* Much darker */
+      --color-background: #000000; /* Light but not white */
+      --color-background-rich: oklch(100% 0 0); /* Clear mid-tone */
+      /* foreground shades - pure neutral grays with more contrast */
+      --color-foreground-dimmed: #8e8e93;
+      --color-foreground: #f2f2f7;
+      --color-foreground-rich: hsl(0 0% 25%);
+      /* emphasis shades - warmer browns with more distinction */
+      --color-emphasis-dimmed: oklch(14.5% 0 0);
+      --color-emphasis: oklch(20.5% 0 0);
+      --color-emphasis-rich: oklch(26.9% 0 0);
+      --color-emphasis-foreground: oklch(55.6% 0 0);
+      /* accent shades - distinct cool grays */
+      --color-accent-dimmed: oklch(55.3% 0.013 58.071); /* Notably darker */
+      --color-accent: oklch(55.6% 0 0); /* Clean white */
+      --color-accent-rich: oklch(67% 0 0); /* Mid-tone */
+      --color-accent-foreground: rgba(
+        255,
+        255,
+        255,
+        0.12
+      ); /* Darker for contrast */
+    }
+  }
+}
+
+@source "../ui/components";
+
+@theme {
+  --font-body: "rfDewi", "rfDewi Fallback";
+  --font-subheader: "rfDewi", "rfDewi Fallback";
+  --font-header: "rfDewiExpanded", "rfDewiExpanded Fallback";
+}
+
+:root {
+  --glass-background: rgba(255, 255, 255, 0.55);
+  --glass-background-heavy: rgba(255, 255, 255, 0.72);
+  --glass-background-ultra: rgba(255, 255, 255, 0.88);
+  --glass-border: rgba(255, 255, 255, 0.6);
+  --glass-border-subtle: rgba(255, 255, 255, 0.3);
+  --glass-blur: 28px;
+  --glass-blur-heavy: 48px;
+  --glass-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.08), 0 1px 0 rgba(255, 255, 255, 0.8) inset;
+  --glass-shadow-heavy:
+    0 16px 48px rgba(0, 0, 0, 0.12), 0 1px 0 rgba(255, 255, 255, 0.9) inset;
+  --specular: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.9) 0%,
+    rgba(255, 255, 255, 0.2) 40%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --glass-background: rgba(28, 28, 30, 0.6);
+    --glass-background-heavy: rgba(28, 28, 30, 0.78);
+    --glass-background-ultra: rgba(28, 28, 30, 0.92);
+    --glass-border: rgba(255, 255, 255, 0.14);
+    --glass-border-subtle: rgba(255, 255, 255, 0.07);
+    --glass-shadow:
+      0 8px 32px rgba(0, 0, 0, 0.4), 0 1px 0 rgba(255, 255, 255, 0.08) inset;
+    --glass-shadow-heavy:
+      0 16px 48px rgba(0, 0, 0, 0.6), 0 1px 0 rgba(255, 255, 255, 0.1) inset;
+    --specular: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.15) 0%,
+      rgba(255, 255, 255, 0.04) 40%,
+      rgba(255, 255, 255, 0) 100%
+    );
+  }
+}
+
+html {
+  overflow-x: clip;
+  overscroll-behavior-x: none;
+}
+
+body {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+  overscroll-behavior-x: none;
+  touch-action: pan-y;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms;
+    animation-iteration-count: 1;
+    transition-duration: 0.01ms;
+    scroll-behavior: auto;
+  }
+}
+
+input,
+textarea,
+button {
+  -webkit-appearance: none;
+  border-radius: 0;
+}
+@layer utilities {
+  .glass {
+    background: var(--glass-background);
+    backdrop-filter: blur(var(--glass-blur)) saturate(1.8);
+    -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(1.8);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: var(--specular);
+      pointer-events: none;
+      border-radius: inherit;
+    }
+  }
+
+  .glass-heavy {
+    background: var(--glass-background-heavy);
+    backdrop-filter: blur(var(--glass-blur-heavy)) saturate(2.2);
+    -webkit-backdrop-filter: blur(var(--glass-blur-heavy)) saturate(2.2);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow-heavy);
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: var(--specular);
+      pointer-events: none;
+      border-radius: inherit;
+    }
+  }
+
+  .glass-ultra {
+    background: var(--glass-background-ultra);
+    backdrop-filter: blur(var(--glass-blur-heavy)) saturate(2.8);
+    -webkit-backdrop-filter: blur(var(--glass-blur-heavy)) saturate(2.8);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow-heavy);
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: var(--specular);
+      pointer-events: none;
+      border-radius: inherit;
+    }
+  }
+
+  .glass-blue {
+    background: rgba(0, 122, 255, 0.15);
+    backdrop-filter: blur(var(--glass-blur)) saturate(1.8);
+    -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(1.8);
+    border: 1px solid rgba(0, 122, 255, 0.3);
+    box-shadow:
+      0 8px 32px rgba(0, 122, 255, 0.12),
+      0 1px 0 rgba(255, 255, 255, 0.6) inset;
+  }
+
+  .glass-violet {
+    background: rgba(88, 86, 214, 0.15);
+    backdrop-filter: blur(var(--glass-blur)) saturate(1.8);
+    -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(1.8);
+    border: 1px solid rgba(88, 86, 214, 0.3);
+    box-shadow:
+      0 8px 32px rgba(88, 86, 214, 0.12),
+      0 1px 0 rgba(255, 255, 255, 0.6) inset;
+  }
+
+  .glass-pink {
+    background: rgba(255, 45, 85, 0.12);
+    backdrop-filter: blur(var(--glass-blur)) saturate(1.8);
+    -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(1.8);
+    border: 1px solid rgba(255, 45, 85, 0.25);
+    box-shadow:
+      0 8px 32px rgba(255, 45, 85, 0.1),
+      0 1px 0 rgba(255, 255, 255, 0.6) inset;
+  }
+}
