@@ -8,12 +8,12 @@ import { ExperienceContent } from "./experience-content";
 import { ProjectDrawer } from "./works/project-drawer";
 
 const CONTENT_COUNT = 8;
-const CONTENT_START = 0.14;
-const CONTENT_RANGE = 0.2;
-const STAGGER = 0.05;
-const FADE_WINDOW = 0.25;
-const SCATTER_START = 0.34;
-const SCATTER_END = 0.4;
+const CONTENT_START = 0.1;
+const CONTENT_RANGE = 0.25;
+const STAGGER = 0.025;
+const FADE_WINDOW = 0.1;
+const SCATTER_START = 0.5;
+const SCATTER_END = 0.55;
 
 const CONTENT_EXITS = [
   { x: -45, y: -50, rotate: -18 },
@@ -32,6 +32,7 @@ export const About = () => {
   const [selectedExp, setSelectedExp] = useState<
     (typeof EXPERIENCE)[number] | null
   >(null);
+  const [selectedIndex, setSelectedIndex] = useState<number>(-1);
 
   const content = useRef<Array<HTMLElement | null>>(
     Array(CONTENT_COUNT).fill(null),
@@ -103,7 +104,7 @@ export const About = () => {
   };
 
   return (
-    <div ref={ref} data-snap className="relative h-[300vh]">
+    <div ref={ref} data-snap className="relative h-[150vh]">
       <div className="sticky top-0 flex h-screen w-full items-center">
         <motion.h1
           className="absolute top-1/2 left-1/2 whitespace-nowrap font-bold font-header text-[clamp(36px,11vw,60px)] text-white leading-[0.85] tracking-[-0.03em] md:text-[13vw]"
@@ -165,7 +166,10 @@ export const About = () => {
                   key={`${item.role}-${item.period}`}
                   ref={setContentRef(4 + i)}
                   type="button"
-                  onClick={() => setSelectedExp(item)}
+                  onClick={() => {
+                    setSelectedExp(item);
+                    setSelectedIndex(i);
+                  }}
                   className="group flex w-full cursor-pointer items-center justify-between border-white/8 border-t py-1.5 opacity-0 blur-md transition-opacity duration-200 will-change-[transform,opacity,filter] hover:opacity-70 md:py-3.5"
                   style={{ pointerEvents: "auto" }}
                 >
@@ -185,7 +189,7 @@ export const About = () => {
                         </span>
                       )}
                     </div>
-                    <div className="flex flex-col">
+                    <div className="flex flex-col text-left">
                       <span className="text-[13px] text-white md:text-[clamp(14px,1.15vw,18px)]">
                         {item.role}
                         <span className="text-white/40"> · {item.company}</span>
@@ -229,7 +233,25 @@ export const About = () => {
         title={selectedExp?.company ?? ""}
         accentColor={selectedExp?.accentColor}
       >
-        {selectedExp && <ExperienceContent experience={selectedExp} />}
+        {selectedExp && (
+          <ExperienceContent
+            experience={selectedExp}
+            nextExperience={
+              selectedIndex >= 0
+                ? EXPERIENCE[(selectedIndex + 1) % EXPERIENCE.length]
+                : undefined
+            }
+            onOpenNextExperienceAction={() => {
+              if (selectedIndex < 0) return;
+              const nextIndex = (selectedIndex + 1) % EXPERIENCE.length;
+              const next = EXPERIENCE[nextIndex];
+              if (next) {
+                setSelectedExp(next);
+                setSelectedIndex(nextIndex);
+              }
+            }}
+          />
+        )}
       </ProjectDrawer>
     </div>
   );

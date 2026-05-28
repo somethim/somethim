@@ -66,7 +66,7 @@ export const EXPERIENCE: ExperienceItem[] = [
     role: "Backend Developer",
     company: "Hire A Loo",
     impact: "Laravel APIs, full-text search, legacy migration",
-    period: "Aug 2025 – Feb 2026",
+    period: "Aug 2025 – Present",
     initials: "HL",
     logo: "/hirealoo.webp",
     accentColor: "#002d62",
@@ -95,7 +95,7 @@ export const EXPERIENCE: ExperienceItem[] = [
     period: "Jan 2023 – Jan 2024",
     initials: "CS",
     logo: "/clickservice.webp",
-    accentColor: "#ffbb2e",
+    accentColor: "#78d9ef",
     overview:
       "Full stack development of click-clock.work — an internal workforce management platform for time tracking, worker scheduling, and operational tooling.",
     sections: [
