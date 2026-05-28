@@ -1,5 +1,6 @@
 import { ImageResponse } from "next/og";
 import { SIGNATURE_PATH } from "@/constants/signature";
+import { theme } from "@/lib/theme";
 
 export default function Icon() {
   return new ImageResponse(
@@ -7,7 +8,7 @@ export default function Icon() {
       style={{
         width: 64,
         height: 64,
-        background: "#080810",
+        background: theme.surfaceDeep,
         display: "flex",
         alignItems: "center",
         justifyContent: "center",

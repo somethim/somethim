@@ -4,6 +4,8 @@ import { motion, useMotionValue, useScroll, useTransform } from "motion/react";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { EXPERIENCE } from "@/constants/expiriences";
+import { ExperienceContent } from "./experience-content";
+import { ProjectDrawer } from "./works/project-drawer";
 
 const CONTENT_COUNT = 8;
 const CONTENT_START = 0.14;
@@ -27,8 +29,11 @@ const CONTENT_EXITS = [
 export const About = () => {
   const ref = useRef<HTMLDivElement>(null);
   const [bounds, setBounds] = useState({ top: 0, height: 0 });
+  const [selectedExp, setSelectedExp] = useState<
+    (typeof EXPERIENCE)[number] | null
+  >(null);
 
-  const content = useRef<Array<HTMLDivElement | null>>(
+  const content = useRef<Array<HTMLElement | null>>(
     Array(CONTENT_COUNT).fill(null),
   );
 
@@ -93,7 +98,7 @@ export const About = () => {
     });
   }, [scrollY, bounds, aboutBlur, aboutOp]);
 
-  const setContentRef = (i: number) => (el: HTMLDivElement | null) => {
+  const setContentRef = (i: number) => (el: HTMLElement | null) => {
     content.current[i] = el;
   };
 
@@ -156,10 +161,13 @@ export const About = () => {
                 </span>
               </div>
               {EXPERIENCE.map((item, i) => (
-                <div
+                <button
                   key={`${item.role}-${item.period}`}
                   ref={setContentRef(4 + i)}
-                  className="flex items-center justify-between border-white/8 border-t py-1.5 opacity-0 blur-md will-change-[transform,opacity,filter] md:py-3.5"
+                  type="button"
+                  onClick={() => setSelectedExp(item)}
+                  className="group flex w-full cursor-pointer items-center justify-between border-white/8 border-t py-1.5 opacity-0 blur-md transition-opacity duration-200 will-change-[transform,opacity,filter] hover:opacity-70 md:py-3.5"
+                  style={{ pointerEvents: "auto" }}
                 >
                   <div className="flex items-center gap-2.5 md:gap-3.5">
                     <div className="relative flex size-7 shrink-0 items-center justify-center overflow-hidden rounded-full border border-white/[0.14] bg-white/6 backdrop-blur-md md:size-9">
@@ -180,21 +188,49 @@ export const About = () => {
                     <div className="flex flex-col">
                       <span className="text-[13px] text-white md:text-[clamp(14px,1.15vw,18px)]">
                         {item.role}
+                        <span className="text-white/40"> · {item.company}</span>
                       </span>
-                      <span className="text-[10px] text-white md:text-[clamp(11px,0.85vw,14px)]">
+                      <span className="text-[10px] text-white/50 md:text-[clamp(11px,0.85vw,14px)]">
                         {item.impact}
                       </span>
                     </div>
                   </div>
-                  <span className="ml-2 whitespace-nowrap font-semibold text-[12px] text-white md:ml-8 md:text-[clamp(12px,1.05vw,17px)]">
-                    {item.period}
-                  </span>
-                </div>
+                  <div className="ml-2 flex items-center gap-3 md:ml-8">
+                    <span className="whitespace-nowrap font-semibold text-[12px] text-white md:text-[clamp(12px,1.05vw,17px)]">
+                      {item.period}
+                    </span>
+                    <svg
+                      width="12"
+                      height="12"
+                      viewBox="0 0 14 14"
+                      fill="none"
+                      className="shrink-0 opacity-0 transition-opacity duration-200 group-hover:opacity-60"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M2 12L12 2M12 2H5M12 2V9"
+                        stroke="white"
+                        strokeWidth="1.75"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </div>
+                </button>
               ))}
             </div>
           </div>
         </div>
       </div>
+
+      <ProjectDrawer
+        open={selectedExp !== null}
+        onClose={() => setSelectedExp(null)}
+        title={selectedExp?.company ?? ""}
+        accentColor={selectedExp?.accentColor}
+      >
+        {selectedExp && <ExperienceContent experience={selectedExp} />}
+      </ProjectDrawer>
     </div>
   );
 };

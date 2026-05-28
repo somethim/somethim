@@ -36,7 +36,7 @@ export const Navbar = () => {
         ref={pillRef}
         className="relative flex items-center gap-1 rounded-full px-1.5 py-0.5"
         style={{
-          background: "rgba(30, 30, 32, 0.72)",
+          background: "var(--color-navbar-glass)",
           backdropFilter: "blur(40px) saturate(2)",
           WebkitBackdropFilter: "blur(40px) saturate(2)",
           border: "1px solid rgba(255,255,255,0.10)",

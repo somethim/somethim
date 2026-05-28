@@ -2,11 +2,12 @@
 
 import { motion } from "motion/react";
 import { useEffect, useState } from "react";
+import { theme } from "@/lib/theme";
 
 const orbs = [
   {
     key: "blue",
-    color: "#74D4FF",
+    color: theme.orbCyan,
     size: { desktop: 1400, mobile: 600 },
     blur: 120,
     opacity: { desktop: 0.55, mobile: 0.7 },
@@ -16,7 +17,7 @@ const orbs = [
   },
   {
     key: "violet",
-    color: "#DAB2FF",
+    color: theme.orbViolet,
     size: { desktop: 1500, mobile: 650 },
     blur: 130,
     opacity: { desktop: 0.45, mobile: 0.6 },
@@ -46,7 +47,7 @@ export const Background = () => {
   }, []);
 
   return (
-    <div className="fixed inset-0 -z-10 bg-[#0d0d14]">
+    <div className="fixed inset-0 -z-10 bg-surface">
       {mounted
         ? orbs.map((orb) => (
             <motion.div

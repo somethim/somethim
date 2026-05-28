@@ -3,17 +3,22 @@ import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useState } from "react";
 import { SIGNATURE_PATH } from "@/constants/signature";
 
-export const Intro = () => {
+export const Intro = ({
+  onCompleteAction,
+}: {
+  onCompleteAction?: () => void;
+}) => {
   const [phase, setPhase] = useState<"signing" | "exit">("signing");
 
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       setPhase("exit");
+      onCompleteAction?.();
     }
-  }, []);
+  }, [onCompleteAction]);
 
   return (
-    <AnimatePresence>
+    <AnimatePresence onExitComplete={onCompleteAction}>
       {phase !== "exit" && (
         <motion.div
           key="intro"
@@ -21,7 +26,7 @@ export const Intro = () => {
             position: "fixed",
             inset: 0,
             zIndex: 9999,
-            background: "#080810",
+            background: "var(--color-surface-deep)",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
@@ -50,7 +55,9 @@ export const Intro = () => {
               initial={{ clipPath: "inset(0 100% 0 0)" }}
               animate={{ clipPath: "inset(0 0% 0 0)" }}
               transition={{ duration: 0.3, ease: "easeOut", delay: 0.3 }}
-              onAnimationComplete={() => setPhase("exit")}
+              onAnimationComplete={() => {
+                setPhase("exit");
+              }}
             >
               <svg
                 viewBox="0 0 1973 1203"

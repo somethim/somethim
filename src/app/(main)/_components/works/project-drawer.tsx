@@ -15,7 +15,7 @@ export const ProjectDrawer = ({
   open,
   onClose,
   title,
-  accentColor = "#f472b6",
+  accentColor = "var(--color-accent-project)",
   children,
 }: Props) => {
   useEffect(() => {
@@ -29,7 +29,7 @@ export const ProjectDrawer = ({
     <AnimatePresence>
       {open && (
         <motion.div
-          className="fixed inset-0 z-200 flex flex-col bg-[#0A0A0A]"
+          className="fixed inset-0 z-200 flex flex-col bg-surface-panel"
           style={{ "--accent": accentColor } as CSSProperties}
           initial={{ y: "100%" }}
           animate={{ y: 0 }}

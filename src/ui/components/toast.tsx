@@ -13,7 +13,7 @@ export const Toaster = () => {
         <Toast.Root
           key={toast.id}
           toast={toast}
-          className="flex items-start gap-3 rounded-2xl border border-white/10 bg-[rgba(18,18,22,0.88)] px-4 py-3.5 shadow-[0_8px_40px_rgba(0,0,0,0.6)] backdrop-blur-2xl transition-all duration-300 data-ending-style:translate-y-2 data-starting-style:translate-y-2 data-ending-style:opacity-0 data-starting-style:opacity-0"
+          className="flex items-start gap-3 rounded-2xl border border-white/10 bg-modal-heavy px-4 py-3.5 shadow-[0_8px_40px_rgba(0,0,0,0.6)] backdrop-blur-2xl transition-all duration-300 data-ending-style:translate-y-2 data-starting-style:translate-y-2 data-ending-style:opacity-0 data-starting-style:opacity-0"
         >
           <div className="flex min-w-0 flex-1 flex-col gap-0.5">
             {toast.title && (

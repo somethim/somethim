@@ -1,4 +1,5 @@
 import { ImageResponse } from "next/og";
+import { theme } from "@/lib/theme";
 
 export const runtime = "edge";
 export const size = { width: 1200, height: 630 };
@@ -14,8 +15,7 @@ export default function OGImage() {
         alignItems: "flex-start",
         justifyContent: "flex-end",
         padding: "80px",
-        background:
-          "linear-gradient(135deg, #0d0d14 0%, #1a1025 50%, #0d0d14 100%)",
+        background: `linear-gradient(135deg, ${theme.surface} 0%, ${theme.surfaceOgMid} 50%, ${theme.surface} 100%)`,
         fontFamily: "sans-serif",
       }}
     >

@@ -313,7 +313,7 @@ export const Contact = () => {
             side="bottom"
             data-lenis-prevent
             style={{ borderRadius: "28px 28px 0 0" }}
-            className="max-h-[90dvh] overflow-y-auto border border-white/12 bg-[rgba(18,18,22,0.82)] px-6 pt-6 pb-12 text-white shadow-[0_-8px_60px_rgba(0,0,0,0.6),inset_0_1px_0_rgba(255,255,255,0.1)] backdrop-blur-[52px] backdrop-saturate-[1.8]"
+            className="max-h-[90dvh] overflow-y-auto border border-white/12 bg-modal px-6 pt-6 pb-12 text-white shadow-[0_-8px_60px_rgba(0,0,0,0.6),inset_0_1px_0_rgba(255,255,255,0.1)] backdrop-blur-[52px] backdrop-saturate-[1.8]"
             classList={{
               backdrop: "bg-black/55 backdrop-blur-[10px]",
               close: { root: "hidden" },
@@ -342,7 +342,7 @@ export const Contact = () => {
           <DialogPopup
             data-lenis-prevent
             style={{ borderRadius: 28 }}
-            className="mt-0 w-[min(720px,90vw)] border border-white/12 bg-[rgba(18,18,22,0.82)] px-12 py-12 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.1)] outline-none backdrop-blur-[52px] backdrop-saturate-[1.8]"
+            className="mt-0 w-[min(720px,90vw)] border border-white/12 bg-modal px-12 py-12 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.1)] outline-none backdrop-blur-[52px] backdrop-saturate-[1.8]"
             classList={{ backdrop: "bg-black/55 backdrop-blur-[10px]" }}
           >
             {glassOverlay("rounded-[28px]")}

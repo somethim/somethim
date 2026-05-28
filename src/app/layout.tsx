@@ -4,6 +4,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import Script from "next/script";
 import { type PropsWithChildren, Suspense } from "react";
 import { Toaster } from "@/ui/components/toast";
 import { Background } from "./(main)/_components/background";
@@ -189,6 +190,13 @@ export default ({ children }: PropsWithChildren) => (
         <Analytics />
         <SpeedInsights />
       </Toast.Provider>
+      {process.env.NODE_ENV === "development" && (
+        <Script
+          src="//unpkg.com/react-grab/dist/index.global.js"
+          crossOrigin="anonymous"
+          strategy="beforeInteractive"
+        />
+      )}
     </body>
   </html>
 );
