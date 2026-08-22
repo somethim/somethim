@@ -41,6 +41,13 @@ export default function HomePage() {
           <a href="#experience">Experience</a>
           <a href="#work">Work</a>
           <a href="#contact">Contact</a>
+          <a
+            href="https://legacy.arbikullakshi.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Legacy
+          </a>
         </nav>
       </header>
 
