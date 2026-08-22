@@ -85,7 +85,7 @@ export default function HomePage() {
               </a>
               <a
                 className="text-link"
-                href="https://www.linkedin.com/in/arbi-kullakshi-214986222/"
+                href="https://www.linkedin.com/in/arbi-kullakshi/"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -144,7 +144,7 @@ export default function HomePage() {
             GitHub <span aria-hidden="true">↗</span>
           </a>
           <a
-            href="https://www.linkedin.com/in/arbi-kullakshi-214986222/"
+            href="https://www.linkedin.com/in/arbi-kullakshi/"
             target="_blank"
             rel="noopener noreferrer"
           >

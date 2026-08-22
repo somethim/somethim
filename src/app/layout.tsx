@@ -53,7 +53,7 @@ const structuredData = {
   homeLocation: { "@type": "Place", name: "Tirana, Albania" },
   sameAs: [
     "https://github.com/somethim",
-    "https://www.linkedin.com/in/arbi-kullakshi-214986222/",
+    "https://www.linkedin.com/in/arbi-kullakshi/",
   ],
   knowsAbout: [
     "Backend systems",
