@@ -76,8 +76,21 @@ export default function HomePage() {
               <a className="button" href="/assets/arbi-kullakshi-cv.pdf">
                 Download CV <span aria-hidden="true">↓</span>
               </a>
-              <a className="text-link" href="https://github.com/somethim">
+              <a
+                className="text-link"
+                href="https://github.com/somethim"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 GitHub <span aria-hidden="true">↗</span>
+              </a>
+              <a
+                className="text-link"
+                href="https://www.linkedin.com/in/arbi-kullakshi-214986222/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                LinkedIn <span aria-hidden="true">↗</span>
               </a>
             </div>
           </div>
@@ -125,6 +138,20 @@ export default function HomePage() {
       <footer className="site-footer">
         <p>Arbi Kullakshi · Software Engineer</p>
         <div className="footer-links">
+          <a
+            href="https://github.com/somethim"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GitHub <span aria-hidden="true">↗</span>
+          </a>
+          <a
+            href="https://www.linkedin.com/in/arbi-kullakshi-214986222/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            LinkedIn <span aria-hidden="true">↗</span>
+          </a>
           <a
             href="https://legacy.arbikullakshi.com"
             target="_blank"

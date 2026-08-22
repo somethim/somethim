@@ -51,7 +51,10 @@ const structuredData = {
   email: "mailto:contact@arbikullakshi.com",
   jobTitle: "Software Engineer",
   homeLocation: { "@type": "Place", name: "Tirana, Albania" },
-  sameAs: ["https://github.com/somethim"],
+  sameAs: [
+    "https://github.com/somethim",
+    "https://www.linkedin.com/in/arbi-kullakshi-214986222/",
+  ],
   knowsAbout: [
     "Backend systems",
     "Full-stack development",
