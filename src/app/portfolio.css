@@ -401,12 +401,11 @@ main,
 
 .signature {
   display: block;
-  width: min(100%, 13rem);
+  width: min(100%, 11rem);
   height: auto;
-  margin: 1.25rem 0 -0.5rem auto;
-  color: var(--text-soft);
+  color: var(--text);
   fill: currentColor;
-  opacity: 0.82;
+  opacity: 0.72;
 }
 
 .evidence {

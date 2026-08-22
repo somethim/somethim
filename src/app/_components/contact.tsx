@@ -1,4 +1,5 @@
 import { ContactForm } from "./contact-form";
+import { Signature } from "./signature";
 
 export const Contact = () => (
   <section className="contact" id="contact" aria-labelledby="contact-title">
@@ -57,6 +58,11 @@ export const Contact = () => (
       <a href="mailto:contact@arbikullakshi.com">
         contact@arbikullakshi.com <span aria-hidden="true">↗</span>
       </a>
+    </div>
+
+    <div className="signature-signoff">
+      <span>A personal site, built and operated by</span>
+      <Signature />
     </div>
   </section>
 );

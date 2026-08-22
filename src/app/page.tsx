@@ -3,7 +3,6 @@ import { Contact } from "./_components/contact";
 import { Experience } from "./_components/experience";
 import { OpenSource } from "./_components/open-source";
 import { Projects } from "./_components/projects";
-import { Signature } from "./_components/signature";
 
 const profile = [
   ["Experience", "5+ years"],
@@ -112,7 +111,6 @@ export default function HomePage() {
               <span />
               <span />
             </div>
-            <Signature />
           </aside>
         </section>
 

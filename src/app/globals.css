@@ -296,6 +296,19 @@
   text-decoration: none;
 }
 
+.signature-signoff {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1.25rem;
+  padding-top: clamp(2rem, 5vw, 3.5rem);
+  color: var(--text-muted);
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
 @media (max-width: 56rem) {
   .contact-layout {
     grid-template-columns: 1fr;
@@ -341,6 +354,12 @@
 
   .direct-contact a {
     overflow-wrap: anywhere;
+  }
+
+  .signature-signoff {
+    align-items: flex-end;
+    flex-direction: column;
+    gap: 0.5rem;
   }
 }
 
