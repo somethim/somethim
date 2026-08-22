@@ -1,0 +1,16 @@
+WEBVTT
+
+00:00.000 --> 00:12.000
+The simulated robot begins mapping rooms while the localization error chart records sensor-fusion accuracy.
+
+00:12.000 --> 00:28.000
+The robot follows clearance-aware routes, detects dirt and obstacles, and replans between connected rooms.
+
+00:28.000 --> 00:45.000
+The occupancy map fills with traversed paths while delayed encoder, IMU, beacon, and LiDAR measurements are replayed in timestamp order.
+
+00:45.000 --> 01:02.000
+The robot completes the remaining reachable rooms and routes toward its docking station.
+
+01:02.000 --> 01:13.000
+The final map shows the completed traversal, detected obstacles, cleaned dirt, and the robot returned to dock.
