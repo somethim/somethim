@@ -1,0 +1,60 @@
+.footer-btn {
+    background: none;
+    border: 0;
+    border-bottom: 1px solid var(--border);
+    padding: 0;
+    color: var(--text-muted);
+    font: inherit;
+    letter-spacing: inherit;
+    text-transform: inherit;
+    cursor: pointer;
+    transition:
+        color 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.footer-btn:hover {
+    color: var(--signal-bright);
+    border-color: var(--signal);
+}
+
+.cookie-banner {
+    position: fixed;
+    left: 1.5rem;
+    bottom: 1.5rem;
+    z-index: 60;
+    width: min(24rem, calc(100vw - 3rem));
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--surface);
+    padding: 1.1rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    font-family: var(--mono);
+    box-shadow: 0 1rem 3rem rgb(0 0 0 / 35%);
+}
+
+.cookie-banner[hidden] {
+    display: none;
+}
+
+.cookie-banner p {
+    font-size: 0.78rem;
+    color: var(--text-soft);
+    line-height: 1.55;
+}
+
+.cookie-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+}
+
+.button-primary.small,
+.button-ghost.small,
+.button-danger.small {
+    padding: 0.45rem 0.8rem;
+    font-size: 0.66rem;
+}

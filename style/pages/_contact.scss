@@ -1,0 +1,137 @@
+.contacts-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    flex: 1;
+}
+
+.contacts-list {
+    display: flex;
+    flex-direction: column;
+    width: 22rem;
+    max-width: 100%;
+    border: 1px solid var(--border);
+    border-bottom: 0;
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: var(--surface);
+}
+
+.contact-button {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid var(--border);
+    text-decoration: none;
+    color: var(--text);
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.contact-button:hover {
+    background: var(--surface-interactive);
+}
+
+.contact-button:hover .contact-label {
+    color: var(--signal-bright);
+}
+
+.contact-button svg {
+    flex-shrink: 0;
+    color: var(--text-muted);
+}
+
+.contact-label {
+    font-size: 0.78rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: color 0.2s ease;
+}
+
+.contact-sub {
+    display: block;
+    font-size: 0.66rem;
+    color: var(--text-muted);
+    letter-spacing: 0.02em;
+    text-transform: none;
+}
+
+.direct-note {
+    color: var(--text-muted);
+    font-size: 0.68rem;
+    letter-spacing: 0.04em;
+}
+
+.direct-note a {
+    color: var(--signal-bright);
+    text-decoration: none;
+}
+
+.site-footer {
+    width: 100%;
+    max-width: 48rem;
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    color: var(--text-muted);
+    font-size: 0.62rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+@media (max-width: 640px) {
+    .navbar {
+        padding: 1.5rem 1rem;
+    }
+    .nav-content {
+        gap: 1rem;
+    }
+    .main-content {
+        padding: 1.5rem 1rem;
+    }
+    .home-logo {
+        white-space: normal;
+    }
+    .evidence {
+        grid-template-columns: repeat(2, 1fr);
+        border-right: 1px solid var(--border);
+        border-bottom: 0;
+    }
+    .evidence div {
+        border-right: 0;
+        border-bottom: 1px solid var(--border);
+    }
+    .card {
+        padding: 1.125rem;
+    }
+    .card-header {
+        flex-wrap: wrap;
+    }
+    .book-grid {
+        grid-template-columns: 1fr;
+    }
+    .home-hero {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.25rem;
+    }
+    .site-footer {
+        flex-direction: column;
+    }
+    .corner-tl,
+    .corner-tr,
+    .corner-bl,
+    .corner-br {
+        display: none;
+    }
+    .hero-grid-square,
+    .hero-dot {
+        display: none;
+    }
+}

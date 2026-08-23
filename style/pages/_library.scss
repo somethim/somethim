@@ -1,0 +1,191 @@
+.page-title-path {
+    font-family: var(--mono);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.title-cursor {
+    display: inline-block;
+    width: 0.5em;
+    height: 0.85em;
+    background: var(--signal);
+    animation: blink 1.6s step-end infinite;
+}
+
+.book-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    width: 100%;
+}
+
+.book-status {
+    border: 1px solid var(--border);
+    color: var(--signal-bright);
+    border-color: var(--signal);
+    background: transparent;
+    padding: 0.2rem 0.55rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.62rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.book-status.reading {
+    color: var(--signal-warm);
+    border-color: var(--signal-warm);
+}
+
+.book-author {
+    color: var(--text-muted);
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-top: 0.45rem;
+}
+
+.email-dialog {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--surface);
+    color: var(--text-soft);
+    padding: 0;
+    width: min(28rem, calc(100vw - 2rem));
+    margin: auto;
+}
+
+.email-dialog::backdrop {
+    background: rgb(4 6 10 / 55%);
+    backdrop-filter: blur(3px);
+}
+
+.email-dialog-inner {
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+    font-family: var(--mono);
+}
+
+.email-dialog-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.email-dialog-head h2 {
+    font-size: 1.35rem;
+}
+
+.email-dialog-close {
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    width: 1.75rem;
+    height: 1.75rem;
+    display: grid;
+    place-items: center;
+    color: var(--text-muted);
+    font-family: inherit;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition:
+        color 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.email-dialog-close:hover {
+    color: var(--signal-bright);
+    border-color: var(--signal);
+}
+
+.field label {
+    display: block;
+    margin-bottom: 0.4rem;
+    color: var(--text);
+    font-size: 0.66rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.field input,
+.field textarea,
+.quip-row input {
+    width: 100%;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    background: var(--canvas);
+    color: var(--text-bright);
+    font: inherit;
+    font-size: 0.85rem;
+    padding: 0.65rem 0.8rem;
+    outline: none;
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.field textarea {
+    min-height: 8rem;
+    resize: vertical;
+}
+
+.field input:hover,
+.field textarea:hover,
+.quip-row input:hover {
+    border-color: var(--text-muted);
+}
+.field input:focus,
+.field textarea:focus,
+.quip-row input:focus {
+    border-color: var(--signal);
+    box-shadow: 0 0 0 1px var(--signal);
+}
+
+.email-dialog-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--border);
+}
+
+.form-status {
+    color: var(--text-muted);
+    font-size: 0.64rem;
+    letter-spacing: 0.03em;
+}
+
+.button-primary {
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+    gap: 0.55rem;
+    border: 1px solid var(--signal);
+    border-radius: var(--radius-sm);
+    background: var(--signal);
+    color: var(--canvas);
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    padding: 0.65rem 1.1rem;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.button-primary:hover {
+    background: var(--signal-bright);
+    border-color: var(--signal-bright);
+}
+.button-primary:disabled {
+    cursor: wait;
+    opacity: 0.7;
+}

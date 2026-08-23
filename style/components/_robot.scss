@@ -1,0 +1,275 @@
+.home-hero {
+    display: flex;
+    align-items: flex-end;
+    gap: 2rem;
+}
+
+.sprite-slot {
+    display: block;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+
+    rotate: 0deg;
+    translate: 0px 0px;
+    transition:
+        rotate 1.4s ease,
+        translate 1.4s ease;
+    width: 84px;
+    height: 84px;
+    flex-shrink: 0;
+    position: relative;
+    cursor: pointer;
+    animation: sprite-bob 3.2s ease-in-out infinite;
+}
+
+.sprite {
+    display: block;
+    width: 7px;
+    height: 7px;
+    background: transparent;
+    box-shadow:
+        35px 7px 0 var(--signal),
+        14px 14px 0 var(--signal),
+        21px 14px 0 var(--signal),
+        28px 14px 0 var(--signal),
+        35px 14px 0 var(--signal),
+        42px 14px 0 var(--signal),
+        49px 14px 0 var(--signal),
+        56px 14px 0 var(--signal),
+        63px 14px 0 var(--signal),
+        14px 21px 0 var(--signal),
+        21px 21px 0 var(--signal),
+        28px 21px 0 var(--signal),
+        35px 21px 0 var(--signal),
+        42px 21px 0 var(--signal),
+        49px 21px 0 var(--signal),
+        56px 21px 0 var(--signal),
+        63px 21px 0 var(--signal),
+        14px 28px 0 var(--signal),
+        21px 28px 0 var(--signal),
+        28px 28px 0 var(--canvas),
+        35px 28px 0 var(--signal),
+        42px 28px 0 var(--signal),
+        49px 28px 0 var(--canvas),
+        56px 28px 0 var(--signal),
+        63px 28px 0 var(--signal),
+        14px 35px 0 var(--signal),
+        21px 35px 0 var(--signal),
+        28px 35px 0 var(--signal),
+        35px 35px 0 var(--signal),
+        42px 35px 0 var(--signal),
+        49px 35px 0 var(--signal),
+        56px 35px 0 var(--signal),
+        63px 35px 0 var(--signal),
+        21px 42px 0 var(--signal),
+        28px 42px 0 var(--signal),
+        35px 42px 0 var(--signal),
+        42px 42px 0 var(--signal),
+        49px 42px 0 var(--signal),
+        56px 42px 0 var(--signal),
+        28px 49px 0 var(--signal),
+        35px 49px 0 var(--signal),
+        42px 49px 0 var(--signal),
+        49px 49px 0 var(--signal),
+        21px 56px 0 var(--signal),
+        28px 56px 0 var(--signal),
+        35px 56px 0 var(--signal),
+        42px 56px 0 var(--signal),
+        49px 56px 0 var(--signal),
+        56px 56px 0 var(--signal),
+        21px 63px 0 var(--signal),
+        28px 63px 0 var(--signal),
+        35px 63px 0 var(--signal),
+        42px 63px 0 var(--signal),
+        49px 63px 0 var(--signal),
+        56px 63px 0 var(--signal),
+        28px 70px 0 var(--signal),
+        49px 70px 0 var(--signal),
+        28px 77px 0 var(--signal),
+        49px 77px 0 var(--signal);
+}
+
+.sprite-eye {
+    position: absolute;
+    width: 7px;
+    height: 7px;
+
+    background: var(--robot-eye);
+    box-shadow: 0 0 6px 2px var(--robot-glow-soft);
+    scale: 1;
+    animation:
+        eye-blink 4.8s step-end infinite,
+        eye-glow 2.6s ease-in-out infinite;
+    transition:
+        translate 0.08s linear,
+        scale 1.2s ease,
+        filter 1.2s ease;
+}
+
+body.light-mode .sprite-eye {
+    background: var(--text-bright);
+    box-shadow: none;
+    animation: eye-blink 4.8s step-end infinite;
+}
+
+@keyframes eye-glow {
+    0%,
+    100% {
+        background: var(--robot-eye);
+        box-shadow: 0 0 6px 2px var(--robot-glow-soft);
+    }
+    50% {
+        background: var(--robot-eye-bright);
+        box-shadow: 0 0 14px 5px var(--robot-glow);
+    }
+}
+
+.eye-l {
+    left: 28px;
+    top: 28px;
+}
+.eye-r {
+    left: 49px;
+    top: 28px;
+}
+
+@keyframes eye-blink {
+    0%,
+    91%,
+    97%,
+    100% {
+        transform: scaleY(1);
+    }
+    92%,
+    96% {
+        transform: scaleY(0.12);
+    }
+}
+
+@keyframes sprite-bob {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-4px);
+    }
+}
+
+.sprite-antenna {
+    position: absolute;
+    left: 35px;
+    top: 0;
+    width: 7px;
+    height: 7px;
+    background: var(--signal-bright);
+    transition: background 0.3s ease;
+}
+
+.sprite-slot.typing .sprite-antenna {
+    animation: antenna-tx 0.18s steps(2) infinite;
+}
+
+@keyframes antenna-tx {
+    0%,
+    100% {
+        background: var(--tx-color, var(--signal-warm));
+        box-shadow: 0 0 6px 2px var(--tx-color, var(--signal-warm));
+    }
+    50% {
+        background: var(--signal-bright);
+        box-shadow: 0 0 8px 3px var(--signal-glow);
+    }
+}
+
+.sprite-slot.alert {
+    animation: robot-startle 0.55s ease;
+}
+
+@keyframes robot-startle {
+    0% {
+        transform: translateY(0);
+    }
+    25% {
+        transform: translateY(-12px) rotate(3deg);
+    }
+    45% {
+        transform: translateY(0);
+    }
+    60% {
+        transform: translateY(-5px) rotate(-2deg);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.sprite-slot.alert .sprite-eye {
+    scale: 1.3;
+    filter: brightness(1.25);
+}
+
+.sprite-slot.alert .sprite-antenna {
+    animation: antenna-alarm 0.22s steps(2) infinite;
+}
+
+@keyframes antenna-alarm {
+    0%,
+    100% {
+        background: var(--flash-red);
+        box-shadow: 0 0 8px 3px var(--flash-red);
+    }
+    50% {
+        background: var(--signal-bright);
+        box-shadow: none;
+    }
+}
+
+.sprite-slot.jump {
+    animation: robot-jump 0.6s cubic-bezier(0.3, 0, 0.2, 1);
+}
+
+@keyframes robot-jump {
+    0% {
+        transform: translateY(0) scaleY(1);
+    }
+    12% {
+        transform: translateY(2px) scaleY(0.88);
+    }
+    40% {
+        transform: translateY(-26px) scaleY(1.06);
+    }
+    62% {
+        transform: translateY(0) scaleY(0.9);
+    }
+    78% {
+        transform: translateY(-9px);
+    }
+    100% {
+        transform: translateY(0) scaleY(1);
+    }
+}
+
+.nav-robot {
+    display: block;
+    width: 2rem;
+    height: 2rem;
+}
+
+.nav-robot .sprite-scale {
+    display: block;
+    width: 84px;
+    height: 84px;
+    transform: scale(0.381);
+    transform-origin: top left;
+}
+
+button.contact-button {
+    width: 100%;
+    background: none;
+    border: 0;
+    border-bottom: 1px solid var(--border);
+    font-family: inherit;
+    text-align: left;
+    cursor: pointer;
+}

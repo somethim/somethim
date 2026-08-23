@@ -1,0 +1,66 @@
+.quip-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.quip-row input {
+    flex: 1;
+}
+
+.consent-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.consent-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    background: var(--surface-raised);
+    padding: 0.8rem 1rem;
+}
+
+.consent-name {
+    color: var(--text);
+    font-size: 0.72rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.consent-desc {
+    color: var(--text-muted);
+    font-size: 0.66rem;
+    letter-spacing: 0.02em;
+    margin-top: 0.3rem;
+}
+
+.consent-toggle {
+    flex-shrink: 0;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    background: transparent;
+    color: var(--text-muted);
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.6rem;
+    cursor: pointer;
+    transition:
+        color 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.consent-toggle[aria-pressed="true"] {
+    color: var(--signal-bright);
+    border-color: var(--signal);
+}
+.consent-toggle:disabled {
+    cursor: default;
+    opacity: 0.65;
+}

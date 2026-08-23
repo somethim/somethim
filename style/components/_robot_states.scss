@@ -1,0 +1,232 @@
+.sprite-slot.party {
+    animation: robot-dance 0.45s ease-in-out infinite;
+}
+
+@keyframes robot-dance {
+    0%,
+    100% {
+        transform: translateY(0) rotate(-8deg);
+    }
+    25% {
+        transform: translateY(-10px) rotate(0);
+    }
+    50% {
+        transform: translateY(0) rotate(8deg);
+    }
+    75% {
+        transform: translateY(-10px) rotate(0);
+    }
+}
+
+.sprite-slot.party .sprite-eye {
+    animation: eye-party 0.6s linear infinite;
+}
+
+@keyframes eye-party {
+    0%,
+    100% {
+        background: var(--robot-eye);
+        box-shadow: 0 0 10px 3px var(--robot-glow);
+    }
+    33% {
+        background: var(--signal-bright);
+        box-shadow: 0 0 10px 3px var(--signal);
+    }
+    66% {
+        background: var(--signal-lavender);
+        box-shadow: 0 0 10px 3px var(--signal-lavender);
+    }
+}
+
+.sprite-slot.party .sprite-antenna {
+    animation: antenna-tx 0.12s steps(2) infinite;
+}
+
+.sprite-slot.drowsy {
+    animation:
+        sprite-bob 3.2s ease-in-out infinite,
+        robot-nod 4.5s ease-in-out infinite;
+}
+
+@keyframes robot-nod {
+    0%,
+    100% {
+        rotate: 0deg;
+        translate: 0px 0px;
+    }
+    45% {
+        rotate: -4deg;
+        translate: 0px 3px;
+    }
+    62% {
+        rotate: -7deg;
+        translate: 0px 5px;
+    }
+    72% {
+        rotate: -6deg;
+        translate: 0px 4px;
+    }
+    80% {
+        rotate: 1deg;
+        translate: 0px -2px;
+    }
+    88% {
+        rotate: 0deg;
+        translate: 0px 0px;
+    }
+}
+
+.sprite-slot.drowsy .sprite-eye {
+    scale: 1 0.55;
+    filter: brightness(0.8);
+}
+
+.sprite-slot.drowsy .sprite-antenna {
+    opacity: 0.7;
+    transition: opacity 1.2s ease;
+}
+
+.sprite-slot.asleep {
+    animation: none;
+    rotate: -5deg;
+    translate: 0px 3px;
+}
+
+.sprite-slot.asleep .sprite-eye {
+    animation: none;
+    scale: 1 0.12;
+    filter: brightness(0.55);
+    background: var(--robot-eye);
+    box-shadow: 0 0 6px 2px var(--robot-glow-soft);
+}
+
+.sprite-slot.asleep .sprite-antenna {
+    animation: none;
+    opacity: 0.45;
+    transition: opacity 1.2s ease;
+}
+
+.sprite-slot.asleep::before,
+.sprite-slot.asleep::after {
+    position: absolute;
+    top: -4px;
+    right: -8px;
+    font-family: var(--mono);
+    color: var(--text-muted);
+    pointer-events: none;
+    opacity: 0;
+    animation: zzz 3s ease-out infinite;
+}
+
+.sprite-slot.asleep::before {
+    content: "z";
+    font-size: 0.85rem;
+}
+
+.sprite-slot.asleep::after {
+    content: "z";
+    font-size: 0.6rem;
+    right: -2px;
+    animation-delay: 1.5s;
+}
+
+@keyframes zzz {
+    0% {
+        opacity: 0;
+        translate: 0 4px;
+    }
+    25% {
+        opacity: 0.9;
+    }
+    100% {
+        opacity: 0;
+        translate: 14px -22px;
+    }
+}
+
+body.light-mode .sprite-slot.asleep .sprite-eye {
+    background: var(--text-bright);
+    box-shadow: none;
+}
+
+.sprite-slot.waking {
+    animation: robot-wake 1.1s ease-out;
+}
+
+@keyframes robot-wake {
+    0% {
+        transform: translateY(2px);
+    }
+    55% {
+        transform: translateY(2px);
+    }
+    75% {
+        transform: translateY(-4px) scaleY(1.05);
+    }
+    100% {
+        transform: translateY(0) scaleY(1);
+    }
+}
+
+.sprite-slot.waking .sprite-eye {
+    animation: eye-wake 1.1s ease-out both;
+}
+
+@keyframes eye-wake {
+    0% {
+        transform: scaleY(0.12);
+        box-shadow: none;
+    }
+    18% {
+        transform: scaleY(0.5);
+    }
+    30% {
+        transform: scaleY(0.12);
+    }
+    48% {
+        transform: scaleY(0.75);
+    }
+    58% {
+        transform: scaleY(0.2);
+    }
+    80% {
+        transform: scaleY(1);
+    }
+    100% {
+        transform: scaleY(1);
+        box-shadow: 0 0 6px 2px var(--robot-glow-soft);
+    }
+}
+
+.sprite-slot.waking .sprite-antenna {
+    animation: antenna-wake 1.1s ease-out both;
+}
+
+@keyframes antenna-wake {
+    0% {
+        opacity: 0.45;
+        box-shadow: none;
+    }
+    18% {
+        opacity: 0.85;
+    }
+    30% {
+        opacity: 0.5;
+    }
+    48% {
+        opacity: 0.9;
+    }
+    58% {
+        opacity: 0.55;
+    }
+    80% {
+        opacity: 1;
+        background: var(--signal-warm);
+        box-shadow: 0 0 6px 2px var(--signal-warm);
+    }
+    100% {
+        opacity: 1;
+        background: var(--signal-bright);
+        box-shadow: none;
+    }
+}

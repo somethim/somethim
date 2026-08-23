@@ -1,0 +1,43 @@
+.eyebrow-err {
+    color: var(--flash-red);
+}
+
+.eyebrow-err .status-dot {
+    background: var(--flash-red);
+    box-shadow: 0 0 0 0.3rem rgb(248 113 113 / 15%);
+}
+
+.sprite-slot.lost {
+    rotate: 4deg;
+}
+
+.sprite-slot.lost .eye-l {
+    scale: 1.15;
+}
+.sprite-slot.lost .eye-r {
+    scale: 0.75;
+}
+
+.sprite-slot.lost::before,
+.sprite-slot.lost::after {
+    position: absolute;
+    top: -4px;
+    right: -8px;
+    font-family: var(--mono);
+    color: var(--text-muted);
+    pointer-events: none;
+    opacity: 0;
+    animation: zzz 3.4s ease-out infinite;
+}
+
+.sprite-slot.lost::before {
+    content: "?";
+    font-size: 0.85rem;
+}
+
+.sprite-slot.lost::after {
+    content: "?";
+    font-size: 0.6rem;
+    right: -2px;
+    animation-delay: 1.7s;
+}
