@@ -1,5 +1,6 @@
 // 404 quips — design-time stand-in for the backend-managed list
-// (edited in admin → Profile → "404 quips" once the Leptos backend exists).
+// (edited at admin → Quips once the Leptos backend exists).
+// Plain strings; [label](url) renders as a link.
 window.QUIPS = [
   "It's dangerous to go alone — take this:",
   "Your page is in another castle.",
@@ -18,4 +19,8 @@ window.QUIPS = [
   "Number 5 is alive. This page is not.",
   "Hasta la vista, page.",
   "Does not compute. Does not compute. Does not—",
+  "Houston, we have a problem — this page has left orbit.",
+  "DON'T WORRY IF IT LOOKS STUCK.",
+  "Yer not ready for the high seas, son.",
+  "To report this issue, please [click here](https://www.youtube.com/watch?v=iik25wqIuFo).",
 ];

@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:opsz,wght@14..32,400..700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=43">
+  <link rel="stylesheet" href="styles.css?v=45">
 </head>
 <body>
   <div class="corner-tl"></div><div class="corner-tr"></div>
@@ -47,7 +47,7 @@
             <a href="admin-posts.html">Posts <span class="admin-count">3</span></a>
             <a href="admin-messages.html">Messages <span class="admin-count">2</span></a>
             <a href="admin-metrics.html">Metrics <span class="admin-count">4</span></a>
-            <a href="admin-quips.html" class="active">Quips <span class="admin-count">17</span></a>
+            <a href="admin-quips.html" class="active">Quips <span class="admin-count">21</span></a>
             <a href="admin-profile.html">Profile</a>
           </nav>
         </aside>
@@ -62,7 +62,7 @@
               <button type="button" class="button-ghost small">＋ Add quip</button>
             </div>
 
-            <p class="admin-note">One is shown at random under the lost robot on every 404.</p>
+            <p class="admin-note">One is shown at random under the lost robot on every 404. Write [label](url) to embed a link.</p>
 
             <div class="quip-row">
               <input type="text" value="It's dangerous to go alone — take this:">
@@ -132,6 +132,22 @@
               <input type="text" value="Does not compute. Does not compute. Does not—">
               <button type="button" class="button-danger small">Remove</button>
             </div>
+            <div class="quip-row">
+              <input type="text" value="Houston, we have a problem — this page has left orbit.">
+              <button type="button" class="button-danger small">Remove</button>
+            </div>
+            <div class="quip-row">
+              <input type="text" value="DON'T WORRY IF IT LOOKS STUCK.">
+              <button type="button" class="button-danger small">Remove</button>
+            </div>
+            <div class="quip-row">
+              <input type="text" value="Yer not ready for the high seas, son.">
+              <button type="button" class="button-danger small">Remove</button>
+            </div>
+            <div class="quip-row">
+              <input type="text" value="To report this issue, please [click here](https://www.youtube.com/watch?v=iik25wqIuFo).">
+              <button type="button" class="button-danger small">Remove</button>
+            </div>
 
             <div class="admin-edit-footer">
               <p class="admin-note">Changes publish to the live site on save.</p>
@@ -151,6 +167,6 @@
     </footer>
   </div>
 
-  <script src="app.js?v=43"></script>
+  <script src="app.js?v=45"></script>
 </body>
 </html>

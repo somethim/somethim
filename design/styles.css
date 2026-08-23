@@ -320,6 +320,20 @@ body.light-mode .dark-mode-toggle .icon-moon { display: block; }
     font-size: 1.02rem;
 }
 
+/* The quip always sits on its own line under the lead sentence */
+#quip {
+    display: block;
+    margin-top: 0.5rem;
+}
+
+/* Links inside a 404 quip */
+.home-summary a {
+    color: var(--signal-bright);
+    text-decoration: underline;
+    text-decoration-thickness: 0.08em;
+    text-underline-offset: 0.22em;
+}
+
 /* Evidence metrics strip */
 .evidence {
     display: grid;

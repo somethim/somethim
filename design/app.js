@@ -234,11 +234,26 @@
 })();
 
 // ---- 404 quip: a random line on every load (list lives in quips.js) ----
+// Quips are plain strings; a [label](url) span becomes a real link.
 (function initQuip() {
   const el = document.getElementById("quip");
   const quips = window.QUIPS || [];
   if (!el || !quips.length) return;
-  el.textContent = quips[Math.floor(Math.random() * quips.length)];
+  const quip = quips[Math.floor(Math.random() * quips.length)];
+  el.textContent = "";
+  // split() with a capturing regex yields [text, label, url, text, ...]
+  const parts = quip.split(/\[([^\]]+)\]\(([^)\s]+)\)/);
+  for (let i = 0; i < parts.length; i += 3) {
+    el.append(parts[i] || "");
+    if (parts[i + 1]) {
+      const a = document.createElement("a");
+      a.href = parts[i + 2];
+      a.target = "_blank";
+      a.rel = "noopener noreferrer";
+      a.textContent = parts[i + 1];
+      el.append(a);
+    }
+  }
 })();
 
 // ---- Cookie consent: first-visit banner + settings dialog from the footer ----
