@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:opsz,wght@14..32,400..700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=23">
+  <link rel="stylesheet" href="styles.css?v=43">
 </head>
 <body>
   <div class="corner-tl"></div><div class="corner-tr"></div>
@@ -46,11 +46,17 @@
             <a href="admin-library.html">Library <span class="admin-count">6</span></a>
             <a href="admin-posts.html" class="active">Posts <span class="admin-count">3</span></a>
             <a href="admin-messages.html">Messages <span class="admin-count">2</span></a>
+            <a href="admin-metrics.html">Metrics <span class="admin-count">4</span></a>
+            <a href="admin-quips.html">Quips <span class="admin-count">17</span></a>
             <a href="admin-profile.html">Profile</a>
           </nav>
         </aside>
 
         <div class="admin-content">
+          <div class="admin-toolbar">
+            <button type="button" class="button-primary">＋ New post</button>
+          </div>
+
           <div class="admin-table" aria-label="Posts">
             <div class="admin-table-head">
               <span>Title</span><span>Category</span><span>Published</span><span>Status</span><span></span>
@@ -148,6 +154,7 @@ fn drain_ready(&amp;mut self, now: SimTime) -&gt; Vec&lt;Measurement&gt; {
             <div class="admin-edit-footer">
               <p class="admin-note">Changes publish to the live site on save.</p>
               <div style="display: flex; gap: 0.75rem;">
+                <button type="button" class="button-danger">Delete</button>
                 <button type="button" class="button-ghost">Preview</button>
                 <button type="button" class="button-ghost">Discard</button>
                 <button type="button" class="button-primary">Save changes ↘</button>
@@ -160,10 +167,10 @@ fn drain_ready(&amp;mut self, now: SimTime) -&gt; Vec&lt;Measurement&gt; {
 
     <footer class="site-footer">
       <span>Arbi Kullakshi · Admin</span>
-      <span>Signed in as arbi</span>
+      <span>Signed in as arbi · <a href="admin-login.html">Sign out</a></span>
     </footer>
   </div>
 
-  <script src="app.js?v=23"></script>
+  <script src="app.js?v=43"></script>
 </body>
 </html>

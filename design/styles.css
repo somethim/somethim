@@ -35,6 +35,8 @@
     --robot-eye: #ff8c3b;
     --robot-eye-bright: #ffa95f;
     --robot-glow: #ff8c3b;
+    --flash-red: #f87171;
+    --flash-green: #4ade80;
     --robot-glow-soft: rgb(255 140 59 / 75%);
     --radius: 0.75rem;
     --radius-sm: 0.5rem;
@@ -146,19 +148,6 @@ h1, h2, h3 {
 .nav-left { display: flex; justify-content: flex-start; align-items: center; gap: 0.8rem; }
 .nav-center { display: flex; gap: clamp(1.25rem, 4vw, 2.5rem); align-items: center; justify-content: center; }
 .nav-right { display: flex; justify-content: flex-end; align-items: center; gap: 1.25rem; }
-
-.wordmark-mark {
-    display: grid;
-    width: 2rem;
-    height: 2rem;
-    place-items: center;
-    border: 1px solid var(--signal);
-    color: var(--signal-bright);
-    font-size: 0.7rem;
-    letter-spacing: 0.06em;
-    text-decoration: none;
-    border-radius: var(--radius-sm);
-}
 
 .nav-link {
     color: var(--text-soft);
@@ -688,7 +677,8 @@ a.card {
 }
 
 .field input,
-.field textarea {
+.field textarea,
+.quip-row input {
     width: 100%;
     border: 1px solid var(--border);
     border-radius: var(--radius-sm);
@@ -703,8 +693,8 @@ a.card {
 
 .field textarea { min-height: 8rem; resize: vertical; }
 
-.field input:hover, .field textarea:hover { border-color: var(--text-muted); }
-.field input:focus, .field textarea:focus { border-color: var(--signal); box-shadow: 0 0 0 1px var(--signal); }
+.field input:hover, .field textarea:hover, .quip-row input:hover { border-color: var(--text-muted); }
+.field input:focus, .field textarea:focus, .quip-row input:focus { border-color: var(--signal); box-shadow: 0 0 0 1px var(--signal); }
 
 .email-dialog-footer {
     display: flex;
@@ -721,11 +711,11 @@ a.card {
     letter-spacing: 0.03em;
 }
 
-.form-status.success { color: var(--signal-bright); }
 
 .button-primary {
     display: inline-flex;
     align-items: center;
+    white-space: nowrap;
     gap: 0.55rem;
     border: 1px solid var(--signal);
     border-radius: var(--radius-sm);
@@ -900,13 +890,40 @@ body.light-mode .sprite-eye {
 
 @keyframes antenna-tx {
     0%, 100% {
-        background: var(--signal-warm);
-        box-shadow: 0 0 6px 2px var(--signal-warm);
+        background: var(--tx-color, var(--signal-warm));
+        box-shadow: 0 0 6px 2px var(--tx-color, var(--signal-warm));
     }
     50% {
         background: var(--signal-bright);
         box-shadow: 0 0 8px 3px var(--signal-glow);
     }
+}
+
+/* Caught-you-snooping alert: startle hop, wide eyes, red strobing antenna */
+.sprite-slot.alert {
+    animation: robot-startle 0.55s ease;
+}
+
+@keyframes robot-startle {
+    0% { transform: translateY(0); }
+    25% { transform: translateY(-12px) rotate(3deg); }
+    45% { transform: translateY(0); }
+    60% { transform: translateY(-5px) rotate(-2deg); }
+    100% { transform: translateY(0); }
+}
+
+.sprite-slot.alert .sprite-eye {
+    scale: 1.3;
+    filter: brightness(1.25);
+}
+
+.sprite-slot.alert .sprite-antenna {
+    animation: antenna-alarm 0.22s steps(2) infinite;
+}
+
+@keyframes antenna-alarm {
+    0%, 100% { background: var(--flash-red); box-shadow: 0 0 8px 3px var(--flash-red); }
+    50% { background: var(--signal-bright); box-shadow: none; }
 }
 
 /* Jump on click (declared after .typing so it wins while both apply) */
@@ -1455,19 +1472,7 @@ figure.media { margin: 1.6rem 0; }
     .media-grid { grid-template-columns: 1fr; }
 }
 
-/* ---------- Hero robot: flip on direct click, party easter egg ---------- */
-
-.sprite-slot.flip {
-    animation: robot-flip 0.7s cubic-bezier(0.3, 0, 0.2, 1);
-}
-
-@keyframes robot-flip {
-    0% { transform: translateY(0) rotate(0); }
-    15% { transform: translateY(2px) scaleY(0.88) rotate(0); }
-    60% { transform: translateY(-30px) rotate(360deg); }
-    80% { transform: translateY(0) rotate(360deg) scaleY(0.9); }
-    100% { transform: translateY(0) rotate(360deg); }
-}
+/* ---------- Hero robot: party easter egg (seven quick taps) ---------- */
 
 /* Seven quick taps on the big robot: party mode (last so it wins the cascade) */
 .sprite-slot.party {
@@ -1575,18 +1580,10 @@ figure.media { margin: 1.6rem 0; }
     100% { opacity: 0; translate: 14px -22px; }
 }
 
-.sprite-slot.asleep .sprite-eye {
-    animation: none;
-    transform: scaleY(0.12);
-    background: var(--robot-eye);
+/* Light theme keeps its dark eyes through every sleep stage */
+body.light-mode .sprite-slot.asleep .sprite-eye {
+    background: var(--text-bright);
     box-shadow: none;
-    transition: transform 0.4s ease;
-}
-
-.sprite-slot.asleep .sprite-antenna {
-    animation: none;
-    opacity: 0.45;
-    transition: opacity 0.4s ease;
 }
 
 /* ---------- Waking up: eyes flutter open over ~1s, small stretch ---------- */
@@ -1614,4 +1611,251 @@ figure.media { margin: 1.6rem 0; }
     58% { transform: scaleY(0.2); }
     80% { transform: scaleY(1); }
     100% { transform: scaleY(1); box-shadow: 0 0 6px 2px var(--robot-glow-soft); }
+}
+
+/* The antenna boots up on the same stutter as the eyes, with a warm
+   power-on flash right as they win */
+.sprite-slot.waking .sprite-antenna {
+    animation: antenna-wake 1.1s ease-out both;
+}
+
+@keyframes antenna-wake {
+    0% { opacity: 0.45; box-shadow: none; }
+    18% { opacity: 0.85; }
+    30% { opacity: 0.5; }
+    48% { opacity: 0.9; }
+    58% { opacity: 0.55; }
+    80% { opacity: 1; background: var(--signal-warm); box-shadow: 0 0 6px 2px var(--signal-warm); }
+    100% { opacity: 1; background: var(--signal-bright); box-shadow: none; }
+}
+
+/* ---------- Cookies: consent banner + settings dialog ---------- */
+
+/* Footer "Cookies" trigger, styled to match the footer links */
+.footer-btn {
+    background: none;
+    border: 0;
+    border-bottom: 1px solid var(--border);
+    padding: 0;
+    color: var(--text-muted);
+    font: inherit;
+    letter-spacing: inherit;
+    text-transform: inherit;
+    cursor: pointer;
+    transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.footer-btn:hover { color: var(--signal-bright); border-color: var(--signal); }
+
+.cookie-banner {
+    position: fixed;
+    left: 1.5rem;
+    bottom: 1.5rem;
+    z-index: 60;
+    width: min(24rem, calc(100vw - 3rem));
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--surface);
+    padding: 1.1rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    font-family: var(--mono);
+    box-shadow: 0 1rem 3rem rgb(0 0 0 / 35%);
+}
+
+.cookie-banner[hidden] { display: none; }
+
+.cookie-banner p {
+    font-size: 0.78rem;
+    color: var(--text-soft);
+    line-height: 1.55;
+}
+
+.cookie-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+}
+
+.button-primary.small, .button-ghost.small, .button-danger.small { padding: 0.45rem 0.8rem; font-size: 0.66rem; }
+
+/* Admin: 404 quip list rows */
+.quip-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.quip-row input { flex: 1; }
+
+.consent-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.consent-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    background: var(--surface-raised);
+    padding: 0.8rem 1rem;
+}
+
+.consent-name {
+    color: var(--text);
+    font-size: 0.72rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.consent-desc {
+    color: var(--text-muted);
+    font-size: 0.66rem;
+    letter-spacing: 0.02em;
+    margin-top: 0.3rem;
+}
+
+/* Terminal-flavored on/off chip */
+.consent-toggle {
+    flex-shrink: 0;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    background: transparent;
+    color: var(--text-muted);
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.6rem;
+    cursor: pointer;
+    transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.consent-toggle[aria-pressed="true"] { color: var(--signal-bright); border-color: var(--signal); }
+.consent-toggle:disabled { cursor: default; opacity: 0.65; }
+
+/* ---------- 404 ---------- */
+
+.eyebrow-err { color: var(--flash-red); }
+
+.eyebrow-err .status-dot {
+    background: var(--flash-red);
+    box-shadow: 0 0 0 0.3rem rgb(248 113 113 / 15%);
+}
+
+/* Lost robot: tilted, mismatched eyes, floating question marks */
+.sprite-slot.lost {
+    rotate: 4deg;
+}
+
+.sprite-slot.lost .eye-l { scale: 1.15; }
+.sprite-slot.lost .eye-r { scale: 0.75; }
+
+.sprite-slot.lost::before,
+.sprite-slot.lost::after {
+    position: absolute;
+    top: -4px;
+    right: -8px;
+    font-family: var(--mono);
+    color: var(--text-muted);
+    pointer-events: none;
+    opacity: 0;
+    animation: zzz 3.4s ease-out infinite;
+}
+
+.sprite-slot.lost::before {
+    content: "?";
+    font-size: 0.85rem;
+}
+
+.sprite-slot.lost::after {
+    content: "?";
+    font-size: 0.6rem;
+    right: -2px;
+    animation-delay: 1.7s;
+}
+
+/* ---------- Admin: login, toolbar, destructive actions ---------- */
+
+.login-container {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-card { width: min(26rem, 100%); }
+
+.login-robot {
+    display: flex;
+    justify-content: center;
+    padding-top: 0.5rem;
+}
+
+.login-head { text-align: center; }
+
+.login-head h1 {
+    font-family: var(--mono);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    font-size: 1.3rem;
+    margin-top: 0.35rem;
+}
+
+.admin-toolbar {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: -0.5rem;
+}
+
+/* Ghost button that turns hostile on hover — delete, remove, destroy */
+.button-danger {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    background: none;
+    color: var(--text-muted);
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    padding: 0.65rem 1.1rem;
+    cursor: pointer;
+    transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.button-danger:hover { color: var(--flash-red); border-color: var(--flash-red); }
+
+/* ---------- Accessibility ---------- */
+
+/* Keyboard affordances match the hover states */
+a:focus-visible, button:focus-visible {
+    outline: 2px solid var(--signal);
+    outline-offset: 2px;
+}
+
+.card:focus-visible {
+    border-color: var(--signal);
+    background: var(--surface-raised);
+}
+
+/* The site leans on motion; honor the opt-out. Cursors stay solid. */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    .home-logo .cursor, .title-cursor { animation: none; opacity: 1; }
 }
