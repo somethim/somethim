@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zennit — Arbi Kullakshi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:opsz,wght@14..32,400..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=23">
+</head>
+<body>
+  <div class="corner-tl"></div><div class="corner-tr"></div>
+  <div class="corner-bl"></div><div class="corner-br"></div>
+
+  <div class="app-container">
+    <nav class="navbar">
+      <div class="nav-content">
+        <div class="nav-left">
+          <a class="nav-robot" href="index.html" aria-label="Arbi Kullakshi, home">
+            <span class="sprite-scale">
+              <span class="sprite-slot"><span class="sprite"></span><span class="sprite-eye eye-l"></span><span class="sprite-eye eye-r"></span><span class="sprite-antenna"></span></span>
+            </span>
+          </a>
+          <a class="nav-link" href="work.html">← ~/work</a>
+        </div>
+        <div class="nav-center">
+          <a class="nav-link" href="work.html" aria-current="page">work</a>
+          <a class="nav-link" href="projects.html">projects</a>
+          <a class="nav-link" href="library.html">library</a>
+          <a class="nav-link" href="blog.html">blog</a>
+          <a class="nav-link" href="contact.html">contact</a>
+        </div>
+        <div class="nav-right">
+          <button class="dark-mode-toggle" aria-label="Toggle theme"><svg class="icon-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg><svg class="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
+        </div>
+      </div>
+    </nav>
+
+    <main class="main-content">
+      <header class="post-header">
+        <p class="card-topline">Full-time · Jan 2024 — Present</p>
+        <h1>Zennit</h1>
+        <p class="post-meta"><span>Full Stack Engineer</span><span>SaaS infrastructure · six products</span></p>
+        <div class="detail-actions">
+          <span class="tag">Laravel</span>
+          <span class="tag">React / Next.js</span>
+          <span class="tag">PostgreSQL</span>
+          <span class="tag">Redis</span>
+          <span class="tag">Docker</span>
+          <span class="tag">Ansible</span>
+        </div>
+      </header>
+
+      <div class="facts" aria-label="Engagement facts">
+        <div><strong>9</strong><span>Platform modules</span></div>
+        <div><strong>10</strong><span>OAuth providers</span></div>
+        <div><strong>6</strong><span>Products shipped on it</span></div>
+      </div>
+
+      <article class="prose">
+        <h2>The platform</h2>
+        <p>Zennit builds SaaS products, open-source packages, and client software. My core work is the shared backend that everything runs on: a nine-module Laravel platform covering identity, authorization, billing, notifications, files, auditing, and delivery — the infrastructure each new product inherits instead of rebuilding.</p>
+
+        <h2>Identity &amp; access</h2>
+        <p>The identity module is the deepest piece: ten external OAuth providers behind one account model, passwordless email login, account linking across providers, TOTP multi-factor, and session management with auditable termination — every revocation traceable to who ended which session, when, and why.</p>
+        <ul>
+          <li>Authorization is policy-based and shared across products, with an open-sourced attribute-based access control package (<a href="https://github.com/zennit-dev/abac" target="_blank" rel="noopener noreferrer">zennit-dev/abac</a>) extracted from it.</li>
+          <li>Delivery is repeatable by design: Docker images, Ansible playbooks, and GitHub/GitLab CI pipelines shared across all six products.</li>
+        </ul>
+
+        <div class="media-grid">
+          <div>
+            <div class="media-frame">
+              <span class="media-label">identity-console.png</span>
+            </div>
+            <p class="media-caption">Session &amp; device management in the identity console.</p>
+          </div>
+          <div>
+            <div class="media-frame">
+              <span class="media-label">provider-matrix.png</span>
+            </div>
+            <p class="media-caption">Provider linking matrix across the ten OAuth integrations.</p>
+          </div>
+        </div>
+
+        <h2>Product work</h2>
+        <p>On top of the platform I build the products themselves — Laravel and Django services, React/Next.js interfaces, and React Native apps — moving between backend architecture and the screens users touch. The through-line is ownership: architecture, implementation, tests, deployment, and operation of the same system.</p>
+      </article>
+
+      <div class="post-footer">
+        <a href="work.html">← All experience</a>
+        <a href="work-detail.html">Hire A Loo →</a>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <span>Arbi Kullakshi · Software Engineer</span>
+      <span>Server-rendered · No tracking · Built with <a href="https://leptos.dev" target="_blank" rel="noopener noreferrer">Leptos</a></span>
+    </footer>
+  </div>
+
+  <script src="app.js?v=23"></script>
+</body>
+</html>

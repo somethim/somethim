@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>admin — Arbi Kullakshi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:opsz,wght@14..32,400..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=23">
+</head>
+<body>
+  <div class="corner-tl"></div><div class="corner-tr"></div>
+  <div class="corner-bl"></div><div class="corner-br"></div>
+
+  <div class="app-container">
+    <nav class="navbar">
+      <div class="nav-content">
+        <div class="nav-left">
+          <a class="nav-robot" href="index.html" aria-label="Arbi Kullakshi, home">
+            <span class="sprite-scale">
+              <span class="sprite-slot"><span class="sprite"></span><span class="sprite-eye eye-l"></span><span class="sprite-eye eye-r"></span><span class="sprite-antenna"></span></span>
+            </span>
+          </a>
+        </div>
+        <div class="nav-center">
+          <a class="nav-link" href="index.html">view site ↗</a>
+        </div>
+        <div class="nav-right">
+          <button class="dark-mode-toggle" aria-label="Toggle theme"><svg class="icon-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg><svg class="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
+        </div>
+      </div>
+    </nav>
+
+    <main class="main-content admin-main">
+      <div class="page-heading">
+        <p class="section-index">Content dashboard</p>
+        <h1 class="page-title">Projects</h1>
+      </div>
+
+      <div class="admin-layout">
+        <aside class="admin-sidebar">
+          <nav class="admin-nav">
+            <a href="admin.html" class="active">Projects <span class="admin-count">4</span></a>
+            <a href="admin-experience.html">Experience <span class="admin-count">5</span></a>
+            <a href="admin-library.html">Library <span class="admin-count">6</span></a>
+            <a href="admin-posts.html">Posts <span class="admin-count">3</span></a>
+            <a href="admin-messages.html">Messages <span class="admin-count">2</span></a>
+            <a href="admin-profile.html">Profile</a>
+          </nav>
+        </aside>
+
+        <div class="admin-content">
+          <div class="evidence admin-stats" aria-label="Content stats">
+            <div><strong>15</strong><span>Published entries</span></div>
+            <div><strong>1</strong><span>Draft</span></div>
+            <div><strong>2</strong><span>Unread messages</span></div>
+            <div><strong>Aug 21</strong><span>Last update</span></div>
+          </div>
+
+          <div class="admin-table" aria-label="Projects">
+            <div class="admin-table-head">
+              <span>Title</span><span>Category</span><span>Updated</span><span>Status</span><span></span>
+            </div>
+            <div class="admin-row">
+              <span class="entry-title">Cave Robot</span>
+              <span class="entry-cat">Robotics · University MVP</span>
+              <span class="entry-date">Aug 21, 2026</span>
+              <span class="chip-published">Published</span>
+              <button type="button" class="row-edit">Edit</button>
+            </div>
+            <div class="admin-row">
+              <span class="entry-title">Roomba</span>
+              <span class="entry-cat">Robotics · Simulation</span>
+              <span class="entry-date">Aug 14, 2026</span>
+              <span class="chip-published">Published</span>
+              <button type="button" class="row-edit">Edit</button>
+            </div>
+            <div class="admin-row">
+              <span class="entry-title">Event-Aware Traffic Prediction</span>
+              <span class="entry-cat">Research · B.Sc. Thesis</span>
+              <span class="entry-date">Jul 30, 2026</span>
+              <span class="chip-published">Published</span>
+              <button type="button" class="row-edit">Edit</button>
+            </div>
+            <div class="admin-row">
+              <span class="entry-title">Pyramid Backstage</span>
+              <span class="entry-cat">Platform · JunctionX Tirana</span>
+              <span class="entry-date">Jul 12, 2026</span>
+              <span class="chip-draft">Draft</span>
+              <button type="button" class="row-edit">Edit</button>
+            </div>
+          </div>
+
+          <section class="admin-edit" aria-label="Edit entry">
+            <div class="admin-edit-head">
+              <div>
+                <p class="section-index">Editing / Projects</p>
+                <h2>Cave Robot</h2>
+              </div>
+              <span class="chip-published">Published</span>
+            </div>
+
+            <div class="admin-field-row">
+              <div class="field">
+                <label for="edit-title">Title</label>
+                <input id="edit-title" type="text" value="Cave Robot">
+              </div>
+              <div class="field">
+                <label for="edit-category">Category</label>
+                <input id="edit-category" type="text" value="Robotics · University MVP">
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="edit-subtitle">Subtitle</label>
+              <input id="edit-subtitle" type="text" value="Autonomous cave-navigation drone">
+            </div>
+
+            <div class="field">
+              <label for="edit-description">Description</label>
+              <textarea id="edit-description">Six-crate Rust workspace integrating procedural 3D voxel caves, EKF localization, SLAM, ROS 2, and Gazebo. Clearance-weighted A* plans outbound on the known map while LiDAR builds an occupancy map for the return path.</textarea>
+            </div>
+
+            <div class="admin-field-row">
+              <div class="field">
+                <label for="edit-tags">Tags</label>
+                <input id="edit-tags" type="text" value="Rust, ROS 2, Gazebo, SLAM, A*">
+              </div>
+              <div class="field">
+                <label for="edit-link">Source link</label>
+                <input id="edit-link" type="url" value="https://github.com/somethim/cave-robot">
+              </div>
+            </div>
+
+            <div class="admin-edit-footer">
+              <p class="admin-note">Changes publish to the live site on save.</p>
+              <div style="display: flex; gap: 0.75rem;">
+                <button type="button" class="button-ghost">Discard</button>
+                <button type="button" class="button-primary">Save changes ↘</button>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <span>Arbi Kullakshi · Admin</span>
+      <span>Signed in as arbi</span>
+    </footer>
+  </div>
+
+  <script src="app.js?v=23"></script>
+</body>
+</html>
