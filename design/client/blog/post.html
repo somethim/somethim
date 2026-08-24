@@ -10,7 +10,7 @@
             href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:opsz,wght@14..32,400..700&display=swap"
             rel="stylesheet"
         />
-        <link rel="stylesheet" href="../assets/css/styles.css" />
+        <link rel="stylesheet" href="../../assets/css/styles.css" />
     </head>
     <body>
         <div class="corner-tl"></div>
@@ -26,6 +26,7 @@
                             class="nav-robot"
                             href="../index.html"
                             aria-label="Arbi Kullakshi, home"
+                            title="whoami"
                         >
                             <span class="sprite-scale">
                                 <span class="sprite-slot"
@@ -36,7 +37,6 @@
                                 ></span>
                             </span>
                         </a>
-                        <a class="nav-link" href="../blog/index.html">← ~/blog</a>
                     </div>
                     <div class="nav-center">
                         <a class="nav-link" href="../work/index.html">work</a>
@@ -45,6 +45,7 @@
                         <a class="nav-link" href="../blog/index.html" aria-current="page"
                             >blog</a
                         >
+                        <a class="nav-link" href="../now/index.html">now</a>
                         <a class="nav-link" href="../contact/index.html">contact</a>
                     </div>
                     <div class="nav-right">
@@ -90,6 +91,9 @@
 
             <main class="main-content">
                 <header class="post-header">
+                    <p class="back-crumb">
+                        <a href="../blog/index.html">← ~/blog</a>
+                    </p>
                     <p class="card-topline">Robotics · Rust</p>
                     <h1>
                         Timestamp-ordered sensor fusion for a simulated Roomba
@@ -240,6 +244,7 @@
             </footer>
         </div>
 
-        <script src="../assets/js/prototype.js"></script>
+        <script src="../../assets/js/chatter.js"></script>
+        <script src="../../assets/js/prototype.js"></script>
     </body>
 </html>

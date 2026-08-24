@@ -254,6 +254,7 @@ body.light-mode .sprite-eye {
     display: block;
     width: 2rem;
     height: 2rem;
+    position: relative;
 }
 
 .nav-robot .sprite-scale {
@@ -272,4 +273,67 @@ button.contact-button {
     font-family: inherit;
     text-align: left;
     cursor: pointer;
+}
+
+/* Chatter bubble: above the hero robot, below the nav robot (unscaled anchor) */
+.robot-bubble {
+    position: absolute;
+    bottom: calc(100% + 0.8rem);
+    left: 55%;
+    width: max-content;
+    max-width: 15rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 0.4rem 0.7rem;
+    font-size: 0.72rem;
+    line-height: 1.55;
+    color: var(--text-soft);
+    z-index: 70;
+    opacity: 0;
+    translate: 0 4px;
+    transition:
+        opacity 0.25s ease,
+        translate 0.25s ease;
+    pointer-events: none;
+}
+
+.robot-bubble::before {
+    content: "> ";
+    color: var(--signal-bright);
+}
+
+.robot-bubble::after {
+    content: "";
+    position: absolute;
+    top: calc(100% - 1px);
+    left: 0.9rem;
+    width: 7px;
+    height: 7px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-top: 0;
+}
+
+.robot-bubble.show {
+    opacity: 1;
+    translate: 0 0;
+}
+
+.nav-robot .robot-bubble {
+    bottom: auto;
+    top: calc(100% + 0.8rem);
+    left: 25%;
+    translate: 0 -4px;
+}
+
+.nav-robot .robot-bubble.show {
+    translate: 0 0;
+}
+
+.nav-robot .robot-bubble::after {
+    top: auto;
+    bottom: calc(100% - 1px);
+    border-top: 1px solid var(--border);
+    border-bottom: 0;
 }

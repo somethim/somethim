@@ -3,14 +3,14 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>work — Arbi Kullakshi</title>
+        <title>now — Arbi Kullakshi</title>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
             href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:opsz,wght@14..32,400..700&display=swap"
             rel="stylesheet"
         />
-        <link rel="stylesheet" href="../assets/css/styles.css" />
+        <link rel="stylesheet" href="../../assets/css/styles.css" />
     </head>
     <body>
         <div class="corner-tl"></div>
@@ -26,6 +26,7 @@
                             class="nav-robot"
                             href="../index.html"
                             aria-label="Arbi Kullakshi, home"
+                            title="whoami"
                         >
                             <span class="sprite-scale">
                                 <span class="sprite-slot"
@@ -38,12 +39,13 @@
                         </a>
                     </div>
                     <div class="nav-center">
-                        <a class="nav-link" href="../work/index.html" aria-current="page"
-                            >work</a
-                        >
+                        <a class="nav-link" href="../work/index.html">work</a>
                         <a class="nav-link" href="../projects/index.html">projects</a>
                         <a class="nav-link" href="../library/index.html">library</a>
                         <a class="nav-link" href="../blog/index.html">blog</a>
+                        <a class="nav-link" href="../now/index.html" aria-current="page"
+                            >now</a
+                        >
                         <a class="nav-link" href="../contact/index.html">contact</a>
                     </div>
                     <div class="nav-right">
@@ -89,145 +91,84 @@
 
             <main class="main-content">
                 <div class="page-heading">
-                    <p class="section-index">01 / Experience</p>
+                    <p class="section-index">05 / Now</p>
                     <h1 class="page-title page-title-path">
-                        <span data-path="~/work"></span
+                        <span data-path="~/now"></span
                         ><span class="title-cursor"></span>
                     </h1>
                 </div>
 
                 <div class="card-list">
-                    <a class="card" href="detail.html">
+                    <div class="card">
+                        <pre class="term" aria-label="Current status"><span
+class="term-prompt">arbi@kullakshi:~$</span> systemctl status arbi.service
+<span class="term-ok">●</span> arbi.service — software engineer
+<span class="term-key">   Loaded:</span> loaded (/home/arbi; enabled; preset: curious)
+<span class="term-key">   Active:</span> <span class="term-ok">active (running)</span> — Tirana, Albania
+<span class="term-key">    Tasks:</span> 3 of ∞
+<span class="term-key">   Memory:</span> rust is borrowing most of it
+<span class="term-key">      CPU:</span> 10× real time (simulation only)</pre>
+                    </div>
+
+                    <div class="card">
                         <div class="card-header">
                             <div>
-                                <h2 class="card-title">Zennit</h2>
+                                <h2 class="card-title">Building</h2>
                                 <p class="card-subtitle">
-                                    Full Stack Engineer · Full-time
+                                    What has my attention right now
                                 </p>
                             </div>
-                            <span class="card-meta">Jan 2024 — Present</span>
+                            <span class="card-meta">Aug 2026</span>
                         </div>
                         <div class="card-body">
                             <p>
-                                Architected a nine-module Laravel SaaS backend
-                                and identity platform — 10 OAuth providers,
-                                passwordless login, account linking, TOTP MFA,
-                                and auditable session termination.
+                                Rewriting this site in Leptos — server-rendered
+                                Rust; the design prototype you are looking at
+                                is the blueprint.
                             </p>
                             <p>
-                                Built production authorization, product
-                                interfaces, and repeatable delivery systems
-                                across six products.
+                                Simulation-first robotics: teaching an
+                                autonomous robot to misbehave at 10× real time,
+                                where mistakes are free.
                             </p>
                         </div>
                         <div class="tags">
+                            <span class="tag">Rust</span>
+                            <span class="tag">Leptos</span>
+                            <span class="tag">Robotics</span>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <div>
+                                <h2 class="card-title">Toolbox</h2>
+                                <p class="card-subtitle">
+                                    Daily drivers — the desk setup behind the
+                                    commits
+                                </p>
+                            </div>
+                        </div>
+                        <div class="tags">
+                            <span class="tag">Arch Linux</span>
+                            <span class="tag">Hyprland</span>
+                            <span class="tag">Neovim</span>
+                            <span class="tag">Rust</span>
                             <span class="tag">Laravel</span>
-                            <span class="tag">React / Next.js</span>
                             <span class="tag">PostgreSQL</span>
                             <span class="tag">Docker</span>
-                            <span class="tag">Ansible</span>
+                            <span class="tag">IBM Plex Mono</span>
                         </div>
-                    </a>
+                    </div>
 
-                    <a class="card" href="detail.html">
+                    <a class="card" href="../library/index.html">
                         <div class="card-header">
                             <div>
-                                <h2 class="card-title">Hire A Loo</h2>
+                                <h2 class="card-title">Reading</h2>
                                 <p class="card-subtitle">
-                                    Backend Developer · Contract
+                                    The current queue lives on the bookshelf →
                                 </p>
                             </div>
-                            <span class="card-meta">Aug 2025 — Jun 2026</span>
-                        </div>
-                        <div class="card-body">
-                            <p>
-                                Authored 18 CRM pull requests spanning Typesense
-                                search, web-lead ingestion, price quoting, email
-                                templating, CardDAV contacts, and legacy
-                                migrations.
-                            </p>
-                            <p>
-                                Delivered an end-to-end quotation workflow and
-                                extracted the Notifyre SMS integration into an
-                                open-source Laravel package with 183 tests.
-                            </p>
-                        </div>
-                        <div class="tags">
-                            <span class="tag">Laravel</span>
-                            <span class="tag">Typesense</span>
-                            <span class="tag">PostgreSQL</span>
-                            <span class="tag">Pest</span>
-                        </div>
-                    </a>
-
-                    <a class="card" href="detail.html">
-                        <div class="card-header">
-                            <div>
-                                <h2 class="card-title">Clickservice GmbH</h2>
-                                <p class="card-subtitle">
-                                    Full Stack Developer
-                                </p>
-                            </div>
-                            <span class="card-meta">Jan 2023 — Jan 2024</span>
-                        </div>
-                        <div class="card-body">
-                            <p>
-                                Optimized Django and PostgreSQL services with
-                                targeted raw SQL, built third-party integrations
-                                and automated reporting, and delivered
-                                React/TypeScript interfaces for production
-                                workflows.
-                            </p>
-                        </div>
-                        <div class="tags">
-                            <span class="tag">Django</span>
-                            <span class="tag">PostgreSQL</span>
-                            <span class="tag">React</span>
-                        </div>
-                    </a>
-
-                    <a class="card" href="detail.html">
-                        <div class="card-header">
-                            <div>
-                                <h2 class="card-title">Vodafone Albania</h2>
-                                <p class="card-subtitle">Mobile Developer</p>
-                            </div>
-                            <span class="card-meta">Jan 2022 — Dec 2022</span>
-                        </div>
-                        <div class="card-body">
-                            <p>
-                                Delivered React Native features for production
-                                iOS and Android applications, integrating REST
-                                APIs, WebSockets, authentication, and release
-                                workflows.
-                            </p>
-                        </div>
-                        <div class="tags">
-                            <span class="tag">React Native</span>
-                            <span class="tag">iOS / Android</span>
-                        </div>
-                    </a>
-
-                    <a class="card" href="detail.html">
-                        <div class="card-header">
-                            <div>
-                                <h2 class="card-title">EnRedYAte</h2>
-                                <p class="card-subtitle">
-                                    Junior Frontend Developer
-                                </p>
-                            </div>
-                            <span class="card-meta">Jan 2021 — Dec 2021</span>
-                        </div>
-                        <div class="card-body">
-                            <p>
-                                Built responsive React and WordPress interfaces
-                                from product and design requirements,
-                                contributing to maintenance and peer review.
-                            </p>
-                        </div>
-                        <div class="tags">
-                            <span class="tag">React</span>
-                            <span class="tag">WordPress</span>
                         </div>
                     </a>
                 </div>
@@ -251,6 +192,7 @@
             </footer>
         </div>
 
-        <script src="../assets/js/prototype.js"></script>
+        <script src="../../assets/js/chatter.js"></script>
+        <script src="../../assets/js/prototype.js"></script>
     </body>
 </html>

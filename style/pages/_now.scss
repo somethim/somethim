@@ -1,0 +1,22 @@
+/* ---------- Now page: systemd-style status readout ---------- */
+
+.term {
+    font-family: var(--mono);
+    font-size: 0.74rem;
+    line-height: 1.75;
+    color: var(--text-soft);
+    overflow-x: auto;
+    margin: 0;
+}
+
+.term .term-prompt {
+    color: var(--signal-bright);
+}
+
+.term .term-ok {
+    color: var(--flash-green);
+}
+
+.term .term-key {
+    color: var(--text-muted);
+}

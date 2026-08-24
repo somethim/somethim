@@ -162,9 +162,11 @@
     console.log(
       "%c" +
         "  ▄▄▄▄▄▄▄▄\n" +
-        "  █ ◉  ◉ █   caught you snooping.\n" +
-        "  ▀▄▄▄▄▄▄▀   since you're here —\n" +
-        "   ▐▌  ▐▌    arbi@kullakshi:~$ say hi → contact@arbikullakshi.com",
+        "  █ ◉  ◉ █   whoami here. caught you snooping.\n" +
+        "  ▀▄▄▄▄▄▄▀   since you're here, a hint:\n" +
+        "   ▐▌  ▐▌    ↑ ↑ ↓ ↓ ← → ← → B A\n" +
+        "             (the big one also answers to seven quick taps)\n" +
+        "             arbi@kullakshi:~$ say hi → contact@arbikullakshi.com",
       "color:#2dd4bf;font-family:monospace;font-size:12px;line-height:1.5",
     );
   }
@@ -236,6 +238,148 @@
     document.addEventListener(ev, restartSleepTimer, { passive: true }),
   );
   restartSleepTimer();
+})();
+
+// ---- Robot chatter: the robot mutters a terminal one-liner now and then ----
+// Lines live in assets/js/chatter.js (separate pool from the 404 quips).
+(function initChatter() {
+  const CHATTER = window.CHATTER || [];
+  if (!CHATTER.length) return;
+  // Prefer the big hero robot; on inner pages, the nav robot mutters instead
+  const hero = document.querySelector(".home-hero .sprite-slot");
+  const nav = document.querySelector(".nav-robot");
+  const host = hero || nav;
+  if (!host) return;
+  const bubble = document.createElement("div");
+  bubble.className = "robot-bubble";
+  bubble.setAttribute("aria-hidden", "true");
+  host.appendChild(bubble);
+
+  function schedule(ms) {
+    setTimeout(speak, ms);
+  }
+
+  function speak() {
+    const slot = host.querySelector(".sprite-slot") || host;
+    // Stay quiet through sleep, parties, and alerts; retry later
+    if (/asleep|drowsy|party|alert/.test(slot.className)) {
+      return schedule(10000);
+    }
+    const line = CHATTER[Math.floor(Math.random() * CHATTER.length)];
+    bubble.textContent = "";
+    bubble.classList.add("show");
+    let i = 0;
+    (function type() {
+      if (i <= line.length) {
+        bubble.textContent = line.slice(0, i);
+        i++;
+        setTimeout(type, 22 + Math.random() * 28);
+      } else {
+        setTimeout(() => {
+          bubble.classList.remove("show");
+          schedule(35000 + Math.random() * 40000);
+        }, 3800);
+      }
+    })();
+  }
+
+  // ?chatter=now forces an immediate line for review screenshots
+  if (new URLSearchParams(location.search).get("chatter") === "now") {
+    schedule(300);
+  } else {
+    schedule(12000 + Math.random() * 13000);
+  }
+})();
+
+// ---- Konami code: the cursor becomes one of them ----
+// ↑↑↓↓←→←→BA toggles a mini-mascot cursor; the unlock survives navigation.
+(function initRobotCursor() {
+  const KEY = "robot-cursor";
+  const CODE = [
+    "ArrowUp",
+    "ArrowUp",
+    "ArrowDown",
+    "ArrowDown",
+    "ArrowLeft",
+    "ArrowRight",
+    "ArrowLeft",
+    "ArrowRight",
+    "b",
+    "a",
+  ];
+  // While active, the footer grows an "Eject robot" switch — the discoverable
+  // way back to the arrow (the code still toggles both ways)
+  const eject = document.createElement("span");
+  eject.hidden = true;
+  eject.append(
+    " · ",
+    Object.assign(document.createElement("button"), {
+      type: "button",
+      className: "footer-btn",
+      textContent: "Eject robot",
+      onclick: () => setRobot(false),
+    }),
+  );
+  document.querySelector(".site-footer span:last-child")?.appendChild(eject);
+
+  function setRobot(on, quiet) {
+    document.body.classList.toggle("robot-cursor", on);
+    eject.hidden = !on;
+    if (on) localStorage.setItem(KEY, "1");
+    else localStorage.removeItem(KEY);
+    if (quiet) return;
+    // The robots celebrate a new member (or wave one goodbye)
+    document.querySelectorAll(".sprite-slot").forEach((s) => {
+      s.classList.add("party");
+      setTimeout(() => s.classList.remove("party"), on ? 4000 : 1200);
+    });
+    console.log(
+      "%c" +
+        (on
+          ? "whoami: beep boop — welcome to the collective."
+          : "whoami: powering down — see you around, human."),
+      "color:#2dd4bf;font-family:monospace;font-size:12px",
+    );
+  }
+
+  if (localStorage.getItem(KEY)) setRobot(true, true);
+  let pos = 0;
+  document.addEventListener("keydown", (e) => {
+    const k = e.key.length === 1 ? e.key.toLowerCase() : e.key;
+    pos = k === CODE[pos] ? pos + 1 : k === CODE[0] ? 1 : 0;
+    if (pos < CODE.length) return;
+    pos = 0;
+    setRobot(!document.body.classList.contains("robot-cursor"));
+  });
+})();
+
+// ---- Click sparks: every click knocks a few pixels loose ----
+(function initSparks() {
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const colors = [
+    "var(--signal)",
+    "var(--signal-warm)",
+    "var(--signal-lavender)",
+    "var(--signal-blue)",
+  ];
+  document.addEventListener("click", (e) => {
+    if (!e.clientX && !e.clientY) return; // keyboard-activated "clicks"
+    // Sparks inside an open <dialog> must live in it to render in the top layer
+    const host = e.target.closest("dialog") || document.body;
+    for (let i = 0; i < 6; i++) {
+      const s = document.createElement("div");
+      s.className = "click-spark";
+      const angle = (i / 6) * Math.PI * 2 + Math.random() * 0.9;
+      const dist = 12 + Math.random() * 14;
+      s.style.left = `${e.clientX - 2}px`;
+      s.style.top = `${e.clientY - 2}px`;
+      s.style.setProperty("--sx", `${Math.cos(angle) * dist}px`);
+      s.style.setProperty("--sy", `${Math.sin(angle) * dist + 6}px`);
+      s.style.background = colors[i % colors.length];
+      host.appendChild(s);
+      s.addEventListener("animationend", () => s.remove());
+    }
+  });
 })();
 
 // ---- 404 quip: a random line on every load (list lives in quips.js) ----

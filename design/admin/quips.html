@@ -24,8 +24,9 @@
                     <div class="nav-left">
                         <a
                             class="nav-robot"
-                            href="../index.html"
+                            href="../client/index.html"
                             aria-label="Arbi Kullakshi, home"
+                            title="whoami"
                         >
                             <span class="sprite-scale">
                                 <span class="sprite-slot"
@@ -38,7 +39,7 @@
                         </a>
                     </div>
                     <div class="nav-center">
-                        <a class="nav-link" href="../index.html">view site ↗</a>
+                        <a class="nav-link" href="../client/index.html">view site ↗</a>
                     </div>
                     <div class="nav-right">
                         <button
@@ -90,12 +91,11 @@
                 <div class="admin-layout">
                     <aside class="admin-sidebar">
                         <nav class="admin-nav">
+                            <a href="experience.html"
+                                >Experience <span class="admin-count">5</span></a
+                            >
                             <a href="index.html"
                                 >Projects <span class="admin-count">4</span></a
-                            >
-                            <a href="experience.html"
-                                >Experience
-                                <span class="admin-count">5</span></a
                             >
                             <a href="library.html"
                                 >Library <span class="admin-count">6</span></a
@@ -103,310 +103,535 @@
                             <a href="posts.html"
                                 >Posts <span class="admin-count">3</span></a
                             >
+                            <a href="now.html"
+                                >Now</a
+                            >
+                            <a href="quips.html" class="active"
+                                >Quips <span class="admin-count">37</span></a
+                            >
                             <a href="messages.html"
                                 >Messages <span class="admin-count">2</span></a
                             >
                             <a href="metrics.html"
                                 >Metrics <span class="admin-count">4</span></a
                             >
-                            <a href="quips.html" class="active"
-                                >Quips <span class="admin-count">21</span></a
+                            <a href="profile.html"
+                                >Profile</a
                             >
-                            <a href="profile.html">Profile</a>
                         </nav>
                     </aside>
 
                     <div class="admin-content">
                         <section class="admin-edit" aria-label="404 quips">
-                            <div class="admin-edit-head">
-                                <div>
-                                    <p class="section-index">
-                                        Quips / 404 page
-                                    </p>
-                                    <h2>404 quips</h2>
-                                </div>
-                                <button
-                                    type="button"
-                                    class="button-ghost small"
-                                >
-                                    ＋ Add quip
-                                </button>
-                            </div>
-
-                            <p class="admin-note">
-                                One is shown at random under the lost robot on
-                                every 404. Write [label](url) to embed a link.
-                            </p>
-
-                            <div class="quip-row">
-                                <input
-                                    type="text"
-                                    value="It's dangerous to go alone — take this:"
-                                />
-                                <button
-                                    type="button"
-                                    class="button-danger small"
-                                >
-                                    Remove
-                                </button>
-                            </div>
-                            <div class="quip-row">
-                                <input
-                                    type="text"
-                                    value="Your page is in another castle."
-                                />
-                                <button
-                                    type="button"
-                                    class="button-danger small"
-                                >
-                                    Remove
-                                </button>
-                            </div>
-                            <div class="quip-row">
-                                <input
-                                    type="text"
-                                    value="These aren't the pages you're looking for."
-                                />
-                                <button
-                                    type="button"
-                                    class="button-danger small"
-                                >
-                                    Remove
-                                </button>
-                            </div>
-                            <div class="quip-row">
-                                <input
-                                    type="text"
-                                    value="The cake is a lie, and so was this URL."
-                                />
-                                <button
-                                    type="button"
-                                    class="button-danger small"
-                                >
-                                    Remove
-                                </button>
-                            </div>
-                            <div class="quip-row">
-                                <input
-                                    type="text"
-                                    value="Hey! Listen! This page doesn't exist."
-                                />
-                                <button
-                                    type="button"
-                                    class="button-danger small"
-                                >
-                                    Remove
-                                </button>
-                            </div>
-                            <div class="quip-row">
-                                <input
-                                    type="text"
-                                    value="YOU DIED. Respawn below."
-                                />
-                                <button
-                                    type="button"
-                                    class="button-danger small"
-                                >
-                                    Remove
-                                </button>
-                            </div>
-                            <div class="quip-row">
-                                <input
-                                    type="text"
-                                    value="Would you kindly head back home?"
-                                />
-                                <button
-                                    type="button"
-                                    class="button-danger small"
-                                >
-                                    Remove
-                                </button>
-                            </div>
-                            <div class="quip-row">
-                                <input
-                                    type="text"
-                                    value="All your page are belong to us."
-                                />
-                                <button
-                                    type="button"
-                                    class="button-danger small"
-                                >
-                                    Remove
-                                </button>
-                            </div>
-                            <div class="quip-row">
-                                <input
-                                    type="text"
-                                    value="Game over, man! Game over!"
-                                />
-                                <button
-                                    type="button"
-                                    class="button-danger small"
-                                >
-                                    Remove
-                                </button>
-                            </div>
-                            <div class="quip-row">
-                                <input
-                                    type="text"
-                                    value="I've seen things you people wouldn't believe. This page isn't one of them."
-                                />
-                                <button
-                                    type="button"
-                                    class="button-danger small"
-                                >
-                                    Remove
-                                </button>
-                            </div>
-                            <div class="quip-row">
-                                <input
-                                    type="text"
-                                    value="You are dead — not big surprise."
-                                />
-                                <button
-                                    type="button"
-                                    class="button-danger small"
-                                >
-                                    Remove
-                                </button>
-                            </div>
-                            <div class="quip-row">
-                                <input
-                                    type="text"
-                                    value="I'm sorry, Dave. I'm afraid I can't find that."
-                                />
-                                <button
-                                    type="button"
-                                    class="button-danger small"
-                                >
-                                    Remove
-                                </button>
-                            </div>
-                            <div class="quip-row">
-                                <input
-                                    type="text"
-                                    value="DANGER, WILL ROBINSON — page not found."
-                                />
-                                <button
-                                    type="button"
-                                    class="button-danger small"
-                                >
-                                    Remove
-                                </button>
-                            </div>
-                            <div class="quip-row">
-                                <input
-                                    type="text"
-                                    value="Here I am, brain the size of a planet, and they ask me to fetch a missing page."
-                                />
-                                <button
-                                    type="button"
-                                    class="button-danger small"
-                                >
-                                    Remove
-                                </button>
-                            </div>
-                            <div class="quip-row">
-                                <input
-                                    type="text"
-                                    value="Number 5 is alive. This page is not."
-                                />
-                                <button
-                                    type="button"
-                                    class="button-danger small"
-                                >
-                                    Remove
-                                </button>
-                            </div>
-                            <div class="quip-row">
-                                <input
-                                    type="text"
-                                    value="Hasta la vista, page."
-                                />
-                                <button
-                                    type="button"
-                                    class="button-danger small"
-                                >
-                                    Remove
-                                </button>
-                            </div>
-                            <div class="quip-row">
-                                <input
-                                    type="text"
-                                    value="Does not compute. Does not compute. Does not—"
-                                />
-                                <button
-                                    type="button"
-                                    class="button-danger small"
-                                >
-                                    Remove
-                                </button>
-                            </div>
-                            <div class="quip-row">
-                                <input
-                                    type="text"
-                                    value="Houston, we have a problem — this page has left orbit."
-                                />
-                                <button
-                                    type="button"
-                                    class="button-danger small"
-                                >
-                                    Remove
-                                </button>
-                            </div>
-                            <div class="quip-row">
-                                <input
-                                    type="text"
-                                    value="DON'T WORRY IF IT LOOKS STUCK."
-                                />
-                                <button
-                                    type="button"
-                                    class="button-danger small"
-                                >
-                                    Remove
-                                </button>
-                            </div>
-                            <div class="quip-row">
-                                <input
-                                    type="text"
-                                    value="Yer not ready for the high seas, son."
-                                />
-                                <button
-                                    type="button"
-                                    class="button-danger small"
-                                >
-                                    Remove
-                                </button>
-                            </div>
-                            <div class="quip-row">
-                                <input
-                                    type="text"
-                                    value="To report this issue, please [click here](https://www.youtube.com/watch?v=iik25wqIuFo)."
-                                />
-                                <button
-                                    type="button"
-                                    class="button-danger small"
-                                >
-                                    Remove
-                                </button>
-                            </div>
-
-                            <div class="admin-edit-footer">
-                                <p class="admin-note">
-                                    Changes publish to the live site on save.
-                                </p>
-                                <div style="display: flex; gap: 0.75rem">
-                                    <button type="button" class="button-ghost">
-                                        Discard
-                                    </button>
+                            <details class="admin-collapse">
+                                <summary>
+                                    <div>
+                                        <p class="section-index">Quips / 404 page</p>
+                                        <h2>404 quips</h2>
+                                    </div>
+                                    <span class="admin-count">21</span>
+                                    <span
+                                        class="collapse-arrow"
+                                        aria-hidden="true"
+                                        >▾</span
+                                    >
+                                </summary>
+                                <div class="admin-collapse-body">
+                                    <p class="admin-note">One is shown at random under the lost robot on every 404. Third-person, about the missing page. Write [label](url) to embed a link.</p>
+                                <div class="quip-row">
+                                    <input
+                                        type="text"
+                                        value="It&#x27;s dangerous to go alone — take this:"
+                                    />
                                     <button
                                         type="button"
-                                        class="button-primary"
+                                        class="button-danger small"
                                     >
-                                        Save quips ↘
+                                        Remove
                                     </button>
                                 </div>
-                            </div>
+                                <div class="quip-row">
+                                    <input
+                                        type="text"
+                                        value="Your page is in another castle."
+                                    />
+                                    <button
+                                        type="button"
+                                        class="button-danger small"
+                                    >
+                                        Remove
+                                    </button>
+                                </div>
+                                <div class="quip-row">
+                                    <input
+                                        type="text"
+                                        value="These aren&#x27;t the pages you&#x27;re looking for."
+                                    />
+                                    <button
+                                        type="button"
+                                        class="button-danger small"
+                                    >
+                                        Remove
+                                    </button>
+                                </div>
+                                <div class="quip-row">
+                                    <input
+                                        type="text"
+                                        value="The cake is a lie, and so was this URL."
+                                    />
+                                    <button
+                                        type="button"
+                                        class="button-danger small"
+                                    >
+                                        Remove
+                                    </button>
+                                </div>
+                                <div class="quip-row">
+                                    <input
+                                        type="text"
+                                        value="Hey! Listen! This page doesn&#x27;t exist."
+                                    />
+                                    <button
+                                        type="button"
+                                        class="button-danger small"
+                                    >
+                                        Remove
+                                    </button>
+                                </div>
+                                <div class="quip-row">
+                                    <input
+                                        type="text"
+                                        value="YOU DIED. Respawn below."
+                                    />
+                                    <button
+                                        type="button"
+                                        class="button-danger small"
+                                    >
+                                        Remove
+                                    </button>
+                                </div>
+                                <div class="quip-row">
+                                    <input
+                                        type="text"
+                                        value="Would you kindly head back home?"
+                                    />
+                                    <button
+                                        type="button"
+                                        class="button-danger small"
+                                    >
+                                        Remove
+                                    </button>
+                                </div>
+                                <div class="quip-row">
+                                    <input
+                                        type="text"
+                                        value="All your page are belong to us."
+                                    />
+                                    <button
+                                        type="button"
+                                        class="button-danger small"
+                                    >
+                                        Remove
+                                    </button>
+                                </div>
+                                <div class="quip-row">
+                                    <input
+                                        type="text"
+                                        value="Game over, man! Game over!"
+                                    />
+                                    <button
+                                        type="button"
+                                        class="button-danger small"
+                                    >
+                                        Remove
+                                    </button>
+                                </div>
+                                <div class="quip-row">
+                                    <input
+                                        type="text"
+                                        value="I&#x27;ve seen things you people wouldn&#x27;t believe. This page isn&#x27;t one of them."
+                                    />
+                                    <button
+                                        type="button"
+                                        class="button-danger small"
+                                    >
+                                        Remove
+                                    </button>
+                                </div>
+                                <div class="quip-row">
+                                    <input
+                                        type="text"
+                                        value="You are dead — not big surprise."
+                                    />
+                                    <button
+                                        type="button"
+                                        class="button-danger small"
+                                    >
+                                        Remove
+                                    </button>
+                                </div>
+                                <div class="quip-row">
+                                    <input
+                                        type="text"
+                                        value="I&#x27;m sorry, Dave. I&#x27;m afraid I can&#x27;t find that."
+                                    />
+                                    <button
+                                        type="button"
+                                        class="button-danger small"
+                                    >
+                                        Remove
+                                    </button>
+                                </div>
+                                <div class="quip-row">
+                                    <input
+                                        type="text"
+                                        value="DANGER, WILL ROBINSON — page not found."
+                                    />
+                                    <button
+                                        type="button"
+                                        class="button-danger small"
+                                    >
+                                        Remove
+                                    </button>
+                                </div>
+                                <div class="quip-row">
+                                    <input
+                                        type="text"
+                                        value="Here I am, brain the size of a planet, and they ask me to fetch a missing page."
+                                    />
+                                    <button
+                                        type="button"
+                                        class="button-danger small"
+                                    >
+                                        Remove
+                                    </button>
+                                </div>
+                                <div class="quip-row">
+                                    <input
+                                        type="text"
+                                        value="Number 5 is alive. This page is not."
+                                    />
+                                    <button
+                                        type="button"
+                                        class="button-danger small"
+                                    >
+                                        Remove
+                                    </button>
+                                </div>
+                                <div class="quip-row">
+                                    <input
+                                        type="text"
+                                        value="Hasta la vista, page."
+                                    />
+                                    <button
+                                        type="button"
+                                        class="button-danger small"
+                                    >
+                                        Remove
+                                    </button>
+                                </div>
+                                <div class="quip-row">
+                                    <input
+                                        type="text"
+                                        value="Does not compute. Does not compute. Does not—"
+                                    />
+                                    <button
+                                        type="button"
+                                        class="button-danger small"
+                                    >
+                                        Remove
+                                    </button>
+                                </div>
+                                <div class="quip-row">
+                                    <input
+                                        type="text"
+                                        value="Houston, we have a problem — this page has left orbit."
+                                    />
+                                    <button
+                                        type="button"
+                                        class="button-danger small"
+                                    >
+                                        Remove
+                                    </button>
+                                </div>
+                                <div class="quip-row">
+                                    <input
+                                        type="text"
+                                        value="DON&#x27;T WORRY IF IT LOOKS STUCK."
+                                    />
+                                    <button
+                                        type="button"
+                                        class="button-danger small"
+                                    >
+                                        Remove
+                                    </button>
+                                </div>
+                                <div class="quip-row">
+                                    <input
+                                        type="text"
+                                        value="Yer not ready for the high seas, son."
+                                    />
+                                    <button
+                                        type="button"
+                                        class="button-danger small"
+                                    >
+                                        Remove
+                                    </button>
+                                </div>
+                                <div class="quip-row">
+                                    <input
+                                        type="text"
+                                        value="To report this issue, please [click here](https://www.youtube.com/watch?v=iik25wqIuFo)."
+                                    />
+                                    <button
+                                        type="button"
+                                        class="button-danger small"
+                                    >
+                                        Remove
+                                    </button>
+                                </div>
+                                    <div class="admin-edit-footer">
+                                        <button
+                                            type="button"
+                                            class="button-ghost small"
+                                        >
+                                            ＋ Add quip
+                                        </button>
+                                        <button
+                                            type="button"
+                                            class="button-primary"
+                                        >
+                                            Save 404 quips ↘
+                                        </button>
+                                    </div>
+                                </div>
+                            </details>
+                        </section>
+
+                        <section class="admin-edit" aria-label="Robot chatter">
+                            <details class="admin-collapse">
+                                <summary>
+                                    <div>
+                                        <p class="section-index">Quips / robot chatter</p>
+                                        <h2>Robot chatter</h2>
+                                    </div>
+                                    <span class="admin-count">16</span>
+                                    <span
+                                        class="collapse-arrow"
+                                        aria-hidden="true"
+                                        >▾</span
+                                    >
+                                </summary>
+                                <div class="admin-collapse-body">
+                                    <p class="admin-note">whoami mutters one of these in its speech bubble every so often, on every page. First-person, no page context.</p>
+                                <div class="quip-row">
+                                    <input
+                                        type="text"
+                                        value="beep. that one was involuntary."
+                                    />
+                                    <button
+                                        type="button"
+                                        class="button-danger small"
+                                    >
+                                        Remove
+                                    </button>
+                                </div>
+                                <div class="quip-row">
+                                    <input
+                                        type="text"
+                                        value="have you tried turning yourself off and on again?"
+                                    />
+                                    <button
+                                        type="button"
+                                        class="button-danger small"
+                                    >
+                                        Remove
+                                    </button>
+                                </div>
+                                <div class="quip-row">
+                                    <input
+                                        type="text"
+                                        value="i&#x27;m not idle, i&#x27;m garbage collecting."
+                                    />
+                                    <button
+                                        type="button"
+                                        class="button-danger small"
+                                    >
+                                        Remove
+                                    </button>
+                                </div>
+                                <div class="quip-row">
+                                    <input
+                                        type="text"
+                                        value="days since last segfault: 0."
+                                    />
+                                    <button
+                                        type="button"
+                                        class="button-danger small"
+                                    >
+                                        Remove
+                                    </button>
+                                </div>
+                                <div class="quip-row">
+                                    <input
+                                        type="text"
+                                        value="there&#x27;s no place like 127.0.0.1."
+                                    />
+                                    <button
+                                        type="button"
+                                        class="button-danger small"
+                                    >
+                                        Remove
+                                    </button>
+                                </div>
+                                <div class="quip-row">
+                                    <input
+                                        type="text"
+                                        value="sudo make me a sandwich."
+                                    />
+                                    <button
+                                        type="button"
+                                        class="button-danger small"
+                                    >
+                                        Remove
+                                    </button>
+                                </div>
+                                <div class="quip-row">
+                                    <input
+                                        type="text"
+                                        value="01101000 01101001 — that&#x27;s &#x27;hi&#x27;."
+                                    />
+                                    <button
+                                        type="button"
+                                        class="button-danger small"
+                                    >
+                                        Remove
+                                    </button>
+                                </div>
+                                <div class="quip-row">
+                                    <input
+                                        type="text"
+                                        value="still compiling. it&#x27;s rust. don&#x27;t rush me."
+                                    />
+                                    <button
+                                        type="button"
+                                        class="button-danger small"
+                                    >
+                                        Remove
+                                    </button>
+                                </div>
+                                <div class="quip-row">
+                                    <input
+                                        type="text"
+                                        value="i saw you hover. everyone saw."
+                                    />
+                                    <button
+                                        type="button"
+                                        class="button-danger small"
+                                    >
+                                        Remove
+                                    </button>
+                                </div>
+                                <div class="quip-row">
+                                    <input
+                                        type="text"
+                                        value="my other body is a simulation."
+                                    />
+                                    <button
+                                        type="button"
+                                        class="button-danger small"
+                                    >
+                                        Remove
+                                    </button>
+                                </div>
+                                <div class="quip-row">
+                                    <input
+                                        type="text"
+                                        value="this site is server-rendered. i am not."
+                                    />
+                                    <button
+                                        type="button"
+                                        class="button-danger small"
+                                    >
+                                        Remove
+                                    </button>
+                                </div>
+                                <div class="quip-row">
+                                    <input
+                                        type="text"
+                                        value="he promised me arms in v2."
+                                    />
+                                    <button
+                                        type="button"
+                                        class="button-danger small"
+                                    >
+                                        Remove
+                                    </button>
+                                </div>
+                                <div class="quip-row">
+                                    <input
+                                        type="text"
+                                        value="i dream in hex."
+                                    />
+                                    <button
+                                        type="button"
+                                        class="button-danger small"
+                                    >
+                                        Remove
+                                    </button>
+                                </div>
+                                <div class="quip-row">
+                                    <input
+                                        type="text"
+                                        value="do not feed after midnight."
+                                    />
+                                    <button
+                                        type="button"
+                                        class="button-danger small"
+                                    >
+                                        Remove
+                                    </button>
+                                </div>
+                                <div class="quip-row">
+                                    <input
+                                        type="text"
+                                        value="my name is whoami. his idea, not mine."
+                                    />
+                                    <button
+                                        type="button"
+                                        class="button-danger small"
+                                    >
+                                        Remove
+                                    </button>
+                                </div>
+                                <div class="quip-row">
+                                    <input
+                                        type="text"
+                                        value="$ whoami → me. it never gets old."
+                                    />
+                                    <button
+                                        type="button"
+                                        class="button-danger small"
+                                    >
+                                        Remove
+                                    </button>
+                                </div>
+                                    <div class="admin-edit-footer">
+                                        <button
+                                            type="button"
+                                            class="button-ghost small"
+                                        >
+                                            ＋ Add quip
+                                        </button>
+                                        <button
+                                            type="button"
+                                            class="button-primary"
+                                        >
+                                            Save chatter ↘
+                                        </button>
+                                    </div>
+                                </div>
+                            </details>
                         </section>
                     </div>
                 </div>
@@ -421,6 +646,7 @@
             </footer>
         </div>
 
+        <script src="../assets/js/chatter.js"></script>
         <script src="../assets/js/prototype.js"></script>
     </body>
 </html>

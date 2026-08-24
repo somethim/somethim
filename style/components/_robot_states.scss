@@ -230,3 +230,66 @@ body.light-mode .sprite-slot.asleep .sprite-eye {
         box-shadow: none;
     }
 }
+
+/* Konami easter egg: robot cursor set (public/cursors/); native cursors otherwise */
+body.robot-cursor {
+    --cursor-arrow: url("/cursors/robot.svg") 12 12, default;
+    --cursor-point: url("/cursors/robot-point.svg") 12 12, pointer;
+    --cursor-active: url("/cursors/robot-active.svg") 12 12, pointer;
+    /* hotspot sits on the caret stem, not the robot */
+    --cursor-text: url("/cursors/robot-text.svg") 29 12, text;
+    cursor: var(--cursor-arrow);
+}
+
+body.light-mode.robot-cursor {
+    --cursor-arrow: url("/cursors/robot-light.svg") 12 12, default;
+    --cursor-point: url("/cursors/robot-point-light.svg") 12 12, pointer;
+    --cursor-active: url("/cursors/robot-active-light.svg") 12 12, pointer;
+    --cursor-text: url("/cursors/robot-text-light.svg") 29 12, text;
+}
+
+body.robot-cursor
+    :is(a, button, select, summary, [role="button"], .sprite-slot) {
+    cursor: var(--cursor-point);
+}
+
+body.robot-cursor :is(button, select, .consent-toggle):disabled {
+    cursor: var(--cursor-arrow);
+}
+
+body.robot-cursor
+    :is(p, h1, h2, h3, li, blockquote, td, th, dt, dd):not(a *, button *) {
+    cursor: var(--cursor-text);
+}
+
+body.robot-cursor input,
+body.robot-cursor textarea {
+    cursor: var(--cursor-text);
+}
+
+/* :active bubbles to <body>, covering every press; last so it wins the tie */
+body.robot-cursor:active,
+body.robot-cursor:active * {
+    cursor: var(--cursor-active);
+}
+
+.click-spark {
+    position: fixed;
+    width: 5px;
+    height: 5px;
+    z-index: 999;
+    pointer-events: none;
+    animation: spark-fly 0.5s steps(5, end) forwards;
+}
+
+@keyframes spark-fly {
+    0% {
+        translate: 0 0;
+        opacity: 1;
+    }
+
+    100% {
+        translate: var(--sx) var(--sy);
+        opacity: 0;
+    }
+}

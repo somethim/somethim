@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>admin / now — Arbi Kullakshi</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:opsz,wght@14..32,400..700&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="../assets/css/styles.css" />
+    </head>
+    <body>
+        <div class="corner-tl"></div>
+        <div class="corner-tr"></div>
+        <div class="corner-bl"></div>
+        <div class="corner-br"></div>
+
+        <div class="app-container">
+            <nav class="navbar">
+                <div class="nav-content">
+                    <div class="nav-left">
+                        <a
+                            class="nav-robot"
+                            href="../client/index.html"
+                            aria-label="Arbi Kullakshi, home"
+                            title="whoami"
+                        >
+                            <span class="sprite-scale">
+                                <span class="sprite-slot"
+                                    ><span class="sprite"></span
+                                    ><span class="sprite-eye eye-l"></span
+                                    ><span class="sprite-eye eye-r"></span
+                                    ><span class="sprite-antenna"></span
+                                ></span>
+                            </span>
+                        </a>
+                    </div>
+                    <div class="nav-center">
+                        <a class="nav-link" href="../client/index.html">view site ↗</a>
+                    </div>
+                    <div class="nav-right">
+                        <button
+                            class="dark-mode-toggle"
+                            aria-label="Toggle theme"
+                        >
+                            <svg
+                                class="icon-sun"
+                                width="15"
+                                height="15"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                aria-hidden="true"
+                            >
+                                <circle cx="12" cy="12" r="4" />
+                                <path
+                                    d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"
+                                /></svg
+                            ><svg
+                                class="icon-moon"
+                                width="15"
+                                height="15"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                aria-hidden="true"
+                            >
+                                <path
+                                    d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"
+                                />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </nav>
+
+            <main class="main-content admin-main">
+                <div class="page-heading">
+                    <p class="section-index">Content dashboard</p>
+                    <h1 class="page-title">Now</h1>
+                </div>
+
+                <div class="admin-layout">
+                    <aside class="admin-sidebar">
+                        <nav class="admin-nav">
+                            <a href="experience.html"
+                                >Experience <span class="admin-count">5</span></a
+                            >
+                            <a href="index.html"
+                                >Projects <span class="admin-count">4</span></a
+                            >
+                            <a href="library.html"
+                                >Library <span class="admin-count">6</span></a
+                            >
+                            <a href="posts.html"
+                                >Posts <span class="admin-count">3</span></a
+                            >
+                            <a href="now.html" class="active"
+                                >Now</a
+                            >
+                            <a href="quips.html"
+                                >Quips <span class="admin-count">37</span></a
+                            >
+                            <a href="messages.html"
+                                >Messages <span class="admin-count">2</span></a
+                            >
+                            <a href="metrics.html"
+                                >Metrics <span class="admin-count">4</span></a
+                            >
+                            <a href="profile.html"
+                                >Profile</a
+                            >
+                        </nav>
+                    </aside>
+
+                    <div class="admin-content">
+                        <section class="admin-edit" aria-label="Status readout">
+                            <div class="admin-edit-head">
+                                <div>
+                                    <p class="section-index">
+                                        Now / status readout
+                                    </p>
+                                    <h2>systemctl status arbi.service</h2>
+                                </div>
+                            </div>
+                            <p class="admin-note">
+                                The terminal card at the top of /now. Keep the
+                                lines short — they render verbatim.
+                            </p>
+                                <div class="field">
+                                    <label for="now-loaded">Loaded</label>
+                                    <input
+                                        id="now-loaded"
+                                        type="text"
+                                        value="loaded (/home/arbi; enabled; preset: curious)"
+                                    />
+                                </div>
+                                <div class="field">
+                                    <label for="now-active">Active</label>
+                                    <input
+                                        id="now-active"
+                                        type="text"
+                                        value="active (running) — Tirana, Albania"
+                                    />
+                                </div>
+                                <div class="field">
+                                    <label for="now-tasks">Tasks</label>
+                                    <input
+                                        id="now-tasks"
+                                        type="text"
+                                        value="3 of ∞"
+                                    />
+                                </div>
+                                <div class="field">
+                                    <label for="now-memory">Memory</label>
+                                    <input
+                                        id="now-memory"
+                                        type="text"
+                                        value="rust is borrowing most of it"
+                                    />
+                                </div>
+                                <div class="field">
+                                    <label for="now-cpu">CPU</label>
+                                    <input
+                                        id="now-cpu"
+                                        type="text"
+                                        value="10× real time (simulation only)"
+                                    />
+                                </div>
+                        </section>
+
+                        <section class="admin-edit" aria-label="Building">
+                            <div class="admin-edit-head">
+                                <div>
+                                    <p class="section-index">Now / building</p>
+                                    <h2>Building</h2>
+                                </div>
+                                <button
+                                    type="button"
+                                    class="button-ghost small"
+                                >
+                                    ＋ Add entry
+                                </button>
+                            </div>
+                            <p class="admin-note">
+                                What has my attention right now — one paragraph
+                                per entry, dated automatically.
+                            </p>
+                            <div class="field">
+                                <label for="now-b1">Entry</label>
+                                <textarea id="now-b1" rows="2">
+Rewriting this site in Leptos — server-rendered Rust; the design prototype you are looking at is the blueprint.</textarea
+                                >
+                            </div>
+                            <div class="field">
+                                <label for="now-b2">Entry</label>
+                                <textarea id="now-b2" rows="2">
+Simulation-first robotics: teaching an autonomous robot to misbehave at 10× real time, where mistakes are free.</textarea
+                                >
+                            </div>
+                            <div class="field">
+                                <label for="now-tags">Tags</label>
+                                <input
+                                    id="now-tags"
+                                    type="text"
+                                    value="Rust, Leptos, Robotics"
+                                />
+                            </div>
+                        </section>
+
+                        <section class="admin-edit" aria-label="Toolbox">
+                            <div class="admin-edit-head">
+                                <div>
+                                    <p class="section-index">Now / toolbox</p>
+                                    <h2>Toolbox</h2>
+                                </div>
+                                <button
+                                    type="button"
+                                    class="button-ghost small"
+                                >
+                                    ＋ Add tool
+                                </button>
+                            </div>
+                            <p class="admin-note">
+                                Daily drivers, rendered as tags. The reading
+                                card pulls from the Library — manage it there.
+                            </p>
+                                <div class="quip-row">
+                                    <input type="text" value="Arch Linux" />
+                                    <button
+                                        type="button"
+                                        class="button-danger small"
+                                    >
+                                        Remove
+                                    </button>
+                                </div>
+                                <div class="quip-row">
+                                    <input type="text" value="Hyprland" />
+                                    <button
+                                        type="button"
+                                        class="button-danger small"
+                                    >
+                                        Remove
+                                    </button>
+                                </div>
+                                <div class="quip-row">
+                                    <input type="text" value="Neovim" />
+                                    <button
+                                        type="button"
+                                        class="button-danger small"
+                                    >
+                                        Remove
+                                    </button>
+                                </div>
+                                <div class="quip-row">
+                                    <input type="text" value="Rust" />
+                                    <button
+                                        type="button"
+                                        class="button-danger small"
+                                    >
+                                        Remove
+                                    </button>
+                                </div>
+                                <div class="quip-row">
+                                    <input type="text" value="Laravel" />
+                                    <button
+                                        type="button"
+                                        class="button-danger small"
+                                    >
+                                        Remove
+                                    </button>
+                                </div>
+                                <div class="quip-row">
+                                    <input type="text" value="PostgreSQL" />
+                                    <button
+                                        type="button"
+                                        class="button-danger small"
+                                    >
+                                        Remove
+                                    </button>
+                                </div>
+                                <div class="quip-row">
+                                    <input type="text" value="Docker" />
+                                    <button
+                                        type="button"
+                                        class="button-danger small"
+                                    >
+                                        Remove
+                                    </button>
+                                </div>
+                                <div class="quip-row">
+                                    <input type="text" value="IBM Plex Mono" />
+                                    <button
+                                        type="button"
+                                        class="button-danger small"
+                                    >
+                                        Remove
+                                    </button>
+                                </div>
+                            <div class="admin-edit-footer">
+                                <p class="admin-note">
+                                    Changes publish to the live site on save.
+                                </p>
+                                <div style="display: flex; gap: 0.75rem">
+                                    <button type="button" class="button-ghost">
+                                        Discard
+                                    </button>
+                                    <button
+                                        type="button"
+                                        class="button-primary"
+                                    >
+                                        Save now page ↘
+                                    </button>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </main>
+
+            <footer class="site-footer">
+                <span>Arbi Kullakshi · Admin</span>
+                <span
+                    >Signed in as arbi ·
+                    <a href="login.html">Sign out</a></span
+                >
+            </footer>
+        </div>
+
+        <script src="../assets/js/chatter.js"></script>
+        <script src="../assets/js/prototype.js"></script>
+    </body>
+</html>

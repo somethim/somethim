@@ -175,3 +175,21 @@
     color: var(--signal-bright);
     border-color: var(--signal);
 }
+
+/* Back navigation on detail pages — the navbar has no room to spare */
+.back-crumb {
+    margin-bottom: 1.4rem;
+    font-size: 0.73rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.back-crumb a {
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.back-crumb a:hover {
+    color: var(--signal-bright);
+}
