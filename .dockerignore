@@ -1,0 +1,7 @@
+.git
+target
+Dockerfile
+compose.yaml
+DEPLOYMENT.md
+README.md
+LICENSE

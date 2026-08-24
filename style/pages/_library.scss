@@ -113,6 +113,19 @@
     text-transform: uppercase;
 }
 
+.field-action {
+    float: right;
+    background: none;
+    border: none;
+    padding: 0;
+    color: var(--signal-bright);
+    font: inherit;
+    font-size: 0.66rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
 .field input,
 .field textarea,
 .quip-row input {

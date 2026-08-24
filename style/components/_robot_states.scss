@@ -1,4 +1,5 @@
-.sprite-slot.party {
+.sprite-slot.party,
+body.robot-party .sprite-slot {
     animation: robot-dance 0.45s ease-in-out infinite;
 }
 
@@ -18,7 +19,8 @@
     }
 }
 
-.sprite-slot.party .sprite-eye {
+.sprite-slot.party .sprite-eye,
+body.robot-party .sprite-slot .sprite-eye {
     animation: eye-party 0.6s linear infinite;
 }
 
@@ -38,7 +40,8 @@
     }
 }
 
-.sprite-slot.party .sprite-antenna {
+.sprite-slot.party .sprite-antenna,
+body.robot-party .sprite-slot .sprite-antenna {
     animation: antenna-tx 0.12s steps(2) infinite;
 }
 
@@ -236,8 +239,9 @@ body.robot-cursor {
     --cursor-arrow: url("/cursors/robot.svg") 12 12, default;
     --cursor-point: url("/cursors/robot-point.svg") 12 12, pointer;
     --cursor-active: url("/cursors/robot-active.svg") 12 12, pointer;
-    /* hotspot sits on the caret stem, not the robot */
-    --cursor-text: url("/cursors/robot-text.svg") 29 12, text;
+    /* Same hotspot as every other state — the robot stays anchored in place
+       when the cursor changes; the I-beam trails right as decoration. */
+    --cursor-text: url("/cursors/robot-text.svg") 12 12, text;
     cursor: var(--cursor-arrow);
 }
 
@@ -245,7 +249,7 @@ body.light-mode.robot-cursor {
     --cursor-arrow: url("/cursors/robot-light.svg") 12 12, default;
     --cursor-point: url("/cursors/robot-point-light.svg") 12 12, pointer;
     --cursor-active: url("/cursors/robot-active-light.svg") 12 12, pointer;
-    --cursor-text: url("/cursors/robot-text-light.svg") 29 12, text;
+    --cursor-text: url("/cursors/robot-text-light.svg") 12 12, text;
 }
 
 body.robot-cursor
@@ -271,25 +275,4 @@ body.robot-cursor textarea {
 body.robot-cursor:active,
 body.robot-cursor:active * {
     cursor: var(--cursor-active);
-}
-
-.click-spark {
-    position: fixed;
-    width: 5px;
-    height: 5px;
-    z-index: 999;
-    pointer-events: none;
-    animation: spark-fly 0.5s steps(5, end) forwards;
-}
-
-@keyframes spark-fly {
-    0% {
-        translate: 0 0;
-        opacity: 1;
-    }
-
-    100% {
-        translate: var(--sx) var(--sy);
-        opacity: 0;
-    }
 }
