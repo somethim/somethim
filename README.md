@@ -23,12 +23,12 @@ My current focus is autonomous robotics in Rust: simulation-first systems built 
 
 |        Production        |       Open source       |           Robotics           |         Research         |
 | :----------------------: | :---------------------: | :--------------------------: | :----------------------: |
-| **6** products delivered |  **244** package tests  | **10×** real-time simulation | **5.68M** rows evaluated |
+| **5** products delivered |  **244** package tests  | **10×** real-time simulation | **5.68M** rows evaluated |
 | Laravel · Django · React | ABAC · SMS integrations |    Rust · ROS 2 · Gazebo     | **540** controlled fits  |
 
 ## Production engineering
 
-- At **Zennit**, architected a nine-module Laravel SaaS backend and identity platform with 10 external OAuth providers, passwordless login, account linking, TOTP MFA, and auditable session termination.
+- At **Zennit**, architected a ten-module Laravel SaaS backend and identity platform with 12 external OAuth providers, passwordless login, account linking, TOTP MFA, and auditable session termination.
 - At **Hire A Loo**, delivered search, lead ingestion, quoting, email, CardDAV, and migration work across 18 CRM pull requests, including an end-to-end public quotation workflow.
 - Previously built and optimized production systems with **Django/PostgreSQL**, **React/TypeScript**, and **React Native** across Clickservice GmbH, Vodafone Albania, and EnRedYAte.
 - Automated delivery with Docker, Traefik/Nginx, GitHub/GitLab CI, and Ansible.
