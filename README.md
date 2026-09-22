@@ -326,8 +326,6 @@ My current focus is autonomous robotics in Rust: simulation-first systems built 
 <img src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=somethim&amp;theme=github_dark" height="200" alt="Repositories per language"/>
 <img src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=somethim&amp;theme=github_dark" height="200" alt="Most committed languages"/>
 
-<img src="https://streak-stats.demolab.com/?user=somethim&amp;hide_border=true&amp;border_radius=12&amp;background=0b0d14&amp;ring=2dd4bf&amp;fire=74a8e8&amp;currStreakNum=edf2ff&amp;sideNums=edf2ff&amp;currStreakLabel=2dd4bf&amp;sideLabels=c8d3f5&amp;dates=8b93b0&amp;stroke=2dd4bf" width="700" alt="Contribution streak"/>
-
 </div>
 
 ## Education and training
